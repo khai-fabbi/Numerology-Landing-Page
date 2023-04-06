@@ -65,20 +65,28 @@ const lightThemeOptions: ThemeOptions = {
         },
       },
     },
-    MuiInputBase: {
-      styleOverrides: {
-        root: {
-          // border: '1px solid #DDE4EE',
-          // borderRadius: '9999px;',
-          // backgroundColor: 'rgba(255, 255, 255, 0.02)',
-        },
-      },
-    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
           borderRadius: '9999px;',
           backgroundColor: 'rgba(255, 255, 255, 0.02)',
+          color: themeColors.color.textLight,
+          '& fieldset': {
+            borderColor: '#DDE4EE',
+          },
+          '&:hover fieldset': {
+            borderColor: `${themeColors.color.main} !important`,
+          },
+        },
+        input: {
+          padding: '12.5px 14px',
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        icon: {
+          color: themeColors.color.textLight,
         },
       },
     },

@@ -1,4 +1,11 @@
-import { Box, Container, Paper, TextField, Typography } from '@mui/material'
+import {
+  Box,
+  Container,
+  MenuItem,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material'
 import Button from '@mui/material/Button'
 import type { ReactElement } from 'react'
 
@@ -6,6 +13,16 @@ import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
 import type { NextPageWithLayout } from '@/models'
 
+const currencies = [
+  {
+    value: 'M',
+    label: 'Male',
+  },
+  {
+    value: 'F',
+    label: 'Female',
+  },
+]
 const Home: NextPageWithLayout = () => {
   return (
     <Box>
@@ -37,8 +54,27 @@ const Home: NextPageWithLayout = () => {
         <Button variant="outlined" color="primary">
           Tìm hiểu thêm
         </Button>
-        <Box width={550} mt={4}>
+        <Box
+          width={550}
+          mt={4}
+          display={'flex'}
+          flexDirection={'column'}
+          rowGap={2}
+        >
           <TextField fullWidth placeholder="Nhập họ tên" />
+          <TextField
+            id="outlined-select-currency"
+            select
+            placeholder="Giới tính"
+            defaultValue={'M'}
+            fullWidth
+          >
+            {currencies.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Box>
       </Container>
     </Box>
