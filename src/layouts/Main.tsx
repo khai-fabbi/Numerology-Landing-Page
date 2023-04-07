@@ -1,5 +1,8 @@
-import { Box } from '@mui/material'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { Box, Fab } from '@mui/material'
 import type { ReactNode } from 'react'
+
+import ScrollTop from '@/components/common/ScrollTop'
 
 import Header from './Header'
 
@@ -9,10 +12,15 @@ type IMainProps = {
 }
 
 const Main = (props: IMainProps) => (
-  <Box sx={{ width: '100%' }}>
+  <Box sx={{ width: '100%' }} id="wrapper">
     {props.meta}
     <Header />
-    <Box>{props.children}</Box>
+    {props.children}
+    <ScrollTop {...props}>
+      <Fab size="large" aria-label="scroll back to top">
+        <KeyboardArrowUpIcon sx={{ width: 32, height: 32 }} />
+      </Fab>
+    </ScrollTop>
   </Box>
 )
 

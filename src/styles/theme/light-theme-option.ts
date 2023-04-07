@@ -63,6 +63,10 @@ const lightThemeOptions: ThemeOptions = {
         sizeLarge: {
           padding: '15px 25px',
         },
+        sizeSmall: {
+          fontSize: '0.875rem',
+          padding: '6px 18px',
+        },
       },
     },
     MuiOutlinedInput: {
@@ -80,6 +84,7 @@ const lightThemeOptions: ThemeOptions = {
         },
         input: {
           padding: '12.5px 14px',
+          fontWeight: 500,
         },
       },
     },
