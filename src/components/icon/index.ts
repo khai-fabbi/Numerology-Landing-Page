@@ -1,3 +1,5 @@
-import IconArrowLeft from './IconArrowLeft'
+import IconCalendar from './IconCalendar'
+import IconCheck from './IconCheck'
+import IconTwoRhombus from './IconTwoRhombus'
 
-export { IconArrowLeft }
+export { IconCalendar, IconCheck, IconTwoRhombus }

@@ -126,7 +126,12 @@ function ResponsiveAppBar() {
             }}
           >
             {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} size="small">
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                size="small"
+                sx={{ textTransform: 'uppercase' }}
+              >
                 {page}
               </Button>
             ))}

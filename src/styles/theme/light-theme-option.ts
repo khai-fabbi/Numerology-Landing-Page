@@ -95,6 +95,22 @@ const lightThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: '1240px',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: themeColors.color.textLight,
+          fontWeight: 500,
+          cursor: 'pointer',
+        },
+      },
+    },
   },
 }
 

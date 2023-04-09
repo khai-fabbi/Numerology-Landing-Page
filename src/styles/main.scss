@@ -8,6 +8,7 @@
   --philosopher-font: 'Philosopher', sans-serif; //font-secondary
   --bg-primary: #031D2E
   --text-main: #F96A2D
+  --text-sm: 0.875rem
 }
 
 * {
@@ -62,4 +63,22 @@ body {
   html {
     font-size: 16px;
   }
+}
+
+// hidden icon input type number 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.reader-comment-wrapper {
+  background: url('../../public/assets/images/reader_comment.png') no-repeat right bottom;
 }

@@ -4,6 +4,8 @@ import type { EmotionCache } from '@emotion/react'
 import { CacheProvider } from '@emotion/react'
 import { CssBaseline } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import type { AppProps } from 'next/app'
 import type { ReactElement } from 'react'
 
@@ -27,13 +29,18 @@ const MyApp = ({
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page)
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
-    </CacheProvider>
+    <LocalizationProvider
+      dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
+      dateAdapter={AdapterDayjs}
+    >
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </CacheProvider>
+    </LocalizationProvider>
   )
 }
 
