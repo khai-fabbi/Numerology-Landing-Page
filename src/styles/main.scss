@@ -3,12 +3,12 @@
 
 :root {
   --text-light-primary: #fff;
-  --header-height: 96px;
+  --header-height: 93px;
   --raleway-font: 'Raleway', sans-serif; //font primnary
   --philosopher-font: 'Philosopher', sans-serif; //font-secondary
-  --bg-primary: #031D2E
-  --text-main: #F96A2D
-  --text-sm: 0.875rem
+  --bg-primary: #031D2E;
+  --text-main: #F96A2D;
+  --text-sm: 0.875rem;
 }
 
 * {
@@ -83,7 +83,7 @@ input[type=number] {
   background: url('../../public/assets/images/reader_comment.png') no-repeat right center;
 }
 .blog-numerology-wrapper {
-  height: 760px;
+  height: 800px;
   background: url('../../public/assets/images/bg-blog-numberology.png') no-repeat left center,url('../../public/assets/images/zodiac2.png') no-repeat right 115px ;
   position: relative;
   display: flex;
@@ -91,7 +91,7 @@ input[type=number] {
   align-items: center;
 }
 
-// swiper: 
+// custom swiper: 
 .swiper {
   height: 100%;
   overflow: auto;
@@ -100,5 +100,18 @@ input[type=number] {
 
 .swiper-slide {
   border-radius: 5px;
+}
+// end swipper 
+
+.teacher-info-wrapper {
+  height: 890px;
+  background: url('../../public/assets/images/teacher_info_bg.png') no-repeat center center;
+  background-size: cover
+}
+.text-heading {
+  font-family: var(--philosopher-font);
+  font-size: 32px;
+  line-height: '36px';
+  font-weight: 700;
 }
 

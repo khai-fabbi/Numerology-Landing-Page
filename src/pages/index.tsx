@@ -4,7 +4,13 @@ import type { ReactElement } from 'react'
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
 import type { NextPageWithLayout } from '@/models'
-import { Banner, BlogNumerology, LookUpNumerology } from '@/modules/home'
+import {
+  Banner,
+  BlogNumerology,
+  LookUpNumerology,
+  TeacherInfo,
+  TrainAndApplication,
+} from '@/modules/home'
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -12,6 +18,8 @@ const Home: NextPageWithLayout = () => {
       <Banner />
       <LookUpNumerology />
       <BlogNumerology />
+      <TeacherInfo />
+      <TrainAndApplication />
     </Box>
   )
 }

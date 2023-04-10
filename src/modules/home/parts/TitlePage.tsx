@@ -11,14 +11,7 @@ export default function TittlePage({ children }: TittlePageProps) {
   return (
     <Box>
       <IconTwoRhombus />
-      <Typography
-        sx={{
-          fontFamily: 'var(--philosopher-font)',
-          fontSize: 32,
-          lineHeight: '36px',
-        }}
-        component={'h3'}
-      >
+      <Typography className="text-heading" component={'h3'}>
         {children}
       </Typography>
     </Box>

@@ -1,7 +1,7 @@
 import MuiButton from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 
-export const ButtonMoveSlice = styled(MuiButton)((props) => ({
+export const ButtonMoveSlice = styled(MuiButton)(() => ({
   borderRadius: 0,
   width: 56,
   height: 56,

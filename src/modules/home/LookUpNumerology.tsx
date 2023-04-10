@@ -46,24 +46,10 @@ export default function LookUpNumerology() {
             >
               <IconTwoRhombus />
               <Box>
-                <Typography
-                  sx={{
-                    fontFamily: 'var(--philosopher-font)',
-                    fontSize: 32,
-                    lineHeight: '36px',
-                  }}
-                >
+                <Typography className="text-heading">
                   Xem thần số học online
                 </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: 'var(--philosopher-font)',
-                    fontSize: 32,
-                    lineHeight: '36px',
-                  }}
-                >
-                  Aladanh Thành
-                </Typography>
+                <Typography className="text-heading">Aladanh Thành</Typography>
                 <Box mt={2}>
                   <Typography fontSize={14}>
                     - Tính toán hàng chục nghìn phép tính thần số phức tạp cực

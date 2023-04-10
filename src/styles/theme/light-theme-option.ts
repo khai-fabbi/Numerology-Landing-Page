@@ -69,6 +69,13 @@ const lightThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          lineHeight: 1.25,
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
