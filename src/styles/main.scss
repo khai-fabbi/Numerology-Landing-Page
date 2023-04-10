@@ -82,3 +82,23 @@ input[type=number] {
 .reader-comment-wrapper {
   background: url('../../public/assets/images/reader_comment.png') no-repeat right center;
 }
+.blog-numerology-wrapper {
+  height: 760px;
+  background: url('../../public/assets/images/bg-blog-numberology.png') no-repeat left center,url('../../public/assets/images/zodiac2.png') no-repeat right 115px ;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// swiper: 
+.swiper {
+  height: 100%;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.swiper-slide {
+  border-radius: 5px;
+}
+

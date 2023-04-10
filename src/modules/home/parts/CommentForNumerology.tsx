@@ -1,9 +1,8 @@
 import { Box, Typography } from '@mui/material'
 import * as React from 'react'
 
-import { IconTwoRhombus } from '@/components/icon'
-
 import BoxComment from './BoxComment'
+import TittlePage from './TitlePage'
 
 const commentExamples = [
   {
@@ -38,17 +37,7 @@ export default function CommentForNumerology() {
       height={'940px'}
       position={'relative'}
     >
-      <IconTwoRhombus />
-      <Typography
-        sx={{
-          fontFamily: 'var(--philosopher-font)',
-          fontSize: 32,
-          lineHeight: '36px',
-        }}
-        component={'h3'}
-      >
-        Góc chia sẻ
-      </Typography>
+      <TittlePage>Góc chia sẻ</TittlePage>
       <Typography
         sx={{
           fontSize: 18,

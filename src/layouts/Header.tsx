@@ -101,7 +101,7 @@ function ResponsiveAppBar() {
         zIndex: 100,
       }}
     >
-      <Container>
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
           <Link passHref href={'/'} legacyBehavior>
             <Typography

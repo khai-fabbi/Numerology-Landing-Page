@@ -13,7 +13,7 @@ import { DatePicker } from '@mui/x-date-pickers'
 
 import { IconCalendar, IconTwoRhombus } from '@/components/icon'
 
-import CommentForNumerology from './parts/CommentForNumerology'
+import { CommentForNumerology } from './parts'
 
 const SEX_LABEL = [
   {
