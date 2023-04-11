@@ -12,7 +12,7 @@ import { BlogNumerologyCard, TittlePage } from './parts'
 export default function BlogNumerology() {
   return (
     <Box className="blog-numerology-wrapper">
-      <Box sx={{ position: 'absolute', left: 560, top: 60 }}>
+      <Box sx={{ position: 'absolute', left: 560, top: 80 }}>
         <TittlePage>Blog tra cứu thần số học </TittlePage>
       </Box>
       <Container maxWidth={false}>
@@ -38,7 +38,7 @@ export default function BlogNumerology() {
             Xem tất cả
           </Button>
           <Box
-            sx={{ position: 'absolute', top: 'calc(100% + 62px)', left: 100 }}
+            sx={{ position: 'absolute', top: 'calc(100% + 62px)', left: 130 }}
           >
             <ButtonMoveSlice
               variant="outlined"

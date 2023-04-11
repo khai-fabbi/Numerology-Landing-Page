@@ -8,7 +8,6 @@ export default function Banner() {
     <Box
       className="banner-wrapper"
       sx={{ position: 'relative' }}
-      bgcolor={'#05324C'}
       minHeight={'calc(100vh - var(--header-height))'}
       py={'95px'}
     >

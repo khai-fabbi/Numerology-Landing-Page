@@ -1,26 +1,21 @@
-import { VALIDATE_EMAIL, VALIDATE_REQUIRED } from './constant'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
-export const validateEmail = (value: any) => {
-  let error = false
-  const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
-  if (value && !regexEmail.test(value)) {
-    error = true
-  }
-  return error
-}
-const validateRequired = (value: any) => {
-  let error = false
-  if (
-    (typeof value === 'string' && !value.trim().length) ||
-    typeof value === 'undefined' ||
-    value === null
-  ) {
-    error = true
-  }
-  return error
-}
+export default function CustomDateAdapter(options: any) {
+  const adapter = new AdapterDayjs(options)
 
-export const handleValidates: { [index: string]: (value: any) => any } = {
-  [VALIDATE_EMAIL]: validateEmail,
-  [VALIDATE_REQUIRED]: validateRequired,
+  const constructUpperObject = (text: string) => ({ toUpperCase: () => text })
+  const constructDayObject = (day: string) => ({
+    charAt: () => constructUpperObject(day),
+  })
+
+  return {
+    ...adapter,
+    getWeekdays() {
+      // Feel free to replace this with your custom value
+      const customWeekdays = ['CN', 'Hai', 'Ba', 'Bốn', 'Năm', 'Sáu', 'Bảy']
+      // const customWeekdays = adapter.getWeekdays()
+
+      return customWeekdays.map((day) => constructDayObject(day))
+    },
+  }
 }

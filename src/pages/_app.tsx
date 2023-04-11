@@ -5,13 +5,13 @@ import { CacheProvider } from '@emotion/react'
 import { CssBaseline } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { LocalizationProvider } from '@mui/x-date-pickers'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import type { AppProps } from 'next/app'
 import type { ReactElement } from 'react'
 
 import type { NextPageWithLayout } from '@/models'
 import lightThemeOptions from '@/styles/theme/light-theme-option'
 import createEmotionCache from '@/utils/createEmotionCache'
+import CustomDateAdapter from '@/utils/helpers'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -31,7 +31,8 @@ const MyApp = ({
   return (
     <LocalizationProvider
       dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
-      dateAdapter={AdapterDayjs}
+      // @ts-ignore
+      dateAdapter={CustomDateAdapter}
     >
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={lightTheme}>

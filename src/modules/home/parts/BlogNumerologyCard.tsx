@@ -39,10 +39,9 @@ export default function BlogNumerologyCard({
         >
           <Typography
             component="h4"
+            variant="h4"
             sx={{
-              fontWeight: 700,
               fontFamily: 'var(--philosopher-font)',
-              fontSize: 18,
               lineHeight: '20px',
             }}
           >
@@ -60,7 +59,7 @@ export default function BlogNumerologyCard({
               },
             }}
           >
-            <Typography variant="body2" fontWeight={500}>
+            <Typography variant="body2" fontWeight={500} lineHeight={'20px'}>
               Chi tiết
             </Typography>
             <IconArrowRight />

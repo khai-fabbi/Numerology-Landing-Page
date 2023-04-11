@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { IconTwoRhombus } from '@/components/icon'
 
-import { CourseCard } from './parts'
+import { BookCard, CourseCard } from './parts'
 
 const COURSE_LIST = [
   {
@@ -47,9 +47,35 @@ const COURSE_LIST = [
       'Những con số xuất hiện trong cuộc sống của bạn không phải là một sự trùng hợp ngẫu nhiên. Với những ai đang trên hành trình thức tỉnh tâm linh, những con số này đều mang một ý nghĩa vô cùng đặc biệt. Hãy cùng thầy Louis Nguyễn giải mã bí ẩn của chúng, cũng như cách những con số này ảnh hưởng đến cuộc chúng ta.',
   },
 ]
+const NUMEROLOGY_BOOK = [
+  {
+    id: 1,
+    name: 'Báo cáo thần số học trọn đời',
+    imgUrl: '/assets/images/book_numerology.png',
+    isActive: true,
+  },
+  {
+    id: 2,
+    name: 'Báo cáo đặt tên khai sinh',
+    imgUrl: '/assets/images/bao-cao-dat-ten-khai-sinh.png',
+    isActive: false,
+  },
+  {
+    id: 3,
+    name: 'Báo cáo định hướng nghề nghiệp',
+    imgUrl: '/assets/images/bao-cao-dinh-huong-nghe-nghiep.jpg',
+    isActive: false,
+  },
+  {
+    id: 4,
+    name: 'Báo cáo đặt tên danh xưng',
+    imgUrl: '/assets/images/bao-cao-dat-ten-danh-xung.jpg',
+    isActive: false,
+  },
+]
 export default function TrainAndApplication() {
   return (
-    <Box py={6}>
+    <Box py={6} className="train-application-wrapper">
       <Container maxWidth={false}>
         <Box>
           <Box>
@@ -79,6 +105,28 @@ export default function TrainAndApplication() {
                 )
               })}
             </Swiper>
+          </Box>
+        </Box>
+        <Box mt={4}>
+          <Box>
+            <IconTwoRhombus />
+            <Typography className="text-heading">
+              Ứng dụng Thần số học
+            </Typography>
+            <Typography className="text-heading">
+              Thầy Aladanh Thành nghiên cứu
+            </Typography>
+          </Box>
+          <Box
+            mt={2.5}
+            sx={{
+              display: 'flex',
+              columnGap: 2.5,
+            }}
+          >
+            {NUMEROLOGY_BOOK.map((bookItem) => (
+              <BookCard key={bookItem.id} bookInfo={bookItem} />
+            ))}
           </Box>
         </Box>
       </Container>

@@ -13,24 +13,12 @@ const lightThemeOptions: ThemeOptions = {
   ...themeColors,
   typography: {
     fontFamily: ['Raleway', 'sans-serif'].join(','),
-    h1: {
-      fontSize: '2.5rem',
-      lineHeight: '3.75rem',
-      fontWeight: 700,
-    },
-    h2: {
-      fontSize: '1.5625rem',
-      lineHeight: '2.375rem',
-      fontWeight: 700,
-    },
-    h3: {
-      fontSize: '1.375rem',
-      lineHeight: '2rem',
-      fontWeight: 700,
-    },
     h4: {
-      fontSize: '1.25rem',
-      lineHeight: '1.875rem',
+      fontSize: '1.125rem',
+      fontWeight: 700,
+    },
+    h5: {
+      fontSize: '1rem',
       fontWeight: 700,
     },
   },
@@ -74,6 +62,9 @@ const lightThemeOptions: ThemeOptions = {
         root: {
           lineHeight: 1.25,
         },
+        body2: {
+          lineHeight: '20px',
+        },
       },
     },
     MuiOutlinedInput: {
@@ -105,7 +96,7 @@ const lightThemeOptions: ThemeOptions = {
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: '1240px',
+          maxWidth: '1288px',
         },
       },
     },

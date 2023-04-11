@@ -8,6 +8,7 @@ import {
   Banner,
   BlogNumerology,
   LookUpNumerology,
+  NumerologyInfo,
   TeacherInfo,
   TrainAndApplication,
 } from '@/modules/home'
@@ -17,6 +18,7 @@ const Home: NextPageWithLayout = () => {
     <Box>
       <Banner />
       <LookUpNumerology />
+      <NumerologyInfo />
       <BlogNumerology />
       <TeacherInfo />
       <TrainAndApplication />

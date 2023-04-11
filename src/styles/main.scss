@@ -7,6 +7,7 @@
   --raleway-font: 'Raleway', sans-serif; //font primnary
   --philosopher-font: 'Philosopher', sans-serif; //font-secondary
   --bg-primary: #031D2E;
+  --bg-secondary: #012233;
   --text-main: #F96A2D;
   --text-sm: 0.875rem;
 }
@@ -78,9 +79,27 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+a {
+  color: var(text-light-primary);
+  text-decoration: none;
+  
+}
 
+.banner-wrapper {
+  background: url('../../public/assets/images/banner_bg.png') no-repeat center center;
+  background-size: cover;
+}
+.lookup-numerology {
+  background: url('../../public/assets/images/zodiac3.png') no-repeat left bottom -100px;
+}
 .reader-comment-wrapper {
   background: url('../../public/assets/images/reader_comment.png') no-repeat right center;
+}
+.numerology-info-wrapper {
+  background: url('../../public/assets/images/numerology_info_bg.png') no-repeat center center;
+  background-size: cover;
+  min-height: 1049px;
+  margin-top: -80px;
 }
 .blog-numerology-wrapper {
   height: 800px;
@@ -115,3 +134,27 @@ input[type=number] {
   font-weight: 700;
 }
 
+// Swipper Paginator
+.swiper-pagination {
+  &-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.29);
+    &-active {
+      background-color: var(--text-main) !important;
+      border-color: var(--text-main);
+    }
+  }
+}
+.train-application-wrapper .swiper {
+  padding-bottom: 40px;
+} 
+// End Swipper Paginator
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.grayscale { filter: grayscale(100%); }

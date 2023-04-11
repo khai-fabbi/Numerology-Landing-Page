@@ -21,7 +21,7 @@ export interface ICourseCardProps {
 }
 
 export default function CourseCard({
-  courseInfo: { title, imgUrl, description, detailCourseUrl },
+  courseInfo: { title, imgUrl, description },
 }: ICourseCardProps) {
   return (
     <Card
@@ -51,22 +51,20 @@ export default function CourseCard({
           >
             <Typography
               component="h4"
+              variant="h4"
               sx={{
-                fontWeight: 700,
                 fontFamily: 'var(--philosopher-font)',
-                fontSize: 18,
                 lineHeight: '20px',
               }}
             >
               {title}
             </Typography>
             <Box
-              mt={0.5}
               sx={{
                 cursor: 'pointer',
                 display: 'flex',
                 flexShrink: 0,
-                columnGap: 0.5,
+                columnGap: 1,
                 alignItems: 'center',
                 '&:hover': {
                   filter: 'brightness(0.7)',
@@ -80,7 +78,7 @@ export default function CourseCard({
             </Box>
           </Box>
 
-          <Typography variant="body2" mt={1} sx={{ lineHeight: '20px' }}>
+          <Typography variant="body2" mt={1}>
             {description}
           </Typography>
         </CardContent>

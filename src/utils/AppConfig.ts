@@ -1,6 +1,6 @@
 export const AppConfig = {
-  site_name: 'Nextjs MUI UI',
-  title: 'Nextjs MUI UI',
-  description: 'Nextjs MUI UI',
+  site_name: 'Numerology',
+  title: 'Numerology',
+  description: 'Numerology',
   locale: 'vi',
 }

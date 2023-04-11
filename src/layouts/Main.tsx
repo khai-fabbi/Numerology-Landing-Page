@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 
 import ScrollTop from '@/components/common/ScrollTop'
 
+import Footer from './Footer'
 import Header from './Header'
 
 type IMainProps = {
@@ -16,6 +17,7 @@ const Main = (props: IMainProps) => (
     {props.meta}
     <Header />
     {props.children}
+    <Footer></Footer>
     <ScrollTop {...props}>
       <Fab size="large" aria-label="scroll back to top">
         <KeyboardArrowUpIcon sx={{ width: 32, height: 32 }} />

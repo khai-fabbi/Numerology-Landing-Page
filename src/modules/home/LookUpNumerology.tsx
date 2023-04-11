@@ -18,11 +18,11 @@ import { CommentForNumerology } from './parts'
 const SEX_LABEL = [
   {
     value: 'M',
-    label: 'Male',
+    label: 'Nam',
   },
   {
     value: 'F',
-    label: 'Female',
+    label: 'Nữ',
   },
 ]
 export default function LookUpNumerology() {
@@ -31,7 +31,7 @@ export default function LookUpNumerology() {
       <Container maxWidth={false}>
         <Grid container rowGap={4}>
           <Grid item xs={12} lg={6}>
-            <Box sx={{ textAlign: 'center' }}>
+            <Box textAlign={'center'}>
               <img src="/assets/images/satellite.png" alt="" />
             </Box>
           </Grid>
@@ -137,20 +137,13 @@ export default function LookUpNumerology() {
           </Grid>
           <Grid item xs={12}>
             <Box
-              maxWidth={'1084px'}
+              maxWidth={'1110px'}
               mx={'auto'}
               p={4}
               border={'1px solid #222F36'}
               borderRadius={'5px'}
             >
-              <Typography
-                sx={{
-                  fontFamily: 'var(--philosopher-font)',
-                  fontSize: 32,
-                  lineHeight: '36px',
-                }}
-                component={'h3'}
-              >
+              <Typography className="text-heading" component={'h3'}>
                 Chú thích
               </Typography>
               <Box
@@ -181,7 +174,7 @@ export default function LookUpNumerology() {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} mt={'60px'}>
+          <Grid item xs={12} mt={4}>
             <CommentForNumerology />
           </Grid>
         </Grid>

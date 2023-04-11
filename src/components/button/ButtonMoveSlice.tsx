@@ -5,7 +5,6 @@ export const ButtonMoveSlice = styled(MuiButton)(() => ({
   borderRadius: 0,
   width: 56,
   height: 56,
-  padding: '8px !important',
+  padding: 1,
   minWidth: 56,
-  // transform: 'rotate(45deg)',
 }))
