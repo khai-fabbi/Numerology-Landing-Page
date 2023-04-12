@@ -19,10 +19,13 @@ export default function BlogNumerologyCard({
   return (
     <Card
       sx={{
-        maxWidth: 295,
+        width: '100%',
+        maxWidth: '295px',
+        minWidth: '275px',
         borderRadius: '5px',
         position: 'relative',
         backgroundColor: 'rgba(2, 39, 59, 0.8)',
+        margin: '0 auto',
       }}
     >
       <CardActionArea>

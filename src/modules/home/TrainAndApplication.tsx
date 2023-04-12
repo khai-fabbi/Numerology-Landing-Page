@@ -100,6 +100,17 @@ export default function TrainAndApplication() {
               }}
               // navigation={true}
               modules={[Keyboard, Pagination, Navigation]}
+              breakpoints={{
+                360: {
+                  slidesPerView: 'auto',
+                },
+                576: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                },
+              }}
               className="mySwiper"
             >
               {COURSE_LIST.map((courseItem) => {
@@ -124,13 +135,22 @@ export default function TrainAndApplication() {
           </Box>
           <Box
             mt={2.5}
-            sx={{
-              display: 'flex',
-              columnGap: 2.5,
-            }}
+            display={'grid'}
+            gridTemplateColumns="repeat(12, 1fr)"
+            gap={2.5}
           >
             {NUMEROLOGY_BOOK.map((bookItem) => (
-              <BookCard key={bookItem.id} bookInfo={bookItem} />
+              <Box
+                sx={{
+                  gridColumn: {
+                    xs: 'span 6',
+                    md: 'span 3',
+                  },
+                }}
+                key={bookItem.id}
+              >
+                <BookCard bookInfo={bookItem} />
+              </Box>
             ))}
           </Box>
         </Box>

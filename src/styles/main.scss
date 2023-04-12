@@ -23,7 +23,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow: overlay;
+  // overflow: overlay;
 }
 
 body {
@@ -83,6 +83,10 @@ a {
   color: var(text-light-primary);
   text-decoration: none;
   
+}
+.menu-mobile-navbar {
+  background: url('../../public/assets/images/bg_mobile_menu.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 .banner-wrapper {

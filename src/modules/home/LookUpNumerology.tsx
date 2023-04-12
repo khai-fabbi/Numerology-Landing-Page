@@ -7,6 +7,7 @@ import {
   InputAdornment,
   InputLabel,
   MenuItem,
+  Select,
   TextField,
   Typography,
 } from '@mui/material'
@@ -78,19 +79,21 @@ export default function LookUpNumerology() {
                 </Box>
                 <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
                   <InputLabel htmlFor="sex-id">Giới tính</InputLabel>
-                  <TextField
+                  <Select
                     id="sex-id"
-                    select
                     placeholder="Giới tính"
                     defaultValue={'M'}
                     fullWidth
+                    MenuProps={{
+                      disableScrollLock: true,
+                    }}
                   >
                     {SEX_LABEL.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>
                     ))}
-                  </TextField>
+                  </Select>
                 </Box>
                 <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
                   <InputLabel htmlFor="date-birthday-id">

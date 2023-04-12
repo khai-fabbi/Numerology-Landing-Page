@@ -33,7 +33,23 @@ export default function BlogNumerology() {
         <Box marginLeft={{ lg: '120px' }} position={'relative'}>
           <Swiper
             spaceBetween={20}
-            slidesPerView={3.6}
+            slidesPerView={'auto'}
+            // watchOverflow={true}
+            breakpoints={{
+              360: {
+                slidesPerView: 'auto',
+              },
+              576: {
+                // width: 576,
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 3.6,
+              },
+            }}
             className="mySwiper"
             keyboard={{
               enabled: true,

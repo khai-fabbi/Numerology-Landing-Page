@@ -186,7 +186,7 @@ export default function NumerologyInfo() {
             <Box mt={2.5}>
               <Grid container columnSpacing={2.5} rowSpacing={2.5}>
                 {NUMEROLOGY_SHARED_LIST.map(({ id, title, description }) => (
-                  <Grid key={id} item xs={12} lg={6}>
+                  <Grid key={id} item xs={12} md={6}>
                     <AccordionCustom title={title} description={description} />
                   </Grid>
                 ))}
@@ -201,7 +201,7 @@ export default function NumerologyInfo() {
             <Box mt={2.5}>
               <Grid container columnSpacing={2.5} rowSpacing={2.5}>
                 {NUMEROLOGY_INTERESTING.map(({ id, title, description }) => (
-                  <Grid key={id} item xs={12} lg={6}>
+                  <Grid key={id} item xs={12} md={6}>
                     <AccordionCustom title={title} description={description} />
                   </Grid>
                 ))}

@@ -44,7 +44,7 @@ export default function Footer() {
       <Box bgcolor={'var(--bg-secondary)'} paddingTop={5.5} paddingBottom={7.5}>
         <Container maxWidth={false}>
           <Grid container columnSpacing={3}>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} lg={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: 3 }}>
                 <Box>
                   <img src="/numerology_logo.svg" alt="Logo" />
@@ -80,7 +80,7 @@ export default function Footer() {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={12} sm={6} lg={2}>
               <Box mt={2.5}>
                 <Typography variant="h4" component="h4">
                   Thông tin chung
@@ -171,7 +171,7 @@ export default function Footer() {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} lg={6}>
               <Box mt={2.5}>
                 <Typography variant="h4" component="h4">
                   Liên hệ với chúng tôi
@@ -183,13 +183,26 @@ export default function Footer() {
                     mt: 2.5,
                     alignItems: 'center',
                     columnGap: 0.5,
+                    flexWrap: {
+                      xs: 'wrap',
+                      sm: 'nowrap',
+                      lg: 'nowrap',
+                    },
                   }}
                 >
-                  <Box width={'50%'}>
+                  <Box
+                    sx={{
+                      width: {
+                        xs: '100%',
+                        lg: 'auto',
+                      },
+                    }}
+                  >
                     <Box
                       component={'iframe'}
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10631.852165994946!2d105.85775363263471!3d21.02202322369023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abebf87e0011%3A0x647af200da508d2b!2zTmjDoCBow6F0IEzhu5tuIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1681199970435!5m2!1svi!2s"
                       width={'100%'}
+                      minWidth={'250px'}
                       height={'100%'}
                       borderRadius={'5px'}
                       allowFullScreen={true}
@@ -198,11 +211,14 @@ export default function Footer() {
                     ></Box>
                   </Box>
                   <Box
-                    width={'50%'}
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
                       rowGap: 1,
+                      width: {
+                        xs: '100%',
+                        lg: '50%',
+                      },
                     }}
                   >
                     <Box

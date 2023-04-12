@@ -8,9 +8,14 @@ export default function Banner() {
   return (
     <Box
       className="banner-wrapper"
-      sx={{ position: 'relative' }}
+      sx={{
+        position: 'relative',
+        py: {
+          xs: 6,
+          lg: 12,
+        },
+      }}
       minHeight={'calc(100vh - var(--header-height))'}
-      py={'95px'}
     >
       <Container maxWidth={false}>
         <Grid container columnSpacing={1} rowGap={4}>

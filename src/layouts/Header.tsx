@@ -1,6 +1,7 @@
+import ClearIcon from '@mui/icons-material/Clear'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import { alpha, InputBase } from '@mui/material'
+import { Divider, Drawer, MenuList } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
@@ -9,7 +10,6 @@ import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { styled } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
@@ -19,73 +19,31 @@ import * as React from 'react'
 const pages = ['Trang chủ', 'Giới thiệu', 'Tra cứu', 'Dịch vụ', 'Affiliate']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-// Search
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}))
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  height: '100%',
-  '& .MuiInputBase-input': {
-    height: '100%',
-    color: '#fff',
-    fontWeight: 500,
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}))
-
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
+  const [anchorElNav, setAnchorElNav] = React.useState(false)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
-  }
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
-  }
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
   }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+  const toggleDrawer =
+    (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
+
+      setAnchorElNav(isOpen)
+    }
 
   const [isLogined, setIsLogined] = React.useState(false)
 
@@ -128,7 +86,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                // onClick={handleCloseNavMenu}
                 size="small"
                 sx={{ textTransform: 'uppercase' }}
               >
@@ -138,27 +96,27 @@ function ResponsiveAppBar() {
           </Box>
           <Box
             sx={{
-              flexGrow: {
-                xs: 1,
-                md: 0,
+              display: {
+                xs: 'none',
+                md: 'flex',
               },
-              display: 'flex',
+              flexShrink: 0,
               justifyContent: {
                 xs: 'center',
                 md: 'right',
               },
+              alignItems: 'center',
             }}
-            minWidth={1 / 3}
           >
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon sx={{ color: '#fff' }} />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Search>
+            <IconButton color="primary">
+              <SearchIcon fontSize="large" sx={{ color: '#fff' }} />
+            </IconButton>
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              sx={{ borderColor: '#fff', marginLeft: 1 }}
+              flexItem
+            />
             <Box ml={2}>
               {!isLogined && (
                 <Button
@@ -198,6 +156,7 @@ function ResponsiveAppBar() {
                       vertical: 'bottom',
                       horizontal: 'center',
                     }}
+                    disableScrollLock={true}
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
@@ -223,8 +182,8 @@ function ResponsiveAppBar() {
 
           <Box
             sx={{
-              flexGrow: 0,
               display: { xs: 'flex', md: 'none' },
+              marginLeft: 'auto',
             }}
           >
             <IconButton
@@ -232,40 +191,60 @@ function ResponsiveAppBar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={toggleDrawer(true)}
               color="inherit"
             >
               <MenuIcon fontSize="large" color="primary" />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+            <Drawer
+              anchor="right"
+              open={anchorElNav}
+              onClose={toggleDrawer(false)}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    sx={{ fontWeight: 600, '&:active': { color: '#F96A2D' } }}
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+              <Box
+                sx={{
+                  width: 250,
+                  p: 1,
+                  height: '100%',
+                }}
+                role="presentation"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+                className="menu-mobile-navbar"
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    p: 1,
+                  }}
+                >
+                  <img src="./numerology_favicon.svg" alt="Logo Numerology" />
+
+                  <IconButton color="primary">
+                    <ClearIcon fontSize="large" color="primary" />
+                  </IconButton>
+                </Box>
+                <MenuList>
+                  {pages.map((page) => (
+                    <MenuItem key={page} sx={{ borderRadius: '5px', py: 1 }}>
+                      <Typography
+                        textAlign="center"
+                        variant="body1"
+                        sx={{
+                          color: '#fff',
+                          fontWeight: 600,
+                          '&:active': { color: '#F96A2D' },
+                        }}
+                      >
+                        {page}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Box>
+            </Drawer>
           </Box>
         </Toolbar>
       </Container>
