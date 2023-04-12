@@ -1,3 +1,4 @@
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import * as React from 'react'
 
@@ -97,7 +98,6 @@ export default function NumerologyInfo() {
                           textAlign={'center'}
                         >
                           <Typography
-                            color="initial"
                             sx={{
                               fontFamily: 'var(--philosopher-font)',
                               fontSize: 26,
@@ -136,7 +136,6 @@ export default function NumerologyInfo() {
                   <Box py={'14px'} px={5} height={'100%'}>
                     <Box>
                       <Typography
-                        color="initial"
                         sx={{
                           fontFamily: 'var(--philosopher-font)',
                           fontSize: 26,
@@ -168,7 +167,12 @@ export default function NumerologyInfo() {
                       lượng sáng tạo tích cực, đạt được sự độc lập trong các mối
                       quan hệ của bản thân.
                     </Typography>
-                    <Button variant="contained" color="primary" sx={{ mt: 4 }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{ mt: 4 }}
+                      endIcon={<ChevronRightIcon fontSize="large" />}
+                    >
                       Xem chi tiết
                     </Button>
                   </Box>

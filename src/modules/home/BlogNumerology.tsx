@@ -1,7 +1,11 @@
 import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 import { Box, Button, Container } from '@mui/material'
-import * as React from 'react'
+import { useCallback, useRef } from 'react'
+import type { Swiper as SwiperType } from 'swiper'
+import { Keyboard, Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { ButtonMoveSlice } from '@/components/button'
@@ -10,6 +14,16 @@ import { IconNextSlice, IconPrevSlice } from '@/components/icon'
 import { BlogNumerologyCard, TittlePage } from './parts'
 
 export default function BlogNumerology() {
+  const sliderRef = useRef<SwiperType>()
+  const handlePrev = useCallback(() => {
+    if (!sliderRef.current) return
+    sliderRef.current?.slidePrev()
+  }, [])
+
+  const handleNext = useCallback(() => {
+    if (!sliderRef.current) return
+    sliderRef.current?.slideNext()
+  }, [])
   return (
     <Box className="blog-numerology-wrapper">
       <Box sx={{ position: 'absolute', left: 560, top: 80 }}>
@@ -21,7 +35,16 @@ export default function BlogNumerology() {
             spaceBetween={20}
             slidesPerView={3.6}
             className="mySwiper"
-            watchOverflow={true}
+            keyboard={{
+              enabled: true,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Keyboard, Pagination, Navigation]}
+            onBeforeInit={(swiper) => {
+              sliderRef.current = swiper
+            }}
           >
             {[1, 2, 3, 4, 5].map((item) => {
               return (
@@ -43,6 +66,7 @@ export default function BlogNumerology() {
             <ButtonMoveSlice
               variant="outlined"
               sx={{ transform: 'translate(20%,-80%) rotate(45deg)' }}
+              onClick={handlePrev}
             >
               <Box sx={{ transform: 'rotate(-45deg)' }}>
                 <IconPrevSlice />
@@ -51,6 +75,7 @@ export default function BlogNumerology() {
             <ButtonMoveSlice
               variant="contained"
               sx={{ transform: 'rotate(45deg)' }}
+              onClick={handleNext}
             >
               <Box sx={{ transform: 'rotate(-45deg)' }}>
                 <IconNextSlice />

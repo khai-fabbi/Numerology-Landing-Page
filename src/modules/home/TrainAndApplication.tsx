@@ -1,8 +1,9 @@
 import 'swiper/css'
 import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 import { Box, Container, Typography } from '@mui/material'
-import { Pagination } from 'swiper'
+import { Keyboard, Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { IconTwoRhombus } from '@/components/icon'
@@ -94,7 +95,11 @@ export default function TrainAndApplication() {
               pagination={{
                 clickable: true,
               }}
-              modules={[Pagination]}
+              keyboard={{
+                enabled: true,
+              }}
+              // navigation={true}
+              modules={[Keyboard, Pagination, Navigation]}
               className="mySwiper"
             >
               {COURSE_LIST.map((courseItem) => {

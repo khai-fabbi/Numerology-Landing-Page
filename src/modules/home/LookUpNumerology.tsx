@@ -1,3 +1,4 @@
+import SearchIcon from '@mui/icons-material/Search'
 import {
   Box,
   Button,
@@ -129,6 +130,7 @@ export default function LookUpNumerology() {
                   size="large"
                   color="primary"
                   variant="contained"
+                  startIcon={<SearchIcon />}
                 >
                   Tra Cứu Ngay
                 </Button>

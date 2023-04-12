@@ -1,3 +1,4 @@
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 
@@ -111,6 +112,7 @@ export default function Banner() {
                 color="primary"
                 size="large"
                 sx={{ width: 'fit-content' }}
+                endIcon={<ArrowForwardIcon fontSize="large" />}
               >
                 Tra cứu các chỉ số của bạn ngay
               </Button>
