@@ -31,7 +31,7 @@ export default function TeacherInfo() {
     },
   ]
   return (
-    <Box className="teacher-info-wrapper">
+    <Box className="teacher-info-wrapper" id="thong-tin-aladash">
       <Container maxWidth={false}>
         <Box
           sx={{

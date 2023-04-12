@@ -29,7 +29,7 @@ const SEX_LABEL = [
 ]
 export default function LookUpNumerology() {
   return (
-    <Box className="lookup-numerology" py={4}>
+    <Box className="lookup-numerology" id="tra-cuu" py={4}>
       <Container maxWidth={false}>
         <Grid container rowGap={4}>
           <Grid item xs={12} lg={6}>

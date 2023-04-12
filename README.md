@@ -4,9 +4,9 @@ Developer experience first:
 
 - ⚡ [Next.js](https://nextjs.org) for Static Site Generator
 - 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
-- 💎 Integrate with [Material UL](https://mui.com/)
+- 💎 Integrate with [Material UI](https://mui.com/)
 - ✅ Strict Mode for TypeScript and React 18
-- 📏 Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, Tailwind CSS and Airbnb configuration)
+- 📏 Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, MUI UI and Airbnb configuration)
 - 💖 Code Formatter with [Prettier](https://prettier.io)
 - 🦊 Husky for Git Hooks
 - 🚫 Lint-staged for running linters on Git staged files
@@ -69,8 +69,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   ├── styles                      # Styles folder
 │   ├── templates                   # Default template
 │   └── utils                       # Utility functions
-├── tailwind.config.js              # Tailwind CSS configuration
-└── tsconfig.json                   # TypeScript configuration
+
 ```
 
 ### Customization
@@ -78,7 +77,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 You can easily configure Next js Boilerplate. Please change the following file:
 
 - `public/apple-touch-icon.png`, `public/favicon.ico`, `public/favicon-16x16.png` and `public/favicon-32x32.png`: your website favicon, you can generate from https://favicon.io/favicon-converter/
-- `src/styles/main.css`: your CSS file using Tailwind CSS
+- `src/styles/main.css`: your CSS file using MUI
 - `src/utils/AppConfig.ts`: configuration file
 - `src/templates/Main.tsx`: default theme
 
@@ -90,8 +89,6 @@ You can see the results locally in production mode with:
 $ npm run build
 $ npm run start
 ```
-
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
 
 You can create an optimized production build with:
 

@@ -118,6 +118,8 @@ export default function Banner() {
                 size="large"
                 sx={{ width: 'fit-content' }}
                 endIcon={<ArrowForwardIcon fontSize="large" />}
+                component="a"
+                href="#tra-cuu"
               >
                 Tra cứu các chỉ số của bạn ngay
               </Button>
