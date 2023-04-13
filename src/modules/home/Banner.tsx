@@ -14,23 +14,28 @@ export default function Banner() {
           xs: 6,
           lg: 12,
         },
+        overflow: 'hidden',
       }}
       minHeight={'calc(100vh - var(--header-height))'}
     >
       <Container maxWidth={false}>
-        <Grid container columnSpacing={1} rowGap={4}>
-          <Grid item xs={12} lg={6}>
+        <Grid
+          container
+          columnSpacing={2}
+          rowGap={4}
+          alignItems={'center'}
+          justifyContent={'center'}
+        >
+          <Grid item xs={12} md={7} lg={6}>
             <Box display={'flex'} flexDirection={'column'} rowGap={'20px'}>
               <Typography sx={{ fontWeight: 500, fontSize: '1.375rem' }}>
                 Tra Cứu Thần Số Học Cùng Thầy
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: 'var(--philosopher-font)',
-                  fontSize: '68px',
-                  lineHeight: '70px',
                   marginTop: '-10px',
                 }}
+                className="name-teacher-heading"
               >
                 Aladanh Thành
               </Typography>
@@ -49,13 +54,21 @@ export default function Banner() {
                   </Typography>
                 </Box>
               </Box>
-              <Box display={'flex'} columnGap={5}>
+              <Box
+                display={'flex'}
+                sx={{
+                  columnGap: {
+                    lg: 5,
+                    xs: 2,
+                  },
+                }}
+              >
                 <Box display={'flex'} flexDirection={'column'} width={1 / 3}>
                   <Typography
                     component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
-                      fontSize: 32,
+                      fontSize: '2rem',
                     }}
                     color="primary"
                   >
@@ -64,7 +77,7 @@ export default function Banner() {
                   <Typography
                     component={'span'}
                     sx={{
-                      fontSize: 22,
+                      fontSize: '1.375rem',
                     }}
                   >
                     Học viên qua các khóa học
@@ -76,7 +89,7 @@ export default function Banner() {
                     component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
-                      fontSize: 32,
+                      fontSize: '2rem',
                     }}
                     color="primary"
                   >
@@ -85,7 +98,7 @@ export default function Banner() {
                   <Typography
                     component={'span'}
                     sx={{
-                      fontSize: 22,
+                      fontSize: '1.375rem',
                     }}
                   >
                     Lượt tra cứu
@@ -96,7 +109,7 @@ export default function Banner() {
                     component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
-                      fontSize: 32,
+                      fontSize: '2rem',
                     }}
                     color="primary"
                   >
@@ -105,7 +118,7 @@ export default function Banner() {
                   <Typography
                     component={'span'}
                     sx={{
-                      fontSize: 22,
+                      fontSize: '1.375rem',
                     }}
                   >
                     Báo cáo xuất bản
@@ -135,11 +148,27 @@ export default function Banner() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} lg={6}>
-            <Box sx={{ textAlign: 'center', ml: 12 }}>
+          <Grid item xs={12} md={5} lg={6}>
+            <Box
+              sx={{
+                textAlign: 'center',
+                maxWidth: {
+                  xs: '550px',
+                  lg: '100%',
+                },
+                margin: '0 auto',
+                mr: {
+                  lg: -8,
+                },
+                ml: {
+                  lg: 10,
+                },
+              }}
+            >
               <img
                 src="./assets/images/adalash_banner.png"
                 alt="Banner image"
+                width={'100%'}
               />
             </Box>
           </Grid>
@@ -151,6 +180,7 @@ export default function Banner() {
           position: 'absolute',
           right: 0,
           top: '100%',
+          zIndex: 1,
           transform: 'translateY(-50%)',
           opacity: {
             xs: 0.6,

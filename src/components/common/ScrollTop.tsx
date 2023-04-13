@@ -42,7 +42,7 @@ export default function ScrollTop(props: Props) {
             lg: 16,
           },
           right: {
-            xs: 10,
+            xs: 5,
             lg: 32,
           },
           zIndex: 100,

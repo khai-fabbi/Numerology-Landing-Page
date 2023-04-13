@@ -35,22 +35,22 @@ export default function TeacherInfo() {
       <Container maxWidth={false}>
         <Box
           sx={{
-            display: 'flex',
+            display: 'inline-flex',
             gap: 8,
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
         >
-          <Box>
+          <Box
+            sx={{
+              marginTop: {
+                xs: 4,
+                lg: 0,
+              },
+            }}
+          >
             <TittlePage>Nhà nghiên cứu thần số học Pitago</TittlePage>
-            <Typography
-              mt={2.5}
-              sx={{
-                fontFamily: 'var(--philosopher-font)',
-                fontSize: 68,
-                lineHeight: '70px',
-              }}
-            >
+            <Typography mt={2.5} className="name-teacher-heading">
               <Typography
                 display={'inline'}
                 color="primary"
@@ -85,7 +85,15 @@ export default function TeacherInfo() {
               })}
             </Box>
           </Box>
-          <Box>
+          <Box
+            sx={{
+              width: '40%',
+              display: {
+                xs: 'none',
+                md: 'flex',
+              },
+            }}
+          >
             <img
               width={'100%'}
               src="/assets/images/bg-teacher.png"

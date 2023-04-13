@@ -1,5 +1,7 @@
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import SearchIcon from '@mui/icons-material/Search'
 import {
+  Autocomplete,
   Box,
   Button,
   Container,
@@ -12,8 +14,11 @@ import {
   Typography,
 } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
+import { useState } from 'react'
 
 import { IconCalendar, IconTwoRhombus } from '@/components/icon'
+import type { CountryType } from '@/models'
+import { countries } from '@/utils/constant'
 
 import { CommentForNumerology } from './parts'
 
@@ -27,22 +32,40 @@ const SEX_LABEL = [
     label: 'Nữ',
   },
 ]
+
 export default function LookUpNumerology() {
+  const [countryCode, setCountryCode] = useState<CountryType>(
+    countries[238] as CountryType
+  )
   return (
     <Box className="lookup-numerology" id="tra-cuu" py={4}>
       <Container maxWidth={false}>
-        <Grid container rowGap={4}>
-          <Grid item xs={12} lg={6}>
-            <Box textAlign={'center'}>
-              <img src="/assets/images/satellite.png" alt="" />
+        <Grid
+          container
+          rowGap={4}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          <Grid item xs={12} md={5} lg={6}>
+            <Box
+              maxWidth={'490px'}
+              margin={'0 auto'}
+              sx={{
+                display: {
+                  xs: 'none',
+                  md: 'flex',
+                },
+              }}
+            >
+              <img width={'100%'} src="/assets/images/satellite.png" alt="" />
             </Box>
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} md={7} lg={6}>
             <Box
               mt={1}
               sx={{
                 marginLeft: {
-                  lg: 8,
+                  md: 8,
                 },
               }}
             >
@@ -121,14 +144,60 @@ export default function LookUpNumerology() {
                     placeholder="Nhập số điện thoại"
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start" sx={{ fontSize: 30 }}>
-                          <Typography color={'#fff'}>+84 |</Typography>
+                        <InputAdornment position="start">
+                          <Autocomplete
+                            id="country-select"
+                            sx={{
+                              width: {
+                                xs: 150,
+                                lg: 215,
+                              },
+                            }}
+                            options={countries}
+                            value={countryCode}
+                            onChange={(_: any, newValue: CountryType) => {
+                              setCountryCode(newValue)
+                            }}
+                            autoHighlight
+                            disableClearable
+                            getOptionLabel={(option) => option.label}
+                            popupIcon={
+                              <KeyboardArrowDownIcon sx={{ color: '#fff' }} />
+                            }
+                            renderOption={(props, option) => (
+                              <Box
+                                component="li"
+                                sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+                                {...props}
+                              >
+                                <img
+                                  loading="lazy"
+                                  width="20"
+                                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                                  srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                                  alt=""
+                                />
+                                {option.label} ({option.code}) +{option.phone}
+                              </Box>
+                            )}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                className="select-code-phone"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  autoComplete: 'new-password', // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
                         </InputAdornment>
                       ),
                     }}
                   />
                 </Box>
                 <Button
+                  sx={{ mt: 2 }}
                   type="submit"
                   size="large"
                   color="primary"
@@ -144,7 +213,12 @@ export default function LookUpNumerology() {
             <Box
               maxWidth={'1110px'}
               mx={'auto'}
-              p={4}
+              sx={{
+                p: {
+                  xs: 2,
+                  lg: 4,
+                },
+              }}
               border={'1px solid #222F36'}
               borderRadius={'5px'}
             >

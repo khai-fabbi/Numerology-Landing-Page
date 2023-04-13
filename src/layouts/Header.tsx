@@ -27,7 +27,28 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import * as React from 'react'
 
-const pages = ['Trang chủ', 'Giới thiệu', 'Tra cứu', 'Dịch vụ', 'Affiliate']
+const PAGES = [
+  {
+    name: 'Trang chủ',
+    to: '#',
+  },
+  {
+    name: 'Giới thiệu',
+    to: '#',
+  },
+  {
+    name: 'Tra cứu',
+    to: '#tra-cuu',
+  },
+  {
+    name: 'Dịch vụ',
+    to: '#thong-tin-aladash',
+  },
+  {
+    name: 'Affiliate',
+    to: '#',
+  },
+]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 // Search
@@ -130,14 +151,15 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex', justifyContent: 'center' },
             }}
           >
-            {pages.map((page) => (
+            {PAGES.map(({ name, to }) => (
               <Button
-                key={page}
-                // onClick={handleCloseNavMenu}
+                key={name}
                 size="small"
                 sx={{ textTransform: 'uppercase' }}
+                component="a"
+                href={to}
               >
-                {page}
+                {name}
               </Button>
             ))}
           </Box>
@@ -309,8 +331,8 @@ function ResponsiveAppBar() {
                   </IconButton>
                 </Box>
                 <MenuList>
-                  {pages.map((page) => (
-                    <MenuItem key={page} sx={{ borderRadius: '5px', py: 1 }}>
+                  {PAGES.map(({ name, to }) => (
+                    <MenuItem key={name} sx={{ borderRadius: '5px', py: 1 }}>
                       <Typography
                         textAlign="center"
                         variant="body1"
@@ -319,8 +341,10 @@ function ResponsiveAppBar() {
                           fontWeight: 600,
                           '&:active': { color: '#F96A2D' },
                         }}
+                        component={'a'}
+                        href={to}
                       >
-                        {page}
+                        {name}
                       </Typography>
                     </MenuItem>
                   ))}

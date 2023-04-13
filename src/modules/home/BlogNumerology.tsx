@@ -26,9 +26,6 @@ export default function BlogNumerology() {
   }, [])
   return (
     <Box className="blog-numerology-wrapper">
-      <Box sx={{ position: 'absolute', left: 560, top: 80 }}>
-        <TittlePage>Blog tra cứu thần số học </TittlePage>
-      </Box>
       <Container maxWidth={false}>
         <Box marginLeft={{ lg: '120px' }} position={'relative'}>
           <Swiper
@@ -44,6 +41,9 @@ export default function BlogNumerology() {
                 slidesPerView: 2,
               },
               768: {
+                slidesPerView: 2.5,
+              },
+              880: {
                 slidesPerView: 3,
               },
               1024: {
@@ -70,6 +70,18 @@ export default function BlogNumerology() {
               )
             })}
           </Swiper>
+          <Box
+            sx={{
+              position: 'absolute',
+              left: {
+                xs: 0,
+                lg: 132,
+              },
+              top: -100,
+            }}
+          >
+            <TittlePage>Blog tra cứu thần số học </TittlePage>
+          </Box>
           <Button
             variant="outlined"
             sx={{ position: 'absolute', top: 'calc(100% + 32px)', right: 0 }}
@@ -77,7 +89,14 @@ export default function BlogNumerology() {
             Xem tất cả
           </Button>
           <Box
-            sx={{ position: 'absolute', top: 'calc(100% + 62px)', left: 130 }}
+            sx={{
+              position: 'absolute',
+              top: 'calc(100% + 62px)',
+              left: {
+                xs: 0,
+                lg: 132,
+              },
+            }}
           >
             <ButtonMoveSlice
               variant="outlined"

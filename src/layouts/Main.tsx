@@ -19,7 +19,7 @@ const Main = (props: IMainProps) => (
     {props.children}
     <Footer></Footer>
     <ScrollTop {...props}>
-      <Fab size="large" aria-label="scroll back to top">
+      <Fab size="medium" aria-label="scroll back to top">
         <KeyboardArrowUpIcon sx={{ width: 32, height: 32 }} />
       </Fab>
     </ScrollTop>
