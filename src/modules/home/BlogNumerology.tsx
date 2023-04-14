@@ -37,7 +37,6 @@ export default function BlogNumerology() {
                 slidesPerView: 'auto',
               },
               576: {
-                // width: 576,
                 slidesPerView: 2,
               },
               768: {

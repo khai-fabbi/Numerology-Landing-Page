@@ -1,5 +1,15 @@
 import type { CountryType } from '@/models'
 
+export const SEX_LABEL = [
+  {
+    value: 'M',
+    label: 'Nam',
+  },
+  {
+    value: 'F',
+    label: 'Nữ',
+  },
+]
 export const countries: readonly CountryType[] = [
   { code: 'AD', label: 'Andorra', phone: '376' },
   {

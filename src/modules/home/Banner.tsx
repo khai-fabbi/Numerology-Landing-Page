@@ -1,10 +1,35 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { animated, useSpring } from '@react-spring/web'
 import React from 'react'
 
 import { IconCheck } from '@/components/icon'
+import { formatNumberDE } from '@/utils/helpers'
 
 export default function Banner() {
+  const viewAnimated = useSpring({
+    num: 1123256,
+    from: { num: 0 },
+  })
+  const totalMemberAnimate = useSpring({
+    num: 23256,
+    from: { num: 0 },
+  })
+  const publicationReportAnimate = useSpring({
+    num: 23256,
+    from: { num: 0 },
+  })
+  const opacityAnimate = useSpring({
+    from: {
+      opacity: 0,
+      x: 500,
+    },
+    to: {
+      opacity: 1,
+      x: 0,
+    },
+  })
+  const AnimatedTypography = animated(Typography)
   return (
     <Box
       className="banner-wrapper"
@@ -64,16 +89,18 @@ export default function Banner() {
                 }}
               >
                 <Box display={'flex'} flexDirection={'column'} width={1 / 3}>
-                  <Typography
-                    component={'span'}
+                  <AnimatedTypography
+                    // component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
                       fontSize: '2rem',
                     }}
                     color="primary"
                   >
-                    23.256 +
-                  </Typography>
+                    {totalMemberAnimate.num.to(
+                      (val) => `${formatNumberDE(val)} +`
+                    )}
+                  </AnimatedTypography>
                   <Typography
                     component={'span'}
                     sx={{
@@ -85,16 +112,16 @@ export default function Banner() {
                 </Box>
 
                 <Box display={'flex'} flexDirection={'column'} width={1 / 3}>
-                  <Typography
-                    component={'span'}
+                  <AnimatedTypography
+                    // component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
                       fontSize: '2rem',
                     }}
                     color="primary"
                   >
-                    1.123.256
-                  </Typography>
+                    {viewAnimated.num.to((val) => formatNumberDE(val))}
+                  </AnimatedTypography>
                   <Typography
                     component={'span'}
                     sx={{
@@ -105,16 +132,18 @@ export default function Banner() {
                   </Typography>
                 </Box>
                 <Box display={'flex'} flexDirection={'column'} width={1 / 3}>
-                  <Typography
-                    component={'span'}
+                  <AnimatedTypography
+                    // component={'span'}
                     sx={{
                       fontFamily: 'var(--philosopher-font)',
                       fontSize: '2rem',
                     }}
                     color="primary"
                   >
-                    23.256 +
-                  </Typography>
+                    {publicationReportAnimate.num.to(
+                      (val) => `${formatNumberDE(val)} +`
+                    )}
+                  </AnimatedTypography>
                   <Typography
                     component={'span'}
                     sx={{
@@ -165,8 +194,9 @@ export default function Banner() {
                 },
               }}
             >
-              <img
+              <animated.img
                 src="./assets/images/adalash_banner.png"
+                style={opacityAnimate}
                 alt="Banner image"
                 width={'100%'}
               />

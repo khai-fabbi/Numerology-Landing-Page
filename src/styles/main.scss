@@ -84,7 +84,10 @@ input[type=number] {
 a {
   color: var(text-light-primary);
   text-decoration: none;
-  
+}
+
+button {
+  font-variant-numeric: lining-nums;
 }
 .menu-mobile-navbar {
   background: url('../../public/assets/images/bg_mobile_menu.jpg') no-repeat center center;
