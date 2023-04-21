@@ -25,7 +25,10 @@ import Tooltip from '@mui/material/Tooltip'
 import type { TransitionProps } from '@mui/material/transitions'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import * as React from 'react'
+
+import { ModalLoginSocial } from '@/components/modal'
 
 const PAGES = [
   {
@@ -87,11 +90,13 @@ const TransitionModal = React.forwardRef(function Transition(
   return <Slide direction="down" ref={ref} {...props} />
 })
 function ResponsiveAppBar() {
+  const router = useRouter()
   const [anchorElNav, setAnchorElNav] = React.useState(false)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
   const [openSearch, setOpenSearch] = React.useState(false)
+  const [openLogin, setOpenLogin] = React.useState(false)
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
@@ -115,6 +120,7 @@ function ResponsiveAppBar() {
 
   const [isLogined, setIsLogined] = React.useState(false)
   const handleCloseModalSearch = () => setOpenSearch(false)
+  const handleCloseModalLogin = () => setOpenLogin(false)
   return (
     <AppBar
       position="static"
@@ -142,7 +148,10 @@ function ResponsiveAppBar() {
                 },
               }}
             >
-              <img src="./numerology_logo.svg" alt="Logo Numerology" />
+              <img
+                src={`${router.basePath}/numerology_logo.svg`}
+                alt="Logo Numerology"
+              />
             </Typography>
           </Link>
           <Box
@@ -184,7 +193,6 @@ function ResponsiveAppBar() {
             <Dialog
               open={openSearch}
               TransitionComponent={TransitionModal}
-              keepMounted
               onClose={handleCloseModalSearch}
               disableScrollLock={true}
               maxWidth="md"
@@ -205,8 +213,10 @@ function ResponsiveAppBar() {
                 >
                   <Search>
                     <StyledInputBase
+                      type="search"
                       placeholder="Tìm kiếm..."
                       inputProps={{ 'aria-label': 'search' }}
+                      autoFocus={true}
                     />
                     <IconButton sx={{ p: 2 }} color="primary">
                       <SearchIcon fontSize="large" color="primary" />
@@ -223,13 +233,23 @@ function ResponsiveAppBar() {
             />
             <Box ml={2}>
               {!isLogined && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => setIsLogined(true)}
-                >
-                  Đăng Nhập
-                </Button>
+                <>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setOpenLogin(true)}
+                  >
+                    Đăng Nhập
+                  </Button>
+                  <ModalLoginSocial
+                    open={openLogin}
+                    handleClose={handleCloseModalLogin}
+                    onSubmit={() => {
+                      setIsLogined(true)
+                      handleCloseModalLogin()
+                    }}
+                  />
+                </>
               )}
 
               {isLogined && (
@@ -242,7 +262,7 @@ function ResponsiveAppBar() {
                     >
                       <Avatar
                         alt="User"
-                        src="/assets/images/Adalash_Thanh.png"
+                        src={`${router.basePath}/assets/images/Adalash_Thanh.png`}
                         sx={{ width: 50, height: 50 }}
                       />
                     </IconButton>
@@ -324,7 +344,10 @@ function ResponsiveAppBar() {
                     p: 1,
                   }}
                 >
-                  <img src="./numerology_favicon.svg" alt="Logo Numerology" />
+                  <img
+                    src={`${router.basePath}/numerology_favicon.svg`}
+                    alt="Logo Numerology"
+                  />
 
                   <IconButton color="primary">
                     <ClearIcon fontSize="large" color="primary" />

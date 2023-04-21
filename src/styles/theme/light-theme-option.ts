@@ -6,6 +6,9 @@ const themeColors = {
     main: '#F96A2D',
     bg: '#031D2E',
     textLight: '#fff',
+    textDark: '#012233',
+    error: '#EB5757',
+    borderTextField: '#DDE4EE',
   },
 } as const
 
@@ -13,6 +16,10 @@ const lightThemeOptions: ThemeOptions = {
   ...themeColors,
   typography: {
     fontFamily: ['Raleway', 'sans-serif'].join(','),
+    h3: {
+      fontSize: '1.375rem',
+      fontWeight: 700,
+    },
     h4: {
       fontSize: '1.125rem',
       fontWeight: 700,
@@ -25,15 +32,35 @@ const lightThemeOptions: ThemeOptions = {
   palette: {
     primary: {
       main: themeColors.color.main,
+      contrastText: themeColors.color.textLight,
     },
     secondary: {
       main: '#6F49FD',
     },
+    info: {
+      main: '#3C75EF',
+      light: '#5CB0F2',
+    },
     error: {
-      main: '#EB5757',
+      main: themeColors.color.error,
     },
     background: {
       default: themeColors.color.bg,
+      paper: themeColors.color.textLight,
+    },
+    text: {
+      // primary: themeColors.color.textLight,
+      secondary: themeColors.color.textDark,
+    },
+    common: {
+      white: themeColors.color.textLight,
+      black: themeColors.color.textDark,
+    },
+    grey: {
+      100: '#E1E6EA',
+      200: '#DDE4EE',
+      500: '#66768E',
+      700: '#475866',
     },
   },
   components: {
@@ -74,7 +101,7 @@ const lightThemeOptions: ThemeOptions = {
           backgroundColor: 'rgba(255, 255, 255, 0.02)',
           color: themeColors.color.textLight,
           '& fieldset': {
-            borderColor: '#DDE4EE',
+            borderColor: themeColors.color.borderTextField,
           },
           '&:hover fieldset': {
             borderColor: `${themeColors.color.main} !important`,
@@ -83,6 +110,9 @@ const lightThemeOptions: ThemeOptions = {
         input: {
           padding: '12.5px 14px',
           fontWeight: 500,
+          '&::placeholder': {
+            color: '#66768E',
+          },
         },
       },
     },

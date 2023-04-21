@@ -124,6 +124,16 @@ button {
   background-size: cover
 }
 
+// Artical Page
+
+#banner-article {
+  min-height: 400px;
+  background: url('../../public/assets/images/banner-article.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+
 // custom swiper: 
 .swiper {
   height: 100%;
@@ -150,6 +160,7 @@ button {
   font-size: 2rem;
   line-height: 1.125;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 // Swipper Paginator

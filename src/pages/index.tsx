@@ -1,4 +1,3 @@
-import { Box } from '@mui/material'
 import type { ReactElement } from 'react'
 
 import { Main } from '@/layouts/Main'
@@ -15,14 +14,14 @@ import {
 
 const Home: NextPageWithLayout = () => {
   return (
-    <Box>
+    <>
       <Banner />
       <LookUpNumerology />
       <NumerologyInfo />
       <BlogNumerology />
       <TeacherInfo />
       <TrainAndApplication />
-    </Box>
+    </>
   )
 }
 Home.getLayout = function getLayout(page: ReactElement) {
