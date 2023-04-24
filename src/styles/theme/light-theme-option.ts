@@ -94,6 +94,14 @@ const lightThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        endAdornment: {
+          right: '16px !important',
+          top: 'calc(50% - 0.75rem)',
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -136,6 +144,13 @@ const lightThemeOptions: ThemeOptions = {
           color: themeColors.color.textLight,
           fontWeight: 500,
           cursor: 'pointer',
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          borderColor: '#66768E',
         },
       },
     },

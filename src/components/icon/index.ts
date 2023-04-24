@@ -3,6 +3,7 @@ import IconArrowRightAccordion from './IconArrowRightAccordion'
 import IconCalendar from './IconCalendar'
 import IconCheck from './IconCheck'
 import IconComment from './IconComment'
+import IconDown from './IconDown'
 import IconEmail from './IconEmail'
 import IconFacebook from './IconFacebook'
 import IconFacebookLogin from './IconFacebookLogin'
@@ -26,6 +27,7 @@ export {
   IconCalendar,
   IconCheck,
   IconComment,
+  IconDown,
   IconEmail,
   IconFacebook,
   IconFacebookLogin,

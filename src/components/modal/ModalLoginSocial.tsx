@@ -97,13 +97,11 @@ export default function ModalLoginSocial({
               color="info"
               startIcon={<IconFacebookLogin />}
               endIcon={
-                <IconButton sx={{ p: 0 }}>
-                  <Avatar
-                    alt="User"
-                    src="/assets/images/Adalash_Thanh.png"
-                    sx={{ width: 35, height: 35 }}
-                  />
-                </IconButton>
+                <Avatar
+                  alt="User"
+                  src="/assets/images/Adalash_Thanh.png"
+                  sx={{ width: 35, height: 35 }}
+                />
               }
               onClick={onSubmit}
             >
@@ -132,7 +130,7 @@ export default function ModalLoginSocial({
               startIcon={<IconTwitterLogin />}
               onClick={onSubmit}
             >
-              Continue as Trung
+              Tiếp tục với Twiter
             </ButtonSocialSignIn>
           </Box>
           <Typography

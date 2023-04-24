@@ -23,3 +23,9 @@ export const searchSchema = yup.object().shape({
       'Ngày sinh lớn hơn 1900 và nhỏ hơn 2050'
     ),
 })
+
+export const rullingNumberSchema = yup.object().shape({
+  day: yup.string().required('Vui lòng chọn ngày sinh'),
+  month: yup.string().required('Vui lòng chọn tháng sinh'),
+  year: yup.string().required('Vui lòng chọn năm sinh'),
+})

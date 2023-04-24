@@ -13,7 +13,7 @@ type IMainProps = {
 }
 
 const Main = (props: IMainProps) => (
-  <Box sx={{ width: '100%' }} id="wrapper">
+  <Box sx={{ width: '100%' }} id="wrapper" component={'main'}>
     {props.meta}
     <Header />
     {props.children}
