@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import SearchIcon from '@mui/icons-material/Search'
 import { Autocomplete, Box, Button, InputLabel, TextField } from '@mui/material'
+import { useRouter } from 'next/router'
 import { Controller, useForm } from 'react-hook-form'
 
 import { rullingNumberSchema } from '@/utils/schema'
@@ -61,6 +62,7 @@ const MONTH_LIST = [
   '12',
 ]
 export default function RullingNumberForm() {
+  const router = useRouter()
   const {
     handleSubmit,
     control,
@@ -74,8 +76,11 @@ export default function RullingNumberForm() {
     },
     mode: 'onChange',
   })
-  // eslint-disable-next-line no-console
-  const submitForm = (data: FormValue) => console.log(data)
+  const submitForm = (data: FormValue) => {
+    // eslint-disable-next-line no-console
+    console.log(data)
+    router.push('/ket-qua')
+  }
   return (
     <Box component={'form'} onSubmit={handleSubmit(submitForm)}>
       <Box display={'flex'} columnGap={2.5} rowGap={1.5} flexWrap={'wrap'}>

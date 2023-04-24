@@ -48,7 +48,7 @@ export default function SearchNumerologyForm({
     defaultValues: {
       name: '',
       sex: 'M',
-      birthDay: undefined,
+      birthDay: '',
       phoneNumber: '',
     },
     mode: 'onChange',
@@ -149,7 +149,7 @@ export default function SearchNumerologyForm({
                 maxDate={dayjs(new Date('2050-01-01'))}
                 minDate={dayjs(new Date('1900-01-01'))}
                 onChange={onChange}
-                value={value || ''}
+                value={value || null}
                 componentsProps={{
                   openPickerIcon: IconCalendar,
                   textField: {
@@ -190,10 +190,7 @@ export default function SearchNumerologyForm({
                       <Autocomplete
                         id="country-select"
                         sx={{
-                          width: {
-                            xs: 150,
-                            md: 215,
-                          },
+                          minWidth: 150,
                         }}
                         options={countries}
                         value={countryCode}

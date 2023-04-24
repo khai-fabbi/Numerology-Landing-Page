@@ -98,7 +98,7 @@ const lightThemeOptions: ThemeOptions = {
       styleOverrides: {
         endAdornment: {
           right: '16px !important',
-          top: 'calc(50% - 0.75rem)',
+          top: 'calc(50% - 0.875rem)',
         },
       },
     },

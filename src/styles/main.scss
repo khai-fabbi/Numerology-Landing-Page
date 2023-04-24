@@ -132,7 +132,21 @@ button {
   background-size: cover;
   position: relative;
 }
+// Search Result Page
+.search-results-page-wrapper {
+  background-image: url('../../public/assets/images/sky-bg.png');
+  background-size: 100%;
+  background-color: var(--bg-secondary);
+  background-blend-mode: color-dodge;
+}
 
+
+#banner-search-result {
+  min-height: 800px;
+  background: url('../../public/assets/images/banner-search-result.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
 
 // custom swiper: 
 .swiper {
@@ -164,7 +178,15 @@ button {
   font-size: 2rem;
   line-height: 1.125;
   font-weight: 700;
-  text-transform: capitalize;
+  width: fit-content;
+}
+
+.text-heading-secondary {
+  font-family: var(--philosopher-font);
+  font-size: 1.375rem;
+  line-height: 1;
+  font-weight: 700;
+  width: fit-content;
 }
 
 // Swipper Paginator
@@ -224,5 +246,19 @@ button {
     right: 0;
     bottom: 18px;
   }
+
+  input:focus {
+    width: 160px !important;
+  }
 }
 // end custom
+
+// Box power chart
+.power-info-chart {
+  .MuiGrid-item:nth-child(3n + 0) {
+    border-right: 0;
+  }
+  .MuiGrid-item:nth-child(7), .MuiGrid-item:nth-child(8), .MuiGrid-item:nth-child(9) {
+    border-bottom: 0;
+  }
+}

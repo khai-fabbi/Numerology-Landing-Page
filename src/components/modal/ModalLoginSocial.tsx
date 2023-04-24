@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import { useRouter } from 'next/router'
 
 import { ButtonSocialSignIn } from '../button'
-import { IconFacebookLogin, IconGoogle, IconTwitterLogin } from '../icon'
+import { IconFacebookLogin, IconTwitterLogin } from '../icon'
 
 const MODAL_LOGIN_SOCIAL_WIDTH = '485px'
 const MODAL_LOGIN_SOCIAL_HEIGHT = '591px'
@@ -110,7 +110,13 @@ export default function ModalLoginSocial({
             <ButtonSocialSignIn
               variant="outlined"
               fullWidth
-              startIcon={<IconGoogle />}
+              startIcon={
+                <Box
+                  component={'img'}
+                  src="/assets/images/icon-google.png"
+                  alt="Icon Google"
+                />
+              }
               sx={{
                 color: (theme) => theme.palette.text.secondary,
                 border: '1px solid rgba(34, 47, 54, 0.12)',

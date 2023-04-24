@@ -129,8 +129,9 @@ function ResponsiveAppBar() {
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'rgba(3, 29, 46, 0.97)',
+        backgroundColor: 'rgba(3, 29, 46, 0.9)',
         zIndex: 100,
+        backdropFilter: 'blur(4px)',
       }}
     >
       <Container maxWidth={false}>

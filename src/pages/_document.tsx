@@ -20,7 +20,7 @@ class MyDocument extends Document {
           />
           {/* eslint-disable-next-line @next/next/no-page-custom-font */}
           <link
-            href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&family=Raleway:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
             rel="stylesheet"
           />
         </Head>
