@@ -23,3 +23,5 @@ export default function CustomDateAdapter(options: any) {
 export const formatNumberDE = (n: number) => {
   return new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(n)
 }
+export const getImageByMainNumber = (mainNumber: number) =>
+  `/assets/images/numbers/${mainNumber}.png`

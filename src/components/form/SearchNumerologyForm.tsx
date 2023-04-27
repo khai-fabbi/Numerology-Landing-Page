@@ -5,6 +5,7 @@ import {
   Autocomplete,
   Box,
   Button,
+  IconButton,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -15,6 +16,7 @@ import {
 import { DatePicker } from '@mui/x-date-pickers'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -22,7 +24,7 @@ import type { CountryType } from '@/models'
 import { countries, SEX_LABEL } from '@/utils/constant'
 import { searchSchema } from '@/utils/schema'
 
-import { IconCalendar, IconTwoRhombus } from '../icon'
+import { IconCalendar, IconDown, IconTwoRhombus } from '../icon'
 
 interface FormValue {
   name: string
@@ -39,6 +41,7 @@ export default function SearchNumerologyForm({
   title,
   subTitle,
 }: SearchNumerologyFormProps) {
+  const router = useRouter()
   const {
     handleSubmit,
     control,
@@ -57,7 +60,11 @@ export default function SearchNumerologyForm({
     countries[238] as CountryType
   )
   // eslint-disable-next-line no-console
-  const submitForm = (data: FormValue) => console.log(data)
+  const submitForm = (data: FormValue) => {
+    // eslint-disable-next-line no-console
+    console.log(data)
+    router.push('/ket-qua')
+  }
   return (
     <Box component={'form'} onSubmit={handleSubmit(submitForm)}>
       <IconTwoRhombus />
@@ -79,13 +86,7 @@ export default function SearchNumerologyForm({
           </Typography>
         </Box>
       </Box>
-      <Box
-        mt={3.75}
-        maxWidth={'458px'}
-        display={'flex'}
-        flexDirection={'column'}
-        rowGap={2}
-      >
+      <Box mt={3.75} display={'flex'} flexDirection={'column'} rowGap={2}>
         <Controller
           name="name"
           control={control}
@@ -123,6 +124,11 @@ export default function SearchNumerologyForm({
                 MenuProps={{
                   disableScrollLock: true,
                 }}
+                IconComponent={() => (
+                  <IconButton sx={{ right: 7 }}>
+                    <IconDown />
+                  </IconButton>
+                )}
               >
                 {SEX_LABEL.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
@@ -239,7 +245,7 @@ export default function SearchNumerologyForm({
         />
 
         <Button
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, maxWidth: 458 }}
           type="submit"
           size="large"
           color="primary"

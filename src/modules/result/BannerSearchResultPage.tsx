@@ -2,6 +2,7 @@ import { Box, Button, Container, Fab, Typography } from '@mui/material'
 import * as React from 'react'
 
 import { IconChevronBottom } from '@/components/icon'
+import { getImageByMainNumber } from '@/utils/helpers'
 
 export interface IBannerSearchResultPageProps {
   userInfo: {
@@ -13,7 +14,7 @@ export interface IBannerSearchResultPageProps {
 }
 
 export default function BannerSearchResultPage({
-  userInfo: { name, birthday, isVip = false },
+  userInfo: { name, birthday, mainNumber, isVip = false },
 }: IBannerSearchResultPageProps) {
   return (
     <Box id="banner-search-result">
@@ -59,7 +60,7 @@ export default function BannerSearchResultPage({
             </Typography>
             <Box
               component={'img'}
-              src="/assets/images/numbers/9.png"
+              src={getImageByMainNumber(mainNumber)}
               width={'300px'}
             />
             {!isVip && (

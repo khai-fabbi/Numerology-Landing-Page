@@ -103,6 +103,13 @@ button {
 }
 .reader-comment-wrapper {
   background: url('../../public/assets/images/reader_comment.png') no-repeat right center;
+  .swiper {
+    padding-bottom: 40px;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    color: var(--text-main)
+  }
+
 }
 .numerology-info-wrapper {
   background: url('../../public/assets/images/numerology_info_bg.png') no-repeat center center;
@@ -226,13 +233,11 @@ button {
 .select-code-phone {
   .MuiInputBase-root {
     background-color: transparent;
+    padding-left: 0;
   }
   .MuiInputBase-input {
     padding-left: 0;
   }
-  // & .MuiInputBase-root{
-  //   background-color: 'transparent';
-  // }
   fieldset {
     border: none;
     padding: 0;
@@ -255,10 +260,15 @@ button {
 
 // Box power chart
 .power-info-chart {
+  background-color: rgba(255, 255, 255, 0.05);
+  .MuiGrid-item {
+    border-bottom: 1px solid #fafafa;
+    border-right: 1px solid #fafafa;
+  }
   .MuiGrid-item:nth-child(3n + 0) {
     border-right: 0;
   }
-  .MuiGrid-item:nth-child(7), .MuiGrid-item:nth-child(8), .MuiGrid-item:nth-child(9) {
+  .MuiGrid-item:nth-child(n+7) {
     border-bottom: 0;
   }
 }

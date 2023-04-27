@@ -1,17 +1,7 @@
 import ClearIcon from '@mui/icons-material/Clear'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import {
-  alpha,
-  Dialog,
-  DialogContent,
-  Divider,
-  Drawer,
-  InputBase,
-  MenuList,
-  Slide,
-  styled,
-} from '@mui/material'
+import { Divider, Drawer, MenuList } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
@@ -22,13 +12,13 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
-import type { TransitionProps } from '@mui/material/transitions'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
-import { ModalLoginSocial } from '@/components/modal'
+import { IconDown } from '@/components/icon'
+import { ModalLoginSocial, ModalSearch } from '@/components/modal'
 
 const PAGES = [
   {
@@ -54,41 +44,6 @@ const PAGES = [
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-// Search
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: '9999px',
-  backgroundColor: alpha(theme.palette.common.white, 0.2),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.3),
-  },
-  marginLeft: 0,
-  width: '100%',
-  display: 'flex',
-}))
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: '#fff',
-  fontSize: '18px',
-  fontWeight: 500,
-  width: '100%',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(2, 0, 2, 4),
-    paddingRight: `calc(1em + ${theme.spacing(2)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-  },
-}))
-
-// Transition Modal Search
-const TransitionModal = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="down" ref={ref} {...props} />
-})
 function ResponsiveAppBar() {
   const router = useRouter()
   const [anchorElNav, setAnchorElNav] = React.useState(false)
@@ -166,8 +121,7 @@ function ResponsiveAppBar() {
                 key={name}
                 size="small"
                 sx={{ textTransform: 'uppercase' }}
-                component="a"
-                href={to}
+                onClick={() => router.push(to, undefined, { scroll: false })}
               >
                 {name}
               </Button>
@@ -191,41 +145,10 @@ function ResponsiveAppBar() {
               <SearchIcon fontSize="large" sx={{ color: '#fff' }} />
             </IconButton>
             {/* Modal Search  */}
-            <Dialog
+            <ModalSearch
               open={openSearch}
-              TransitionComponent={TransitionModal}
-              onClose={handleCloseModalSearch}
-              disableScrollLock={true}
-              maxWidth="md"
-              aria-describedby="alert-dialog-slide-description"
-              PaperProps={{
-                sx: {
-                  bgcolor: '#031E30',
-                  maxWidth: 'revert',
-                  width: 1000,
-                  borderRadius: 2.5,
-                  top: -100,
-                },
-              }}
-            >
-              <DialogContent sx={{ p: 6 }}>
-                <Box
-                  sx={{ display: 'flex', alignItems: 'center', height: '100%' }}
-                >
-                  <Search>
-                    <StyledInputBase
-                      type="search"
-                      placeholder="Tìm kiếm..."
-                      inputProps={{ 'aria-label': 'search' }}
-                      autoFocus={true}
-                    />
-                    <IconButton sx={{ p: 2 }} color="primary">
-                      <SearchIcon fontSize="large" color="primary" />
-                    </IconButton>
-                  </Search>
-                </Box>
-              </DialogContent>
-            </Dialog>
+              handleClose={handleCloseModalSearch}
+            />
             <Divider
               orientation="vertical"
               variant="middle"
@@ -264,8 +187,15 @@ function ResponsiveAppBar() {
                       <Avatar
                         alt="User"
                         src={`${router.basePath}/assets/images/Adalash_Thanh.png`}
-                        sx={{ width: 50, height: 50 }}
+                        sx={{
+                          width: 46,
+                          height: 46,
+                          mr: 1,
+                          // border: (theme) =>
+                          //   `1px solid ${theme.palette.primary.main}`,
+                        }}
                       />
+                      <IconDown />
                     </IconButton>
                   </Tooltip>
                   <Menu

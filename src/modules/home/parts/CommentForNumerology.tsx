@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
-import * as React from 'react'
+import { Navigation, Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import BoxComment from './BoxComment'
 import TittlePage from './TitlePage'
@@ -50,21 +51,47 @@ export default function CommentForNumerology() {
       <Box
         pt={4}
         px={2.5}
-        paddingBottom={15}
+        paddingBottom={4}
         sx={{
           position: 'absolute',
           left: 0,
           top: '50%',
+          width: {
+            md: '735px',
+            xs: '100%',
+          },
           transform: 'translateY(-50%)',
-          display: 'flex',
-          columnGap: 2.5,
           borderRadius: '5px',
         }}
         bgcolor={'#012233'}
       >
-        {commentExamples.map(({ id, user, content }) => (
-          <BoxComment key={id} user={user} content={content} />
-        ))}
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={'auto'}
+          watchOverflow={true}
+          breakpoints={{
+            360: {
+              slidesPerView: 1,
+            },
+            650: {
+              slidesPerView: 2,
+            },
+          }}
+          className="mySwiper"
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+        >
+          {commentExamples.map(({ id, user, content }) => {
+            return (
+              <SwiperSlide key={id}>
+                <BoxComment user={user} content={content} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </Box>
     </Box>
   )

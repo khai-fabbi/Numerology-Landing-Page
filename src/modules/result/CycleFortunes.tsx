@@ -19,7 +19,7 @@ export default function CycleFortunes({ isVip = false }: ICycleFortunesProps) {
           mỗi năm có số cá nhân là 1, cuộc đời lại bắt đầu một chu kỳ mới với
           xuất phát cao hơn chu kỳ trước. Ảnh hưởng của biểu đồ này sẽ thể hiện
           mạnh nhất trong giai đoạn từ mốc đỉnh cao đầu tiên đến mốc đỉnh cao
-          cuối cùng (Xem ở mục
+          cuối cùng (Xem ở mục{' '}
           <Typography color="primary" fontStyle={'italic'} component={'span'}>
             Kim tự tháp thấn số
           </Typography>

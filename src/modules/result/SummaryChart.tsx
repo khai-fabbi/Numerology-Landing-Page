@@ -15,7 +15,7 @@ export default function SummaryChart({ isVip = false }: SummaryChartProps) {
         sx={{ mt: 2.5, display: 'flex', flexDirection: 'column', rowGap: 2.5 }}
       >
         <Grid container spacing={6}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Box margin={'0 auto'}>
               <BoxPowerInfoChart
                 title="Trung"
@@ -23,7 +23,7 @@ export default function SummaryChart({ isVip = false }: SummaryChartProps) {
               />
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Box margin={'0 auto'}>
               <BoxPowerInfoChart
                 title="Biểu đồ tổng hợp"

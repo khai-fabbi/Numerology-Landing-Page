@@ -14,18 +14,11 @@ export default function BoxPowerInfoChart({
       <Grid
         container
         width={292}
-        bgcolor={'rgba(255, 255, 255, 0.05)'}
         className="power-info-chart"
         margin={'0 auto'}
       >
         {Array.from(Array(9).keys()).map((item) => (
-          <Grid
-            key={item}
-            item
-            xs={4}
-            borderBottom={'1px solid #FAFAFA'}
-            borderRight={'1px solid #FAFAFA'}
-          >
+          <Grid key={item} item xs={4}>
             <Box
               height={52}
               sx={{

@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material'
+import { useRouter } from 'next/router'
 
 import { IconArrowRight } from '@/components/icon'
 
@@ -16,6 +17,7 @@ export interface BlogNumerologyCardProps {
 export default function BlogNumerologyCard({
   imgUrl,
 }: BlogNumerologyCardProps) {
+  const router = useRouter()
   return (
     <Card
       sx={{
@@ -70,7 +72,12 @@ export default function BlogNumerologyCard({
                 },
               }}
             >
-              <Typography variant="body2" fontWeight={500} lineHeight={'20px'}>
+              <Typography
+                variant="body2"
+                fontWeight={500}
+                lineHeight={'20px'}
+                onClick={() => router.push('/post/slug')}
+              >
                 Chi tiết
               </Typography>
               <IconArrowRight />

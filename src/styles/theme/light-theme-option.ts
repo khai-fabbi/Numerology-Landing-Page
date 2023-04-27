@@ -108,6 +108,7 @@ const lightThemeOptions: ThemeOptions = {
           borderRadius: '9999px;',
           backgroundColor: 'rgba(255, 255, 255, 0.02)',
           color: themeColors.color.textLight,
+          maxWidth: '458px',
           '& fieldset': {
             borderColor: themeColors.color.borderTextField,
           },

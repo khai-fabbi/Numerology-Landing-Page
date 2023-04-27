@@ -18,26 +18,29 @@ export default function BoxComment({
   content,
 }: IBoxCommentProps) {
   return (
-    <Box
-      p={2.5}
-      paddingBottom={7}
-      bgcolor={'#031D2E'}
-      boxShadow={'0px 4px 20px rgba(1, 8, 12, 0.41)'}
-      maxWidth={'327px'}
-      position={'relative'}
-    >
-      <Box textAlign={'center'}>
-        <IconComment />
+    <Box>
+      <Box
+        p={2.5}
+        paddingBottom={7}
+        bgcolor={'#031D2E'}
+        boxShadow={'0px 4px 20px rgba(1, 8, 12, 0.41)'}
+        maxWidth={'327px'}
+        position={'relative'}
+        margin={'0 auto'}
+      >
+        <Box textAlign={'center'}>
+          <IconComment />
+        </Box>
+        <Typography mt={1} textAlign={'center'} lineHeight={'20px'}>
+          {content}
+        </Typography>
       </Box>
-      <Typography mt={1} textAlign={'center'} lineHeight={'20px'}>
-        {content}
-      </Typography>
       <Box
         sx={{
-          position: 'absolute',
-          bottom: -86,
+          position: 'relative',
           left: '50%',
           transform: 'translateX(-50%)',
+          mt: '-32px',
           textAlign: 'center',
           width: 'fit-content',
           display: 'inline-block',

@@ -1,3 +1,4 @@
 import ModalLoginSocial from './ModalLoginSocial'
+import ModalSearch from './ModalSearch'
 
-export { ModalLoginSocial }
+export { ModalLoginSocial, ModalSearch }
