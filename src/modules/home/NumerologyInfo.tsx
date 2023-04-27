@@ -93,7 +93,7 @@ export default function NumerologyInfo() {
                       >
                         <Box
                           py={'14px'}
-                          px={5}
+                          // px={5}
                           height={'120px'}
                           textAlign={'center'}
                         >
@@ -133,7 +133,16 @@ export default function NumerologyInfo() {
                     height: 'inherit',
                   }}
                 >
-                  <Box py={'14px'} px={5} height={'100%'}>
+                  <Box
+                    py={'14px'}
+                    sx={{
+                      px: {
+                        xs: 2,
+                        md: 5,
+                      },
+                    }}
+                    height={'100%'}
+                  >
                     <Box>
                       <Typography
                         sx={{

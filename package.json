@@ -39,7 +39,8 @@
     "react-modal": "^3.16.1",
     "sass": "^1.56.0",
     "swiper": "^9.2.0",
-    "yup": "^1.1.0"
+    "yup": "^1.1.0",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

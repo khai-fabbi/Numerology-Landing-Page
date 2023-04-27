@@ -14,24 +14,19 @@ import {
   Typography,
 } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
-import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import type { CountryType } from '@/models'
+import type { CountryType, Customer } from '@/models'
+import { useStore } from '@/store/useStore'
 import { countries, SEX_LABEL } from '@/utils/constant'
 import { searchSchema } from '@/utils/schema'
 
 import { IconCalendar, IconDown, IconTwoRhombus } from '../icon'
 
-interface FormValue {
-  name: string
-  sex: string
-  birthDay: Dayjs | null | undefined
-  phoneNumber: string
-}
+type FormValue = Customer
 export interface SearchNumerologyFormProps {
   title: string
   subTitle?: string
@@ -42,6 +37,8 @@ export default function SearchNumerologyForm({
   subTitle,
 }: SearchNumerologyFormProps) {
   const router = useRouter()
+  const setCustomerInfo = useStore((state) => state.setCustomerInfo)
+
   const {
     handleSubmit,
     control,
@@ -59,10 +56,8 @@ export default function SearchNumerologyForm({
   const [countryCode, setCountryCode] = useState<CountryType>(
     countries[238] as CountryType
   )
-  // eslint-disable-next-line no-console
   const submitForm = (data: FormValue) => {
-    // eslint-disable-next-line no-console
-    console.log(data)
+    setCustomerInfo(data)
     router.push('/ket-qua')
   }
   return (

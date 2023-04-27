@@ -1,5 +1,7 @@
 import { Box, Container } from '@mui/material'
+import dayjs from 'dayjs'
 import type { ReactElement } from 'react'
+import { useMemo } from 'react'
 
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
@@ -34,14 +36,28 @@ import {
   YearIndicators,
 } from '@/modules/result'
 import { BoxExportPDF } from '@/modules/result/parts'
+import { useStore } from '@/store/useStore'
 
 const SearchResultPage: NextPageWithLayout = () => {
-  const userInfo = {
-    name: 'Vu van Khai',
-    birthday: '22/12/1999',
-    mainNumber: 9,
-    isVip: false,
-  }
+  const { customerInfo, mainNumber } = useStore((state) => ({
+    customerInfo: state.customerInfo,
+    mainNumber: state.mainNumber,
+  }))
+  // const userInfo = {
+  //   name: 'Vu van Khai',
+  //   birthday: '22/12/1999',
+  //   mainNumber: 9,
+  //   isVip: false,
+  // }
+
+  const userInfo = useMemo(() => {
+    return {
+      name: customerInfo.name,
+      birthday: dayjs(customerInfo.birthDay)?.format('DD/MM/YYYY') || '',
+      mainNumber,
+      isVip: false,
+    }
+  }, [customerInfo])
   return (
     <Box className="search-results-page-wrapper">
       <BannerSearchResultPage userInfo={userInfo} />
