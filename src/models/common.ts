@@ -11,3 +11,4 @@ export interface CountryType {
   phone: string
   suggested?: boolean
 }
+export type SocialLoginType = 'facebook' | 'google' | 'twitter'

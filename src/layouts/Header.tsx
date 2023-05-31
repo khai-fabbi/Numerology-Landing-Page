@@ -15,10 +15,12 @@ import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import * as React from 'react'
 
 import { IconDown } from '@/components/icon'
 import { ModalLoginSocial, ModalSearch } from '@/components/modal'
+import type { SocialLoginType } from '@/models'
 
 const PAGES = [
   {
@@ -42,7 +44,7 @@ const PAGES = [
     to: '#',
   },
 ]
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const CALLBACK_URL_LOGIN = `${process.env.NEXTAUTH_URL}`
 
 function ResponsiveAppBar() {
   const router = useRouter()
@@ -52,7 +54,20 @@ function ResponsiveAppBar() {
   )
   const [openSearch, setOpenSearch] = React.useState(false)
   const [openLogin, setOpenLogin] = React.useState(false)
-
+  const settings = [
+    {
+      name: 'Xem Trang Cá Nhân',
+      onSubmit: () => router.push('/profile'),
+    },
+    {
+      name: 'Đăng Nhập Lại',
+      onSubmit: () => setOpenLogin(true),
+    },
+    {
+      name: 'Đăng Xuất',
+      onSubmit: () => signOut(),
+    },
+  ]
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -73,9 +88,13 @@ function ResponsiveAppBar() {
       setAnchorElNav(isOpen)
     }
 
-  const [isLogined, setIsLogined] = React.useState(false)
   const handleCloseModalSearch = () => setOpenSearch(false)
   const handleCloseModalLogin = () => setOpenLogin(false)
+  const handleLoginWithSocial = (type: SocialLoginType) => {
+    signIn(type, { callbackUrl: CALLBACK_URL_LOGIN })
+  }
+  const { data: session } = useSession()
+
   return (
     <AppBar
       position="static"
@@ -156,7 +175,7 @@ function ResponsiveAppBar() {
               flexItem
             />
             <Box ml={2}>
-              {!isLogined && (
+              {!session?.user && (
                 <>
                   <Button
                     variant="contained"
@@ -165,20 +184,17 @@ function ResponsiveAppBar() {
                   >
                     Đăng Nhập
                   </Button>
-                  <ModalLoginSocial
-                    open={openLogin}
-                    handleClose={handleCloseModalLogin}
-                    onSubmit={() => {
-                      setIsLogined(true)
-                      handleCloseModalLogin()
-                    }}
-                  />
                 </>
               )}
+              <ModalLoginSocial
+                open={openLogin}
+                handleClose={handleCloseModalLogin}
+                onSubmit={handleLoginWithSocial}
+              />
 
-              {isLogined && (
+              {session?.user && (
                 <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Personal">
+                  <Tooltip title={session.user.name}>
                     <IconButton
                       onClick={handleOpenUserMenu}
                       sx={{ p: 0 }}
@@ -186,13 +202,11 @@ function ResponsiveAppBar() {
                     >
                       <Avatar
                         alt="User"
-                        src={`${router.basePath}/assets/images/Adalash_Thanh.png`}
+                        src={session.user.image || 'A'}
                         sx={{
                           width: 46,
                           height: 46,
                           mr: 1,
-                          // border: (theme) =>
-                          //   `1px solid ${theme.palette.primary.main}`,
                         }}
                       />
                       <IconDown />
@@ -215,17 +229,17 @@ function ResponsiveAppBar() {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {settings.map((setting) => (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    {settings.map(({ name, onSubmit }) => (
+                      <MenuItem key={name} onClick={handleCloseUserMenu}>
                         <Typography
                           textAlign="center"
-                          onClick={() => setIsLogined(false)}
+                          onClick={onSubmit}
                           sx={{
                             fontWeight: 600,
                             '&:active': { color: '#F96A2D' },
                           }}
                         >
-                          {setting}
+                          {name}
                         </Typography>
                       </MenuItem>
                     ))}

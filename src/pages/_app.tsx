@@ -6,6 +6,7 @@ import { CssBaseline } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 import type { ReactElement } from 'react'
 
 import type { NextPageWithLayout } from '@/models'
@@ -29,19 +30,25 @@ const MyApp = ({
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page)
   return (
-    <LocalizationProvider
-      dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
-      // @ts-ignore
-      dateAdapter={CustomDateAdapter}
+    <SessionProvider
+      session={pageProps.session}
+      refetchOnWindowFocus={false}
+      refetchInterval={60 * 60}
     >
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={lightTheme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
-        </ThemeProvider>
-      </CacheProvider>
-    </LocalizationProvider>
+      <LocalizationProvider
+        dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
+        // @ts-ignore
+        dateAdapter={CustomDateAdapter}
+      >
+        <CacheProvider value={emotionCache}>
+          <ThemeProvider theme={lightTheme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            {getLayout(<Component {...pageProps} />)}
+          </ThemeProvider>
+        </CacheProvider>
+      </LocalizationProvider>
+    </SessionProvider>
   )
 }
 

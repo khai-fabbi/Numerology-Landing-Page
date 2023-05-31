@@ -7,6 +7,8 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import { useRouter } from 'next/router'
 
+import type { SocialLoginType } from '@/models'
+
 import { ButtonSocialSignIn } from '../button'
 import { IconFacebookLogin, IconTwitterLogin } from '../icon'
 
@@ -21,7 +23,7 @@ const ModalCustom = styled(Dialog)(({ theme }) => ({
 interface ModalLoginSocialProps {
   open: boolean
   handleClose: () => void
-  onSubmit?: () => void
+  onSubmit?: (type: SocialLoginType) => void
 }
 
 export default function ModalLoginSocial({
@@ -103,9 +105,9 @@ export default function ModalLoginSocial({
                   sx={{ width: 35, height: 35 }}
                 />
               }
-              onClick={onSubmit}
+              onClick={() => onSubmit?.('facebook')}
             >
-              Continue as Trung
+              Tiếp tục với Facebook
             </ButtonSocialSignIn>
             <ButtonSocialSignIn
               variant="outlined"
@@ -124,7 +126,7 @@ export default function ModalLoginSocial({
                   borderColor: (theme) => theme.palette.grey[400],
                 },
               }}
-              onClick={onSubmit}
+              onClick={() => onSubmit?.('google')}
             >
               Tiếp tục với Google
             </ButtonSocialSignIn>
@@ -134,9 +136,9 @@ export default function ModalLoginSocial({
               color="info"
               sx={{ bgcolor: '#5CB0F2' }}
               startIcon={<IconTwitterLogin />}
-              onClick={onSubmit}
+              onClick={() => onSubmit?.('twitter')}
             >
-              Tiếp tục với Twiter
+              Tiếp tục với Twitter
             </ButtonSocialSignIn>
           </Box>
           <Typography
