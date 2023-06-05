@@ -15,10 +15,10 @@ export const createCommonSlice: StateCreator<MyState, [], [], ICommonSlice> = (
   set
 ) => ({
   customerInfo: {
-    name: 'hoang thanh trung',
-    phoneNumber: '333030030',
+    name: '',
+    phoneNumber: '',
     sex: 'M',
-    birthDay: dayjs('1994-10-12'),
+    birthDay: dayjs(),
   },
   setCustomerInfo: (value) =>
     set((state) => ({ ...state, customerInfo: value })),

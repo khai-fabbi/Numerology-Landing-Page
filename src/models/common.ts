@@ -12,3 +12,17 @@ export interface CountryType {
   suggested?: boolean
 }
 export type SocialLoginType = 'facebook' | 'google' | 'twitter'
+
+export type ResultResponse<D> = {
+  status?: string
+  error?: boolean
+  data: D
+  time?: Date
+}
+export interface MainstreamNumber {
+  id: number
+  code: number
+  title: string
+  content: string
+  number_page: number
+}
