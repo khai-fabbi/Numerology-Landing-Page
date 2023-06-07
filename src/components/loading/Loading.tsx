@@ -1,4 +1,4 @@
-import { Backdrop, CircularProgress } from '@mui/material'
+import { Backdrop, Box } from '@mui/material'
 
 interface LoadingProps {
   isOpen: boolean
@@ -10,7 +10,8 @@ export default function Loading({ isOpen }: LoadingProps) {
       open={isOpen}
       // onClick={handleClose}
     >
-      <CircularProgress color="primary" />
+      {/* <CircularProgress color="primary" /> */}
+      <Box className="loader"></Box>
     </Backdrop>
   )
 }

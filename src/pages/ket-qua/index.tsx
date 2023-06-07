@@ -97,51 +97,43 @@ const SearchResultPage: NextPageWithLayout = () => {
   if (!customerInfo.name) return <NotFound404 />
 
   return (
-    <Main
-      meta={
-        <Meta title="Xem kết quả tra cứu" description="Xem kết quả tra cứu" />
-      }
-    >
-      <Box className="search-results-page-wrapper">
-        <Loading isOpen={isLoading || isloadingPDF} />
-        <BannerSearchResultPage userInfo={userInfo} />
-        <Box pt={9} pb={23}>
-          <Container maxWidth={false}>
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', rowGap: 3.75 }}
-            >
-              <CycleFortunes isVip={false} />
-              <CharacterGroup isVip={false} />
-              <LifeNumber isVip={false} />
-              <LifeCycle isVip={false} />
-              <PyramidNumerology isVip={false} />
-              <YearIndicators isVip={false} />
-              <MonthIndicators isVip={false} />
-              <MissionIndicators isVip={false} />
-              <ChallengeIndicators isVip={false} />
-              <MatureIndicators isVip={false} />
-              <MatureCapacityIndicators isVip={false} />
-              <SoulIndicators isVip={false} />
-              <ChallengeSoulIndicators isVip={false} />
-              <PersonalityIndicators isVip={false} />
-              <ChallengePersonalityIndicators isVip={false} />
-              <WeaknessIndicators isVip={false} />
-              <ChiSoNoNghiep isVip={false} />
-              <PowerChart isVip={false} />
-              <SummaryChart isVip={false} />
-              <AttitudeIndicator isVip={false} />
-              <NaturalPowerIndicator isVip={false} />
-              <OvercomeDifficulties isVip={false} />
-              <ThinkingIndicator isVip={false} />
-              <MotivationIndicator isVip={false} />
-              <CapacityIndicator isVip={false} />
-              <ApproachAttitude isVip={false} />
-              <BoxExportPDF onClick={handleDownloadPDF} />
-            </Box>
-          </Container>
-        </Box>
+    <Box className="search-results-page-wrapper">
+      <Loading isOpen={isLoading || isloadingPDF} />
+      <BannerSearchResultPage userInfo={userInfo} />
+      <Box pt={9} pb={23}>
+        <Container maxWidth={false}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: 3.75 }}>
+            <CycleFortunes isVip={false} />
+            <CharacterGroup isVip={false} />
+            <LifeNumber isVip={false} />
+            <LifeCycle isVip={false} />
+            <PyramidNumerology isVip={false} />
+            <YearIndicators isVip={false} />
+            <MonthIndicators isVip={false} />
+            <MissionIndicators isVip={false} />
+            <ChallengeIndicators isVip={false} />
+            <MatureIndicators isVip={false} />
+            <MatureCapacityIndicators isVip={false} />
+            <SoulIndicators isVip={false} />
+            <ChallengeSoulIndicators isVip={false} />
+            <PersonalityIndicators isVip={false} />
+            <ChallengePersonalityIndicators isVip={false} />
+            <WeaknessIndicators isVip={false} />
+            <ChiSoNoNghiep isVip={false} />
+            <PowerChart isVip={false} />
+            <SummaryChart isVip={false} />
+            <AttitudeIndicator isVip={false} />
+            <NaturalPowerIndicator isVip={false} />
+            <OvercomeDifficulties isVip={false} />
+            <ThinkingIndicator isVip={false} />
+            <MotivationIndicator isVip={false} />
+            <CapacityIndicator isVip={false} />
+            <ApproachAttitude isVip={false} />
+            <BoxExportPDF onClick={handleDownloadPDF} />
+          </Box>
+        </Container>
       </Box>
-    </Main>
+    </Box>
   )
 }
 SearchResultPage.getLayout = function getLayout(page: ReactElement) {
