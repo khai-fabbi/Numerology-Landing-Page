@@ -10,7 +10,12 @@ const axiosClient = axios.create({
 // Interceptors
 axiosClient.interceptors.request.use(
   (config) => {
-    // Do something before request is sent
+    // const accessToken = Cookies.get('access_token')
+    // if (accessToken) {
+    //   // eslint-disable-next-line no-param-reassign
+    //   if (config.headers) config.headers.Authorization = `Bearer ${accessToken}`
+    //   return config
+    // }
     return config
   },
   (error) => {

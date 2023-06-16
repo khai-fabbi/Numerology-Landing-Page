@@ -25,3 +25,7 @@ export const formatNumberDE = (n: number) => {
 }
 export const getImageByMainNumber = (mainNumber: number) =>
   `/assets/images/numbers/${mainNumber}.png`
+export const convertToVND = (value: number) =>
+  new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+    value
+  )
