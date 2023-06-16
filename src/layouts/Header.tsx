@@ -60,6 +60,10 @@ function ResponsiveAppBar() {
       onSubmit: () => router.push('/profile'),
     },
     {
+      name: 'Đăng Ki Menber VIP',
+      onSubmit: () => router.push('/check-out'),
+    },
+    {
       name: 'Đăng Nhập Lại',
       onSubmit: () => setOpenLogin(true),
     },

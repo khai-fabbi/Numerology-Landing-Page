@@ -1,4 +1,5 @@
+import ModalInfo from './ModalInfo'
 import ModalLoginSocial from './ModalLoginSocial'
 import ModalSearch from './ModalSearch'
 
-export { ModalLoginSocial, ModalSearch }
+export { ModalInfo, ModalLoginSocial, ModalSearch }

@@ -1,4 +1,5 @@
+import ButtonBank from './ButtonBank'
 import { ButtonMoveSlice } from './ButtonMoveSlice'
 import { ButtonSocialSignIn } from './ButtonSocialSignIn'
 
-export { ButtonMoveSlice, ButtonSocialSignIn }
+export { ButtonBank, ButtonMoveSlice, ButtonSocialSignIn }

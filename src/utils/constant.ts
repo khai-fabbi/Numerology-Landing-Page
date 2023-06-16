@@ -10,6 +10,13 @@ export const SEX_LABEL = [
     label: 'Nữ',
   },
 ]
+
+export const TYPE_GOOGLE = 'google'
+export const TYPE_FACEBOOK = 'facebook'
+export const CONVERT_TOKEN_GRANT_TYPE = 'convert_token'
+export const BACKEND_GOOGLE_OAUTH2 = 'google-oauth2'
+export const BACKEND_FACEBOOK = 'facebook'
+
 export const countries: readonly CountryType[] = [
   { code: 'AD', label: 'Andorra', phone: '376' },
   {
