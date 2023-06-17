@@ -19,7 +19,6 @@ export default function BankInfo() {
     API_BANK_VN_URL,
     (url) => axios.get(url).then((res) => res.data)
   )
-  console.log(bankVNList)
 
   return (
     <Box
@@ -53,7 +52,7 @@ export default function BankInfo() {
           Chọn ngân hàng để hiển thị số tài khoản tương ứng:
         </Typography>
         <Grid container spacing={1}>
-          <Grid item xs={3}>
+          <Grid item xs={4} sm={3}>
             <ButtonBank isActive>
               <Box
                 component="img"
@@ -63,7 +62,7 @@ export default function BankInfo() {
               />
             </ButtonBank>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={4} sm={3}>
             <ButtonBank>
               <Box
                 component="img"
@@ -74,7 +73,7 @@ export default function BankInfo() {
               />
             </ButtonBank>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={4} sm={3}>
             <ButtonBank>
               <Box
                 component="img"

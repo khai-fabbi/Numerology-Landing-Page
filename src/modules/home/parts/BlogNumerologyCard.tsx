@@ -9,13 +9,15 @@ import {
 import { useRouter } from 'next/router'
 
 import { IconArrowRight } from '@/components/icon'
+import type { News } from '@/models'
+import { BASE_URL } from '@/pages/api/axiosClient'
 
 export interface BlogNumerologyCardProps {
-  imgUrl: string
+  newsInfo: News
 }
 
 export default function BlogNumerologyCard({
-  imgUrl,
+  newsInfo,
 }: BlogNumerologyCardProps) {
   const router = useRouter()
   return (
@@ -31,7 +33,12 @@ export default function BlogNumerologyCard({
       }}
     >
       <CardActionArea>
-        <CardMedia component="img" alt="image" height="422" image={imgUrl} />
+        <CardMedia
+          component="img"
+          alt="image"
+          height="422"
+          image={`${BASE_URL + newsInfo.image}`}
+        />
         <CardContent
           sx={{
             position: 'absolute',
@@ -58,7 +65,7 @@ export default function BlogNumerologyCard({
                 lineHeight: '20px',
               }}
             >
-              Cách tính Thần số Học chuẩn Pythagoras
+              {newsInfo.title}
             </Typography>
             <Box
               sx={{
@@ -76,7 +83,7 @@ export default function BlogNumerologyCard({
                 variant="body2"
                 fontWeight={500}
                 lineHeight={'20px'}
-                onClick={() => router.push('/post/slug')}
+                onClick={() => router.push(`/post/${newsInfo.id}`)}
               >
                 Chi tiết
               </Typography>
@@ -85,8 +92,7 @@ export default function BlogNumerologyCard({
           </Box>
 
           <Typography variant="body2" mt={1}>
-            Bài viết hướng dẫn chi tiết nhất cách tính thần số học, nhân số học
-            từ ngày tháng năm sinh và họ tên, kèm luận giải cho riêng bạn…
+            {newsInfo.content}
           </Typography>
         </CardContent>
       </CardActionArea>

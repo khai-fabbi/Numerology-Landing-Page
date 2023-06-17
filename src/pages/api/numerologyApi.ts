@@ -1,6 +1,7 @@
 import type {
   ConvertTokenOutput,
   MainstreamNumber,
+  News,
   ResultResponse,
 } from '@/models'
 import {
@@ -60,6 +61,16 @@ const numerologyApi = {
 
     const res = await axiosClient.post<ConvertTokenOutput>(url, data)
     return res.data
+  },
+  async getNewsTop() {
+    const url = '/api/news-top'
+    const response = await axiosClient.get<ResultResponse<News[]>>(url)
+    return response.data
+  },
+  async getDetailNews(id: string) {
+    const url = `/api/new/${id}`
+    const response = await axiosClient.get<News>(url)
+    return response.data
   },
 }
 

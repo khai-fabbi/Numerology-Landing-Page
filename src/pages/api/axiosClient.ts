@@ -1,7 +1,8 @@
 import axios from 'axios'
 
+export const BASE_URL = `${process.env.BASE_URL}`
 const axiosClient = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

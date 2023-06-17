@@ -7,9 +7,12 @@ import { useCallback, useRef } from 'react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Keyboard, Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import useSWR from 'swr'
 
 import { ButtonMoveSlice } from '@/components/button'
 import { IconNextSlice, IconPrevSlice } from '@/components/icon'
+import { Loading } from '@/components/loading'
+import numerologyApi from '@/pages/api/numerologyApi'
 
 import { BlogNumerologyCard, TittlePage } from './parts'
 
@@ -24,8 +27,18 @@ export default function BlogNumerology() {
     if (!sliderRef.current) return
     sliderRef.current?.slideNext()
   }, [])
+
+  // API blog list
+
+  const {
+    data: newsList,
+    isLoading: isLoadingBlog,
+    error,
+  } = useSWR('news-top', () => numerologyApi.getNewsTop())
+  if (error) return null
   return (
     <Box className="blog-numerology-wrapper">
+      <Loading isOpen={isLoadingBlog} />
       <Container maxWidth={false}>
         <Box marginLeft={{ lg: '120px' }} position={'relative'}>
           <Swiper
@@ -61,10 +74,10 @@ export default function BlogNumerology() {
               sliderRef.current = swiper
             }}
           >
-            {[1, 2, 3, 4, 5].map((item) => {
+            {newsList?.data.map((news) => {
               return (
-                <SwiperSlide key={item}>
-                  <BlogNumerologyCard imgUrl="https://images.unsplash.com/photo-1680778411090-82ba288e1830?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+                <SwiperSlide key={news.id}>
+                  <BlogNumerologyCard newsInfo={news} />
                 </SwiperSlide>
               )
             })}

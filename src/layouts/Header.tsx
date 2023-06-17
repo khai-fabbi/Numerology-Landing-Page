@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -69,7 +70,11 @@ function ResponsiveAppBar() {
     },
     {
       name: 'Đăng Xuất',
-      onSubmit: () => signOut(),
+      onSubmit: () =>
+        signOut().then(() => {
+          Cookies.remove('access_token')
+          Cookies.remove('refresh_token')
+        }),
     },
   ]
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {

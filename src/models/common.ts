@@ -33,3 +33,12 @@ export type ConvertTokenOutput = {
   refresh_token: string
   token_type: string
 }
+export interface News {
+  id: number
+  title: string
+  content: string
+  image: string
+  created_at: string
+  updated_at: string
+  category: string | null
+}
