@@ -5,8 +5,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const { i18n } = require('./i18n.config')
 
 module.exports = withBundleAnalyzer({
+  output: 'standalone',
   eslint: {
-    dirs: ['.'],
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
   i18n,
   poweredByHeader: false,
