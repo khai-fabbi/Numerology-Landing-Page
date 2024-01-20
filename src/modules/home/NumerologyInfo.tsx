@@ -6,20 +6,6 @@ import { AccordionCustom } from '@/components/accordion'
 
 import { TittlePage } from './parts'
 
-const NUMEROLOGY_SHARED_LIST = [
-  {
-    id: 1,
-    title: 'Khám phá bản thân theo nhân số học!',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
-  },
-  {
-    id: 2,
-    title: 'Tracuuthansohoc có thể giúp gì cho bạn?',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-  },
-]
 const NUMEROLOGY_INTERESTING = [
   {
     id: 1,
@@ -35,25 +21,13 @@ const NUMEROLOGY_INTERESTING = [
   },
   {
     id: 3,
-    title: 'Năm cá nhân',
+    title: 'Con số linh hồn',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
   },
   {
     id: 4,
-    title: '4 đỉnh cao đời người trong thần số học Pitago',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
-  },
-  {
-    id: 5,
-    title: 'Các chỉ số trong thần số học và ý nghĩa của chúng',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
-  },
-  {
-    id: 6,
-    title: 'Công cụ bói tình yêu theo thần số học',
+    title: '4 đỉnh cao đời người',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
   },
@@ -99,7 +73,7 @@ export default function NumerologyInfo() {
                         >
                           <Typography
                             sx={{
-                              fontFamily: 'var(--philosopher-font)',
+                              fontFamily: 'var(--font-philosopher)',
                               fontSize: 26,
                               lineHeight: '29px',
                             }}
@@ -110,7 +84,7 @@ export default function NumerologyInfo() {
                             component={'span'}
                             color="primary"
                             sx={{
-                              fontFamily: 'var(--philosopher-font)',
+                              fontFamily: 'var(--font-philosopher)',
                               fontSize: 70,
                               lineHeight: '78px',
                               fontWeight: 700,
@@ -191,22 +165,7 @@ export default function NumerologyInfo() {
           </Box>
 
           <Box>
-            <TittlePage>Đôi lời chia sẻ về thần số học</TittlePage>
-            <Box mt={2.5}>
-              <Grid container columnSpacing={2.5} rowSpacing={2.5}>
-                {NUMEROLOGY_SHARED_LIST.map(({ id, title, description }) => (
-                  <Grid key={id} item xs={12} md={6}>
-                    <AccordionCustom title={title} description={description} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-          </Box>
-
-          <Box>
-            <TittlePage>
-              Kiến thức thú vị trong thần số học pythagoras không nên bỏ nỡ
-            </TittlePage>
+            <TittlePage>Kiến thức thú vị bạn không nên bỏ Lỡ</TittlePage>
             <Box mt={2.5}>
               <Grid container columnSpacing={2.5} rowSpacing={2.5}>
                 {NUMEROLOGY_INTERESTING.map(({ id, title, description }) => (

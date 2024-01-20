@@ -85,7 +85,7 @@ export default function TrainAndApplication() {
               Chương trình đào tạo thần số học
             </Typography>
             <Typography className="text-heading">
-              Do thầy Aladanh thành trực tiếp đứng lớp
+              Do thầy Hoàng Đông trực tiếp đứng lớp
             </Typography>
           </Box>
           <Box mt={4}>
@@ -127,10 +127,10 @@ export default function TrainAndApplication() {
           <Box>
             <IconTwoRhombus />
             <Typography className="text-heading">
-              Ứng dụng Thần số học
+              Ứng dụng nghiên cứu
             </Typography>
             <Typography className="text-heading">
-              Thầy Aladanh Thành nghiên cứu
+              Ngành khoa học dự báo và đời sống
             </Typography>
           </Box>
           <Box

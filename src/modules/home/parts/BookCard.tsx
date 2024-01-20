@@ -38,7 +38,7 @@ export default function BookCard({
           variant="h4"
           component="h4"
           sx={{
-            fontFamily: 'var(--philosopher-font)',
+            fontFamily: 'var(--font-philosopher)',
             width: '172px',
             margin: '0 auto',
           }}
@@ -50,7 +50,7 @@ export default function BookCard({
           color="primary"
           sx={{ marginTop: 2.5 }}
         >
-          Tìm hiểu thêm
+          {isActive ? 'Miễn phí' : 'Liên Hệ'}
         </Button>
       </CardContent>
     </Box>

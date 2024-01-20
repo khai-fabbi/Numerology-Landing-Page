@@ -54,7 +54,7 @@ export default function Banner() {
           <Grid item xs={12} md={7} lg={6}>
             <Box display={'flex'} flexDirection={'column'} rowGap={'20px'}>
               <Typography sx={{ fontWeight: 500, fontSize: '1.375rem' }}>
-                Tra Cứu Thần Số Học Cùng Thầy
+                Trải nghiệm Ngành Khoa Học Những Con Số cùng
               </Typography>
               <Typography
                 sx={{
@@ -62,20 +62,19 @@ export default function Banner() {
                 }}
                 className="name-teacher-heading"
               >
-                Aladanh Thành
+                Mr. Hoàng Đông
               </Typography>
               <Box display={'flex'} flexDirection={'column'} rowGap={1}>
                 <Box display={'flex'} columnGap={1.5} alignItems={'center'}>
                   <IconCheck />
                   <Typography fontSize={14}>
-                    Nhà sáng lập hệ thống thần số học được ứng dụng phổ biến tại
-                    Việt Nam
+                    Nhà Sáng Lập Hệ Thống Định Vị Cá Nhân P.P.S
                   </Typography>
                 </Box>
                 <Box display={'flex'} columnGap={1.5} alignItems={'center'}>
                   <IconCheck />
                   <Typography fontSize={14}>
-                    Luận giải chi tiết – chính xác – tin cậy
+                    Chuyên Gia & Nhà nghiên cứu ngành Khoa Học Dự Báo
                   </Typography>
                 </Box>
               </Box>
@@ -92,7 +91,7 @@ export default function Banner() {
                   <AnimatedTypography
                     // component={'span'}
                     sx={{
-                      fontFamily: 'var(--philosopher-font)',
+                      fontFamily: 'var(--font-philosopher)',
                       fontSize: '2rem',
                     }}
                     color="primary"
@@ -115,7 +114,7 @@ export default function Banner() {
                   <AnimatedTypography
                     // component={'span'}
                     sx={{
-                      fontFamily: 'var(--philosopher-font)',
+                      fontFamily: 'var(--font-philosopher)',
                       fontSize: '2rem',
                     }}
                     color="primary"
@@ -135,7 +134,7 @@ export default function Banner() {
                   <AnimatedTypography
                     // component={'span'}
                     sx={{
-                      fontFamily: 'var(--philosopher-font)',
+                      fontFamily: 'var(--font-philosopher)',
                       fontSize: '2rem',
                     }}
                     color="primary"
@@ -165,15 +164,38 @@ export default function Banner() {
               >
                 Tra cứu các chỉ số của bạn ngay
               </Button>
-              <Typography fontSize={14} textAlign={'justify'}>
-                Những nghiên cứu về Thần số học của Thầy Aladanh Thành đang mang
-                đến một làn sóng tích cực trong đại chúng Việt Nam. Không chỉ là
-                các phân tích để giúp mỗi người tìm ra những tiềm năng thực sự
-                và trả lời được câu hỏi mình là ai trong cuộc đời này, những
-                nghiên cứu sâu và rộng khắp các lĩnh vực của thầy còn giúp hàng
-                triệu người lựa chọn được con đường đi đúng đắn, giúp cho những
-                người làm kinh doanh tìm ra định hướng phù hợp trong chiến lược
-                và trong quản trị doanh nghiệp, quan hệ khách hàng.
+              <Typography
+                fontSize={16}
+                fontWeight={500}
+                textAlign={'justify'}
+                lineHeight={1.5}
+              >
+                Chúng tôi,{' '}
+                <Typography
+                  component={'span'}
+                  fontWeight={700}
+                  fontStyle={'italic'}
+                >
+                  Trái tim Việt
+                </Typography>{' '}
+                nguyện ước bằng tất cả tình yêu và nguồn lực của mình xin phép
+                được làm{' '}
+                <Typography
+                  component={'span'}
+                  fontWeight={700}
+                  fontStyle={'italic'}
+                >
+                  “Phương tiện chuyên chở”
+                </Typography>{' '}
+                tất cả mọi người đến với{' '}
+                <Typography
+                  component={'span'}
+                  fontWeight={700}
+                  fontStyle={'italic'}
+                >
+                  Ước Mơ của riêng mình và tỏa sáng như những vì sao lấp lánh
+                </Typography>{' '}
+                trên bầu trời Trái tim Việt
               </Typography>
             </Box>
           </Grid>
@@ -183,7 +205,7 @@ export default function Banner() {
                 textAlign: 'center',
                 maxWidth: {
                   xs: '550px',
-                  lg: '100%',
+                  lg: '90%',
                 },
                 margin: '0 auto',
                 mr: {
@@ -195,7 +217,7 @@ export default function Banner() {
               }}
             >
               <animated.img
-                src="./assets/images/adalash_banner.png"
+                src="./assets/images/banner_hoang_dong.png"
                 style={opacityAnimate}
                 alt="Banner image"
                 width={'100%'}

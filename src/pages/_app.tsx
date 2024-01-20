@@ -10,6 +10,7 @@ import { SessionProvider } from 'next-auth/react'
 import type { ReactElement } from 'react'
 
 import type { NextPageWithLayout } from '@/models'
+import { philosopher, raleway } from '@/styles/fonts'
 import lightThemeOptions from '@/styles/theme/light-theme-option'
 import createEmotionCache from '@/utils/createEmotionCache'
 import CustomDateAdapter from '@/utils/helpers'
@@ -41,11 +42,13 @@ const MyApp = ({
         dateAdapter={CustomDateAdapter}
       >
         <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={lightTheme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            {getLayout(<Component {...pageProps} />)}
-          </ThemeProvider>
+          <div className={`${raleway.variable} ${philosopher.variable}`}>
+            <ThemeProvider theme={lightTheme}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              {getLayout(<Component {...pageProps} />)}
+            </ThemeProvider>
+          </div>
         </CacheProvider>
       </LocalizationProvider>
     </SessionProvider>

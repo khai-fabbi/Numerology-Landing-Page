@@ -8,7 +8,6 @@ import {
   BlogNumerology,
   LookUpNumerology,
   NumerologyInfo,
-  TeacherInfo,
   TrainAndApplication,
 } from '@/modules/home'
 
@@ -19,14 +18,14 @@ const Home: NextPageWithLayout = () => {
       <LookUpNumerology />
       <NumerologyInfo />
       <BlogNumerology />
-      <TeacherInfo />
+      {/* <TeacherInfo /> */}
       <TrainAndApplication />
     </>
   )
 }
 Home.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Main meta={<Meta title="Thần số học" description="Thần số học" />}>
+    <Main meta={<Meta title="Khoa học con số" description="Khoa học con số" />}>
       {page}
     </Main>
   )

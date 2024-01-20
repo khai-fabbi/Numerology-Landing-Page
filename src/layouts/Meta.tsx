@@ -26,7 +26,7 @@ const Meta = (props: IMetaProps) => {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href={`${router.basePath}/numerology_favicon.svg`}
+          href={`${router.basePath}/favicon.svg`}
           key="icon32"
         />
       </Head>

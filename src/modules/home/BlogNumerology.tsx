@@ -1,18 +1,15 @@
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 import { Box, Button, Container } from '@mui/material'
 import { useCallback, useRef } from 'react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Keyboard, Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import useSWR from 'swr'
 
 import { ButtonMoveSlice } from '@/components/button'
 import { IconNextSlice, IconPrevSlice } from '@/components/icon'
-import { Loading } from '@/components/loading'
-import numerologyApi from '@/pages/api/numerologyApi'
 
 import { BlogNumerologyCard, TittlePage } from './parts'
 
@@ -28,17 +25,8 @@ export default function BlogNumerology() {
     sliderRef.current?.slideNext()
   }, [])
 
-  // API blog list
-
-  const {
-    data: newsList,
-    isLoading: isLoadingBlog,
-    error,
-  } = useSWR('news-top', () => numerologyApi.getNewsTop())
-  if (error) return null
   return (
     <Box className="blog-numerology-wrapper">
-      <Loading isOpen={isLoadingBlog} />
       <Container maxWidth={false}>
         <Box marginLeft={{ lg: '120px' }} position={'relative'}>
           <Swiper
@@ -74,10 +62,10 @@ export default function BlogNumerology() {
               sliderRef.current = swiper
             }}
           >
-            {newsList?.data.map((news) => {
+            {[1, 2, 3, 4, 5].map((item) => {
               return (
-                <SwiperSlide key={news.id}>
-                  <BlogNumerologyCard newsInfo={news} />
+                <SwiperSlide key={item}>
+                  <BlogNumerologyCard imgUrl="https://images.unsplash.com/photo-1680778411090-82ba288e1830?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
                 </SwiperSlide>
               )
             })}
@@ -89,10 +77,13 @@ export default function BlogNumerology() {
                 xs: 0,
                 lg: 132,
               },
-              top: -100,
+              top: -130,
             }}
           >
-            <TittlePage>Blog tra cứu thần số học </TittlePage>
+            <TittlePage>
+              Blog chia sẻ kinh nghiệm về hành trình chuyển hóa
+              <br /> và phát triển cá nhân
+            </TittlePage>
           </Box>
           <Button
             variant="outlined"

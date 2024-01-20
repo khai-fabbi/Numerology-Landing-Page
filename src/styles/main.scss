@@ -3,9 +3,9 @@
 
 :root {
   --text-light-primary: #fff;
-  --header-height: 93px;
-  --raleway-font: 'Raleway', sans-serif; //font primnary
-  --philosopher-font: 'Philosopher', sans-serif; //font-secondary
+  --header-height: 90px;
+  // --raleway-font: 'Raleway', sans-serif; //font primnary
+  // --philosopher-font: 'Philosopher', sans-serif; //font-secondary
   --bg-primary: #031D2E;
   --bg-secondary: #012233;
   --text-main: #F96A2D;
@@ -31,7 +31,6 @@ body {
 body {
   min-height: calc(100vh - var(--header-height));
   padding-top: var(--header-height);
-  font-family: var(--raleway-font);
   color: var(--text-light-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -127,7 +126,6 @@ button {
 .numerology-info-wrapper {
   background: url('../../public/assets/images/numerology_info_bg.png') no-repeat center center;
   background-size: cover;
-  min-height: 1049px;
   margin-top: -80px;
 }
 .blog-numerology-wrapper {
@@ -182,19 +180,19 @@ button {
 
 
 .font-philosopher {
-  font-family: var(--philosopher-font);
+  font-family: var(--font-philosopher);
   font-weight: 700
 }
 
 // heading
 
 .name-teacher-heading {
-  font-family: var(--philosopher-font);
+  font-family: var(--font-philosopher);
   font-size: 4.25rem;
   line-height: 1;
 }
 .text-heading {
-  font-family: var(--philosopher-font);
+  font-family: var(--font-philosopher);
   font-size: 2rem;
   line-height: 1.125;
   font-weight: 700;
@@ -202,7 +200,7 @@ button {
 }
 
 .text-heading-secondary {
-  font-family: var(--philosopher-font);
+  font-family: var(--font-philosopher);
   font-size: 1.375rem;
   line-height: 1;
   font-weight: 700;

@@ -1,4 +1,7 @@
 import { Box, Container, Grid, IconButton, Typography } from '@mui/material'
+import Image from 'next/image'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 import {
   IconEmail,
@@ -39,26 +42,67 @@ const LIST_SOCIAL = [
   },
 ]
 export default function Footer() {
+  const router = useRouter()
   return (
     <Box component={'footer'}>
       <Box bgcolor={'var(--bg-secondary)'} paddingTop={5.5} paddingBottom={7.5}>
         <Container maxWidth={false}>
           <Grid container columnSpacing={3}>
             <Grid item xs={12} sm={6} lg={4}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: 3 }}>
-                <Box>
-                  <img src="/numerology_logo.svg" alt="Logo" />
-                </Box>
-                <Typography variant="body2">
-                  Công cụ được tùy chỉnh theo ngày sinh và tên chính xác của bạn
-                  … Vì vậy, hãy lưu ý: thông tin bạn sắp nhận được có thể khiến
-                  bạn bị sốc.
+              <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: 1 }}>
+                {/* <Box>
+                  <img src="/favicon.svg" alt="Logo" />
+                </Box> */}
+                <NextLink href={'/'} passHref legacyBehavior>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    component="a"
+                    sx={{
+                      my: 0.5,
+                      display: 'flex',
+                      alignItems: 'center',
+                      '&:hover': {
+                        filter: 'brightness(0.75)',
+                        transition: 'all ease 0.2s',
+                      },
+                    }}
+                  >
+                    <Image
+                      width={65}
+                      height={65}
+                      src={`${router.basePath}/logo_footer.png`}
+                      alt="Logo Footer"
+                    />
+                    <Image
+                      width={230}
+                      height={40}
+                      src={`${router.basePath}/khoa-hoc-con-so.png`}
+                      alt="khoa hoc con so"
+                    />
+                  </Typography>
+                </NextLink>
+                <Typography variant="body2" textAlign={'justify'}>
+                  Chúng tôi,{' '}
+                  <Typography color={'#F00'} component={'span'}>
+                    Trái Tim Việt
+                  </Typography>{' '}
+                  nguyện ước bằng tất cả tình yêu và nguồn lực của mình xin phép
+                  được làm{' '}
+                  <Typography
+                    component={'span'}
+                    fontWeight={'600'}
+                    fontStyle={'italic'}
+                  >
+                    “phương tiện chuyên chở”
+                  </Typography>{' '}
+                  tất cả mọi người đến với Ước Mơ của Riêng mình và tỏa sáng như
+                  những vì sao lấp lánh trên bầu trời Trái Tim Việt.
                 </Typography>
                 <Box
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    marginTop: -1.5,
                   }}
                 >
                   {LIST_SOCIAL.map(({ id, icon, to }) => (
@@ -153,21 +197,6 @@ export default function Footer() {
                   >
                     Liên hệ
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    component="a"
-                    color={'inherit'}
-                    width={'fit-content'}
-                    href="#"
-                    sx={{
-                      '&:hover': {
-                        color: 'var(--text-main)',
-                        transition: 'all ease 0.2s',
-                      },
-                    }}
-                  >
-                    Chương trình Affiliate
-                  </Typography>
                 </Box>
               </Box>
             </Grid>
@@ -200,7 +229,7 @@ export default function Footer() {
                   >
                     <Box
                       component={'iframe'}
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10631.852165994946!2d105.85775363263471!3d21.02202322369023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abebf87e0011%3A0x647af200da508d2b!2zTmjDoCBow6F0IEzhu5tuIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1681199970435!5m2!1svi!2s"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.898505976811!2d106.70360969834397!3d10.819078648029398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528ecc0a09fa9%3A0xbb907c9cd7f1781a!2zQ2jDuWEgUGjDoXAgUXVhbmcgKFBo4bqtdCBnacOhbyBOZ3V5w6puIHRodeG7tyBUaGVyYXZhZGEp!5e0!3m2!1svi!2s!4v1705593328693!5m2!1svi!2s"
                       width={'100%'}
                       minWidth={'250px'}
                       height={'100%'}
@@ -232,7 +261,7 @@ export default function Footer() {
                       </IconButton>
 
                       <Typography variant="body2">
-                        Địa chỉ: 123 Hai Bà Trưng, Hà Nội
+                        Địa chỉ: : 215/26 Nguyễn Xí P.13 Bình Thạnh, TP. HCM
                       </Typography>
                     </Box>
                     <Box
@@ -246,7 +275,7 @@ export default function Footer() {
                       </IconButton>
 
                       <Typography variant="body2">
-                        Điện thoại: 123 456 789
+                        Điện thoại: 0938.451.893
                       </Typography>
                     </Box>
                     <Box
@@ -260,7 +289,7 @@ export default function Footer() {
                       </IconButton>
 
                       <Typography variant="body2">
-                        Liên hệ hợp tác: admin@gmail.com
+                        Email: info@vietheart.com.vn
                       </Typography>
                     </Box>
                   </Box>
@@ -278,7 +307,7 @@ export default function Footer() {
           paddingBottom: 2.5,
         }}
       >
-        ©© 2023 aladanhthanh.com | All rights reserved.| DMCA protected.
+        ©© 2023 hoangdong.com | All rights reserved.| DMCA protected.
       </Typography>
     </Box>
   )

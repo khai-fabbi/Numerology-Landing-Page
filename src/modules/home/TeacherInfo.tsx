@@ -49,7 +49,7 @@ export default function TeacherInfo() {
               },
             }}
           >
-            <TittlePage>Nhà nghiên cứu thần số học Pitago</TittlePage>
+            <TittlePage>Nhà nghiên cứu khoa học con số</TittlePage>
             <Typography mt={2.5} className="name-teacher-heading">
               <Typography
                 display={'inline'}
@@ -63,7 +63,7 @@ export default function TeacherInfo() {
               >
                 Thầy{' '}
               </Typography>
-              Aladanh Thành
+              Hoàng Đông
             </Typography>
             <Box
               mt={4}

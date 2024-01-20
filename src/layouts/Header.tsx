@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import Cookies from 'js-cookie'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -39,10 +40,6 @@ const PAGES = [
   {
     name: 'Dịch vụ',
     to: '#thong-tin-aladash',
-  },
-  {
-    name: 'Affiliate',
-    to: '#',
   },
 ]
 const CALLBACK_URL_LOGIN = `${process.env.NEXTAUTH_URL}`
@@ -125,16 +122,26 @@ function ResponsiveAppBar() {
               noWrap
               component="a"
               sx={{
-                my: 2,
+                my: 0.5,
+                display: 'flex',
+                alignItems: 'center',
                 '&:hover': {
                   filter: 'brightness(0.75)',
                   transition: 'all ease 0.2s',
                 },
               }}
             >
-              <img
-                src={`${router.basePath}/numerology_logo.svg`}
+              <Image
+                width={82}
+                height={82}
+                src={`${router.basePath}/logo.png`}
                 alt="Logo Numerology"
+              />
+              <Image
+                width={240}
+                height={40}
+                src={`${router.basePath}/khoa-hoc-con-so.png`}
+                alt="khoa hoc con so"
               />
             </Typography>
           </Link>

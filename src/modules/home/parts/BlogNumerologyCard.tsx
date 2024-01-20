@@ -9,15 +9,13 @@ import {
 import { useRouter } from 'next/router'
 
 import { IconArrowRight } from '@/components/icon'
-import type { News } from '@/models'
-import { BASE_URL } from '@/pages/api/axiosClient'
 
 export interface BlogNumerologyCardProps {
-  newsInfo: News
+  imgUrl: string
 }
 
 export default function BlogNumerologyCard({
-  newsInfo,
+  imgUrl,
 }: BlogNumerologyCardProps) {
   const router = useRouter()
   return (
@@ -33,12 +31,7 @@ export default function BlogNumerologyCard({
       }}
     >
       <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="image"
-          height="422"
-          image={`${BASE_URL + newsInfo.image}`}
-        />
+        <CardMedia component="img" alt="image" height="422" image={imgUrl} />
         <CardContent
           sx={{
             position: 'absolute',
@@ -61,11 +54,11 @@ export default function BlogNumerologyCard({
               component="h4"
               variant="h4"
               sx={{
-                fontFamily: 'var(--philosopher-font)',
+                fontFamily: 'var(--font-philosopher)',
                 lineHeight: '20px',
               }}
             >
-              {newsInfo.title}
+              Cách tính Thần số học chuẩn
             </Typography>
             <Box
               sx={{
@@ -83,7 +76,7 @@ export default function BlogNumerologyCard({
                 variant="body2"
                 fontWeight={500}
                 lineHeight={'20px'}
-                onClick={() => router.push(`/post/${newsInfo.id}`)}
+                onClick={() => router.push('/post/slug')}
               >
                 Chi tiết
               </Typography>
@@ -92,7 +85,8 @@ export default function BlogNumerologyCard({
           </Box>
 
           <Typography variant="body2" mt={1}>
-            {newsInfo.content}
+            Bài viết hướng dẫn chi tiết nhất cách tính thần số học, nhân số học
+            từ ngày tháng năm sinh và họ tên, kèm luận giải cho riêng bạn…
           </Typography>
         </CardContent>
       </CardActionArea>

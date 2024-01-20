@@ -1,5 +1,7 @@
 import type { ThemeOptions } from '@mui/material'
 
+import { philosopher, raleway } from '../fonts'
+
 // Custom theme: Colors
 const themeColors = {
   color: {
@@ -15,7 +17,11 @@ const themeColors = {
 const lightThemeOptions: ThemeOptions = {
   ...themeColors,
   typography: {
-    fontFamily: ['Raleway', 'sans-serif'].join(','),
+    fontFamily: [
+      raleway.style.fontFamily,
+      philosopher.style.fontFamily,
+      'sans-serif',
+    ].join(','),
     h3: {
       fontSize: '1.375rem',
       fontWeight: 700,
