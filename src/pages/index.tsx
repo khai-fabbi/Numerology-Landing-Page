@@ -6,6 +6,7 @@ import type { NextPageWithLayout } from '@/models'
 import {
   Banner,
   BlogNumerology,
+  LogoMeaning,
   LookUpNumerology,
   NumerologyInfo,
   TrainAndApplication,
@@ -15,6 +16,7 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       <Banner />
+      <LogoMeaning />
       <LookUpNumerology />
       <NumerologyInfo />
       <BlogNumerology />

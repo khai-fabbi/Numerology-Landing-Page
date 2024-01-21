@@ -29,3 +29,5 @@ export const convertToVND = (value: number) =>
   new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
     value
   )
+
+export const goToTop = () => window.scrollTo(0, 0)

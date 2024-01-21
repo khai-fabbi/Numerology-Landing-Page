@@ -113,6 +113,10 @@ button {
 .lookup-numerology {
   background: url('../../public/assets/images/zodiac3.png') no-repeat left bottom -100px;
 }
+.mean-logo-wrapper {
+  background: url('../../public/assets/images/bg_mean_logo.png') no-repeat center center;
+  background-size: cover;
+}
 .reader-comment-wrapper {
   background: url('../../public/assets/images/reader_comment.png') no-repeat right center;
   .swiper {
@@ -151,11 +155,16 @@ button {
   position: relative;
 }
 // Search Result Page
-.search-results-page-wrapper {
+.search-results-page-wrapper, .bg-account-page {
   background-image: url('../../public/assets/images/sky-bg.png');
   background-size: 100%;
   background-color: var(--bg-secondary);
   background-blend-mode: color-dodge;
+}
+
+.bg-account-page {
+  padding-bottom: 4rem;
+  min-height: calc(100vh - var(--header-height))
 }
 
 
