@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
+import Image from 'next/image'
 import * as React from 'react'
 
 import { TittlePage } from './parts'
@@ -62,7 +63,14 @@ export default function LogoMeaning() {
             gap: 4,
           }}
         >
-          <Box flex={1}>Logo</Box>
+          <Box flex={1} sx={{ textAlign: 'center' }}>
+            <Image
+              src={'/assets/images/logo-viet-heart.png'}
+              alt="logo viet heart"
+              width={345}
+              height={489}
+            />
+          </Box>
           <Box flex={1}>
             <TittlePage>Ý nghĩa logo</TittlePage>
             <Typography mt={3.5}>
