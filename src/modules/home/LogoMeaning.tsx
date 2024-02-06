@@ -33,9 +33,9 @@ const MeanItem = ({ title, content, direction = 'row' }: MeanItemProps) => {
           height="19.4777"
           transform="rotate(45 15.5 1.72721)"
           fill="white"
-          fill-opacity="0.11"
+          fillOpacity="0.11"
           stroke="#F96A2D"
-          stroke-width="1.8"
+          strokeWidth="1.8"
         />
       </svg>
       <Box sx={{ display: 'flex', columnGap: 1.25, flexDirection: direction }}>

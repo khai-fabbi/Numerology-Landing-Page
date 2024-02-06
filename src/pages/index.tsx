@@ -7,10 +7,12 @@ import type { NextPageWithLayout } from '@/models'
 import {
   Banner,
   BlogNumerology,
+  Intro,
   LogoMeaning,
   LookUpNumerology,
   NumerologyInfo,
   TrainAndApplication,
+  Tranning,
 } from '@/modules/home'
 import { TittlePage } from '@/modules/home/parts'
 
@@ -18,6 +20,8 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       <Banner />
+      <Tranning />
+      <Intro />
       <LogoMeaning />
       <Box
         sx={{

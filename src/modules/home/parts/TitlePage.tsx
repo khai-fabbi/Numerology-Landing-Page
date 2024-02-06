@@ -13,7 +13,14 @@ export default function TittlePage({
   isCenter = false,
 }: TittlePageProps) {
   return (
-    <Box sx={{ textAlign: isCenter ? 'center' : 'left', width: 'fit-content' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: isCenter ? 'center' : 'flex-start',
+        rowGap: 1.5,
+      }}
+    >
       <IconTwoRhombus />
       <Typography className="text-heading" component={'h3'}>
         {children}
