@@ -14,6 +14,20 @@ export default function LookUpNumerology() {
           justifyContent={'center'}
           alignItems={'center'}
         >
+          <Grid item xs={12} md={7} lg={6}>
+            <Box
+              sx={{
+                marginTop: 1,
+                marginLeft: {
+                  md: 8,
+                },
+              }}
+            >
+              <SearchNumerologyForm
+                title="Mr. Hoàng Đông"
+              />
+            </Box>
+          </Grid>
           <Grid item xs={12} md={5} lg={6}>
             <Box
               maxWidth={'490px'}
@@ -25,22 +39,7 @@ export default function LookUpNumerology() {
                 },
               }}
             >
-              <img width={'100%'} src="/assets/images/satellite.png" alt="" />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={7} lg={6}>
-            <Box
-              sx={{
-                marginTop: 1,
-                marginLeft: {
-                  md: 8,
-                },
-              }}
-            >
-              <SearchNumerologyForm
-                title="Xem thần số học online"
-                subTitle="Aladanh Thành"
-              />
+              <img width={'100%'} src="/assets/images/banner_hoang_dong_1.png" alt="" />
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -68,21 +67,10 @@ export default function LookUpNumerology() {
                 <Typography>
                   Nếu ngày sinh trên giấy tờ (chứng minh thư, bằng lái, khai
                   sinh…) của bạn khác với ngày sinh dương lịch thật thì cuộc đời
-                  bạn sẽ có sự xáo trộn từ cả 2 ngày sinh này. Bạn nên tra cứu
-                  cả 2 để biết thêm chi tiết, tuy nhiên kết quả sẽ thiên về ngày
-                  sinh dương lịch thật!
-                </Typography>
-                <Typography>
-                  Tên thường dùng là tên mà mọi người thường gọi bạn hoặc một
-                  danh xưng bạn thường dùng, tên này sẽ bù trừ vào biểu đồ ngày
-                  sinh của bạn. Nếu bạn không có tên thường dùng, hệ thống sẽ tự
-                  lấy họ tên khai sinh của bạn để tính toán trong biểu đồ tổng
-                  hợp.
-                </Typography>
-                <Typography>
-                  Số chủ đạo tuy rất quan trọng nhưng không thể hiện hết thông
-                  tin thần số học của bạn. Để xem kết quả tra cứu chính xác, hãy
-                  kết hợp tất cả các chỉ số mà chúng tôi tính toán!
+                  bạn sẽ có bị chi phối bởi cả hai bộ số P.P.<span className="text-color-red">n</span>.S. Bạn nên tra
+                  cứu cả 2 để biết thêm chi tiết, và liên hệ với Chuyên Viên tư
+                  vấn P.P.<span className="text-color-red">n</span>.S của chúng tôi để được hiểu rõ hơn về 2 trường năng
+                  lượng sẽ ảnh hưởng lên cuộc sống của mình.
                 </Typography>
               </Box>
             </Box>

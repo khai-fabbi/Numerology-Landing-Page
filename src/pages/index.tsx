@@ -90,7 +90,7 @@ const Home: NextPageWithLayout = () => {
 
       <Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <TittlePage isCenter>Con Thuyền P.P.n.S</TittlePage>
+          <TittlePage isCenter>Con Thuyền P.P.<span className="text-color-red">n</span>.S</TittlePage>
         </Box>
         <Box
           component={'img'}

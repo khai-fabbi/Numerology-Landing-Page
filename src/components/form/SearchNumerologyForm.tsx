@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { DatePicker } from '@mui/x-date-pickers'
+import { DatePicker, TimePicker } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -27,6 +27,7 @@ import { searchSchema } from '@/utils/schema'
 import { IconCalendar, IconDown, IconTwoRhombus } from '../icon'
 
 type FormValue = Customer
+
 export interface SearchNumerologyFormProps {
   title: string
   subTitle?: string
@@ -49,6 +50,7 @@ export default function SearchNumerologyForm({
       name: '',
       sex: 'M',
       birthDay: '',
+      timeBirthDay: '',
       phoneNumber: '',
     },
     mode: 'onChange',
@@ -64,22 +66,16 @@ export default function SearchNumerologyForm({
     <Box component={'form'} onSubmit={handleSubmit(submitForm)}>
       <IconTwoRhombus />
       <Box>
+        <Box mt={2}>
+          <Typography fontSize={20}>
+            Tra cứu chỉ số P.P.<span className="text-color-red">n</span>.S của
+            bạn
+          </Typography>
+        </Box>
         <Typography className="text-heading">{title}</Typography>
         {subTitle && (
           <Typography className="text-heading">{subTitle}</Typography>
         )}
-
-        <Box mt={2}>
-          <Typography fontSize={14}>
-            - Tính toán hàng chục nghìn phép tính thần số phức tạp cực nhanh chỉ
-            sau 1 giây để cho ra các tổ hợp chỉ số mà không hề sai sót như tính
-            tay.
-          </Typography>
-          <Typography fontSize={14} mt={0.5}>
-            - Luận giải kết quả tra cứu được cá nhân hóa dựa vào nghiên cứu
-            chuyên sâu của các chuyên gia Thần số học.
-          </Typography>
-        </Box>
       </Box>
       <Box mt={3.75} display={'flex'} flexDirection={'column'} rowGap={2}>
         <Controller
@@ -160,6 +156,20 @@ export default function SearchNumerologyForm({
                       ? (errors.birthDay?.message as unknown as string)
                       : '',
                   },
+                }}
+              />
+            </Box>
+          )}
+        />
+        <Controller
+          name="timeBirthDay"
+          control={control}
+          render={() => (
+            <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
+              <InputLabel htmlFor="date-birthday-id">Giờ sinh</InputLabel>
+              <TimePicker
+                slots={{
+                  openPickerIcon: IconCalendar,
                 }}
               />
             </Box>

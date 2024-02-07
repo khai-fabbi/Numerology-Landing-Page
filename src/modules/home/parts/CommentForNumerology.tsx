@@ -46,7 +46,7 @@ export default function CommentForNumerology() {
           maxWidth: '560px',
         }}
       >
-        Chia sẻ từ những cá nhân đã tìm thấy sự đột phá cuộc đời nhờ Nhân số học
+        Những giá trị mà tôi nhận được từ dự án Trái Tim Việt.
       </Typography>
       <Box
         pt={4}

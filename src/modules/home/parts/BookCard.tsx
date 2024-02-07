@@ -14,10 +14,11 @@ interface BookCardProps {
     imgUrl: string
     name: string
     isActive: boolean
+    isFree: boolean
   }
 }
 export default function BookCard({
-  bookInfo: { imgUrl, name, isActive },
+  bookInfo: { imgUrl, name, isActive, isFree },
 }: BookCardProps) {
   return (
     <Box maxWidth={295}>
@@ -50,7 +51,7 @@ export default function BookCard({
           color="primary"
           sx={{ marginTop: 2.5 }}
         >
-          {isActive ? 'Miễn phí' : 'Liên Hệ'}
+          {isFree ? 'Miễn phí' : 'Liên Hệ'}
         </Button>
       </CardContent>
     </Box>
