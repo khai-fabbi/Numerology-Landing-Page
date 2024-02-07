@@ -130,7 +130,7 @@ button {
 .numerology-info-wrapper {
   background: url('../../public/assets/images/numerology_info_bg.png') no-repeat center center;
   background-size: cover;
-  margin-top: -80px;
+  // margin-top: -80px;
 }
 .blog-numerology-wrapper {
   height: 800px;
@@ -142,6 +142,10 @@ button {
 }
 .teacher-info-wrapper {
   min-height: 890px;
+  background: url('../../public/assets/images/teacher_info_bg.png') no-repeat center center;
+  background-size: cover
+}
+.development-journey-wrapper {
   background: url('../../public/assets/images/teacher_info_bg.png') no-repeat center center;
   background-size: cover
 }
@@ -173,6 +177,11 @@ button {
   background: url('../../public/assets/images/banner-search-result.png') no-repeat center center;
   background-size: cover;
   position: relative;
+}
+
+.tranning-wrapper {
+  background: url('../../public/assets/images/banner-search-result.png') no-repeat center center;
+  background-size: cover;
 }
 
 // custom swiper: 
