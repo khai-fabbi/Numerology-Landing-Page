@@ -6,4 +6,5 @@ export interface Customer {
   birthDay: Dayjs | null | undefined
   timeBirthDay: Dayjs | null | undefined
   phoneNumber: string
+  job: string
 }

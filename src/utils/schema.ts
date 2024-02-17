@@ -22,6 +22,7 @@ export const searchSchema = yup.object().shape({
       dayjs(new Date('2050-01-01')),
       'Ngày sinh lớn hơn 1900 và nhỏ hơn 2050'
     ),
+  job: yup.string().required('Vui lòng nhập công việc hiện tại'),
 })
 
 export const rullingNumberSchema = yup.object().shape({

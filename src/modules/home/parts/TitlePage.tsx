@@ -22,7 +22,11 @@ export default function TittlePage({
       }}
     >
       <IconTwoRhombus />
-      <Typography className="text-heading" component={'h3'}>
+      <Typography
+        className="text-heading"
+        component={'h3'}
+        sx={{ textAlign: isCenter ? 'center' : undefined }}
+      >
         {children}
       </Typography>
     </Box>

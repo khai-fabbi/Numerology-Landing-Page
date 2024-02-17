@@ -3,6 +3,7 @@ import BookCard from './BookCard'
 import BoxComment from './BoxComment'
 import CommentForNumerology from './CommentForNumerology'
 import CourseCard from './CourseCard'
+import FingerprintBiometricsForm from './FingerprintBiometricsForm'
 import TittlePage from './TitlePage'
 
 export {
@@ -11,5 +12,6 @@ export {
   BoxComment,
   CommentForNumerology,
   CourseCard,
+  FingerprintBiometricsForm,
   TittlePage,
 }

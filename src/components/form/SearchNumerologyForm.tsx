@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import SearchIcon from '@mui/icons-material/Search'
 import {
   Autocomplete,
   Box,
@@ -52,6 +51,7 @@ export default function SearchNumerologyForm({
       birthDay: '',
       timeBirthDay: '',
       phoneNumber: '',
+      job: '',
     },
     mode: 'onChange',
   })
@@ -249,16 +249,57 @@ export default function SearchNumerologyForm({
           )}
         />
 
-        <Button
-          sx={{ mt: 2, maxWidth: 458 }}
-          type="submit"
-          size="large"
-          color="primary"
-          variant="contained"
-          startIcon={<SearchIcon />}
+        <Controller
+          name="job"
+          control={control}
+          render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+            <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
+              <InputLabel htmlFor="job-id">
+                Công việc hiện tại bạn đang làm
+              </InputLabel>
+              <TextField
+                placeholder="Nhập công việc"
+                onChange={onChange}
+                value={value}
+                id="job-id"
+                error={invalid}
+                helperText={
+                  errors.name ? (errors.job?.message as unknown as string) : ''
+                }
+              />
+            </Box>
+          )}
+        />
+
+        <Box
+          sx={{
+            maxWidth: 458,
+            display: 'flex',
+            alignItems: 'center',
+            columnGap: 2,
+          }}
         >
-          Tra Cứu Ngay
-        </Button>
+          <Button
+            sx={{ flex: 1, backgroundColor: '#215261' }}
+            type="submit"
+            size="large"
+            color="primary"
+            // variant="outlined"
+            // startIcon={<SearchIcon />}
+          >
+            Tra Cứu Miễn Phí
+          </Button>
+          <Button
+            sx={{ flex: 1 }}
+            type="submit"
+            size="large"
+            color="primary"
+            variant="contained"
+            // startIcon={<SearchIcon />}
+          >
+            Tra Cứu Chuyên sâu
+          </Button>
+        </Box>
       </Box>
     </Box>
   )
