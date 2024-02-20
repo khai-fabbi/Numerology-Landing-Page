@@ -374,7 +374,7 @@ export default function FingerprintBiometricsForm() {
           Chỉ số thông minh
         </Typography>
         <Grid container mt={0.5} spacing={2} columnSpacing={4}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={2} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0 }}>EQ</InputLabel>
               <TextField
@@ -388,7 +388,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={2} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0 }}>IQ</InputLabel>
               <TextField
@@ -402,7 +402,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={2} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0 }}>AQ</InputLabel>
               <TextField
@@ -416,7 +416,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={2} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0 }}>CQ</InputLabel>
               <TextField
