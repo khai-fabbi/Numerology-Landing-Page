@@ -87,7 +87,7 @@ export default function TrainAndApplication() {
               Ứng dụng nghiên cứu
             </Typography>
             <Typography className="text-heading">
-              Ngành khoa học dự báo và đời sống
+              Ngành khoa học dự báo vào đời sống
             </Typography>
           </Box>
           <Box

@@ -440,7 +440,7 @@ export default function FingerprintBiometricsForm() {
           8 Loại hình thông minh
         </Typography>
         <Grid container mt={0.5} spacing={2} columnSpacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Âm nhạc
@@ -457,7 +457,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Nội tâm
@@ -474,7 +474,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Giao Tiếp
@@ -491,7 +491,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Thiên nhiên
@@ -510,7 +510,7 @@ export default function FingerprintBiometricsForm() {
           </Grid>
         </Grid>
         <Grid container mt={0.5} spacing={2} columnSpacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Ngôn ngữ
@@ -527,7 +527,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Thị Giác
@@ -544,7 +544,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Logic
@@ -561,7 +561,7 @@ export default function FingerprintBiometricsForm() {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
               <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
                 Vận động
