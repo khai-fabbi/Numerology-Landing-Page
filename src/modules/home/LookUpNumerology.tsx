@@ -9,11 +9,7 @@ import {
 
 import { SearchNumerologyForm } from '@/components/form'
 
-import {
-  CommentForNumerology,
-  FingerprintBiometricsForm,
-  TittlePage,
-} from './parts'
+import { FingerprintBiometricsForm, TittlePage } from './parts'
 
 export default function LookUpNumerology() {
   return (
@@ -33,6 +29,19 @@ export default function LookUpNumerology() {
         >
           <Grid item xs={12} lg={5}>
             <Box mt={10}>
+              <Box
+                // maxWidth={'490px'}
+                margin={'0 auto'}
+                sx={{
+                  display: {
+                    xs: 'none',
+                    md: 'flex',
+                  },
+                  padding: '100px 0 202px 0',
+                }}
+              >
+                <img width={'100%'} src="/assets/images/fly.png" alt="" />
+              </Box>
               <Box textAlign={'center'}>
                 <Button variant="contained" sx={{ width: '268px' }}>
                   Lưu
@@ -154,9 +163,6 @@ export default function LookUpNumerology() {
                 </Typography>
               </Box>
             </Box>
-          </Grid>
-          <Grid item xs={12} mt={4}>
-            <CommentForNumerology />
           </Grid>
         </Grid>
       </Container>

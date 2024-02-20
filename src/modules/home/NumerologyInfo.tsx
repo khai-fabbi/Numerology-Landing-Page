@@ -1,4 +1,5 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import * as React from 'react'
 import { useState } from 'react'
 
@@ -114,7 +115,9 @@ export default function NumerologyInfo() {
           }}
         >
           <Box>
-            <TittlePage>Ý nghĩa các con số trong thần số học</TittlePage>
+            <TittlePage>
+              Trường năng lượng của các con số trong ngành khoa học dự báo
+            </TittlePage>
             <Box mt={2.5}>
               <Grid container bgcolor={'#081D2D'}>
                 <Grid item xs={6} lg={8}>
@@ -214,6 +217,14 @@ export default function NumerologyInfo() {
                       </Typography>
                     </Box>
                     <Typography mt={2.5}>{itemActive.description}</Typography>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{ mt: 4 }}
+                      endIcon={<ChevronRightIcon fontSize="large" />}
+                    >
+                      Xem chi tiết
+                    </Button>
                   </Box>
                 </Grid>
               </Grid>

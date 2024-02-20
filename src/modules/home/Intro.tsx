@@ -89,7 +89,7 @@ export default function Intro() {
                 </strong>{' '}
                 bằng tất cả tình yêu và nguồn lực của mình, nguyện được làm “{' '}
                 <strong>
-                  <i> phương tiện chuyên chở</i>
+                  <i className="text-color-orange"> phương tiện chuyên chở</i>
                 </strong>
                 ” mọi người đến với{' '}
                 <strong>

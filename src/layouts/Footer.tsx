@@ -2,6 +2,7 @@ import { Box, Container, Grid, IconButton, Typography } from '@mui/material'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import * as React from 'react'
 
 import {
   IconEmail,
@@ -94,7 +95,12 @@ export default function Footer() {
                     fontWeight={'600'}
                     fontStyle={'italic'}
                   >
-                    “phương tiện chuyên chở”
+                    “
+                    <span className="text-color-orange">
+                      {' '}
+                      phương tiện chuyên chở
+                    </span>
+                    ”
                   </Typography>{' '}
                   tất cả mọi người đến với Ước Mơ của Riêng mình và tỏa sáng như
                   những vì sao lấp lánh trên bầu trời Trái Tim Việt.

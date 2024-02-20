@@ -442,12 +442,15 @@ export default function FingerprintBiometricsForm() {
         <Grid container mt={0.5} spacing={2} columnSpacing={2}>
           <Grid item xs={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>Âm nhạc</InputLabel>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Âm nhạc
+              </InputLabel>
               <TextField
                 InputProps={{
                   inputProps: {
                     style: {
                       textAlign: 'center',
+                      maxWidth: '50px',
                     },
                   },
                 }}
@@ -456,12 +459,15 @@ export default function FingerprintBiometricsForm() {
           </Grid>
           <Grid item xs={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>Nội tâm</InputLabel>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Nội tâm
+              </InputLabel>
               <TextField
                 InputProps={{
                   inputProps: {
                     style: {
                       textAlign: 'center',
+                      maxWidth: '50px',
                     },
                   },
                 }}
@@ -470,12 +476,15 @@ export default function FingerprintBiometricsForm() {
           </Grid>
           <Grid item xs={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>Giao Tiếp</InputLabel>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Giao Tiếp
+              </InputLabel>
               <TextField
                 InputProps={{
                   inputProps: {
                     style: {
                       textAlign: 'center',
+                      maxWidth: '50px',
                     },
                   },
                 }}
@@ -484,12 +493,85 @@ export default function FingerprintBiometricsForm() {
           </Grid>
           <Grid item xs={3}>
             <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>Thiên nhiên</InputLabel>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Thiên nhiên
+              </InputLabel>
               <TextField
                 InputProps={{
                   inputProps: {
                     style: {
                       textAlign: 'center',
+                      maxWidth: '50px',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid container mt={0.5} spacing={2} columnSpacing={2}>
+          <Grid item xs={3}>
+            <Box display={'flex'} columnGap={1} alignItems={'center'}>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Ngôn ngữ
+              </InputLabel>
+              <TextField
+                InputProps={{
+                  inputProps: {
+                    style: {
+                      textAlign: 'center',
+                      maxWidth: '50px',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <Box display={'flex'} columnGap={1} alignItems={'center'}>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Thị Giác
+              </InputLabel>
+              <TextField
+                InputProps={{
+                  inputProps: {
+                    style: {
+                      textAlign: 'center',
+                      maxWidth: '50px',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <Box display={'flex'} columnGap={1} alignItems={'center'}>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Logic
+              </InputLabel>
+              <TextField
+                InputProps={{
+                  inputProps: {
+                    style: {
+                      textAlign: 'center',
+                      maxWidth: '50px',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <Box display={'flex'} columnGap={1} alignItems={'center'}>
+              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                Vận động
+              </InputLabel>
+              <TextField
+                InputProps={{
+                  inputProps: {
+                    style: {
+                      textAlign: 'center',
+                      maxWidth: '50px',
                     },
                   },
                 }}

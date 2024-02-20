@@ -185,7 +185,12 @@ export default function Banner() {
                   fontWeight={700}
                   fontStyle={'italic'}
                 >
-                  “Phương tiện chuyên chở”
+                  “
+                  <span className="text-color-orange">
+                    {' '}
+                    phương tiện chuyên chở
+                  </span>
+                  ”
                 </Typography>{' '}
                 tất cả mọi người đến với{' '}
                 <Typography

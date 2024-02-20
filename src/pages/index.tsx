@@ -36,18 +36,16 @@ const Home: NextPageWithLayout = () => {
           alt="top-ppns-1"
           // height={800}
           // width={1000}
-          sx={{ aspectRatio: '1.294', height: '100%' }}
+          sx={{ width: '100%', height: '100%' }}
         ></Box>
       </Box>
-      <Box sx={{ backgroundColor: '#F1F1F1' }}>
-        <Container maxWidth={false}>
-          <Box
-            component={'img'}
-            src={'/assets/images/top-ppns-2.png'}
-            alt="top-ppns-2"
-            sx={{ width: '100%' }}
-          ></Box>
-        </Container>
+      <Box sx={{ backgroundColor: '#fff' }}>
+        <Box
+          component={'img'}
+          src={'/assets/images/top-ppns-2.png'}
+          alt="top-ppns-2"
+          sx={{ width: '100%' }}
+        ></Box>
       </Box>
 
       <Box
