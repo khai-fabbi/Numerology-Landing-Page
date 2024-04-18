@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import {
   Autocomplete,
@@ -12,58 +11,58 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { DatePicker, TimePicker } from '@mui/x-date-pickers'
+import { DatePicker } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import type { Control } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 
-import type { CountryType, Customer } from '@/models'
-import { useStore } from '@/store/useStore'
+import type { CountryType } from '@/models'
+import type { FormSearch } from '@/modules/home/LookUpNumerology'
 import { countries, SEX_LABEL } from '@/utils/constant'
-import { searchSchema } from '@/utils/schema'
 
 import { IconCalendar, IconDown, IconTwoRhombus } from '../icon'
-
-type FormValue = Customer
 
 export interface SearchNumerologyFormProps {
   title: string
   subTitle?: string
+  control: Control<FormSearch, any>
+  onSubmitFree: () => void
+  onSubmitDeep: () => void
 }
 
 export default function SearchNumerologyForm({
   title,
   subTitle,
+  control,
+  onSubmitFree,
+  onSubmitDeep,
 }: SearchNumerologyFormProps) {
-  const router = useRouter()
-  const setCustomerInfo = useStore((state) => state.setCustomerInfo)
-
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<FormValue>({
-    resolver: yupResolver(searchSchema),
-    defaultValues: {
-      name: '',
-      sex: 'M',
-      birthDay: '',
-      timeBirthDay: '',
-      phoneNumber: '',
-      job: '',
-    },
-    mode: 'onChange',
-  })
+  // const {
+  //   handleSubmit,
+  //   control,
+  //   formState: { errors },
+  // } = useForm<FormValue>({
+  //   resolver: yupResolver(searchSchema),
+  //   defaultValues: {
+  //     name: '',
+  //     sex: 'M',
+  //     birthDay: '',
+  //     timeBirthDay: '',
+  //     phoneNumber: '',
+  //     job: '',
+  //   },
+  //   mode: 'onChange',
+  // })
   const [countryCode, setCountryCode] = useState<CountryType>(
     countries[238] as CountryType
   )
-  const submitForm = (data: FormValue) => {
-    setCustomerInfo(data)
-    router.push('/ket-qua')
-  }
+  // const submitForm = (data: FormValue) => {
+  //   setCustomerInfo(data)
+  //   router.push('/ket-qua')
+  // }
   return (
-    <Box component={'form'} onSubmit={handleSubmit(submitForm)}>
+    <Box>
       <IconTwoRhombus />
       <Box>
         <Box mt={2}>
@@ -79,9 +78,12 @@ export default function SearchNumerologyForm({
       </Box>
       <Box mt={3.75} display={'flex'} flexDirection={'column'} rowGap={2}>
         <Controller
-          name="name"
+          name="full_name"
           control={control}
-          render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+          render={({
+            field: { onChange, value },
+            fieldState: { invalid, error },
+          }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="name-id">
                 Họ tên khai sinh (nên nhập không dấu)
@@ -93,7 +95,10 @@ export default function SearchNumerologyForm({
                 id="name-id"
                 error={invalid}
                 helperText={
-                  errors.name ? (errors.name?.message as unknown as string) : ''
+                  error?.message
+                  // errors.full_name
+                  //   ? (errors.full_name?.message as unknown as string)
+                  //   : ''
                 }
               />
             </Box>
@@ -131,9 +136,12 @@ export default function SearchNumerologyForm({
           )}
         />
         <Controller
-          name="birthDay"
+          name="birth_day"
           control={control}
-          render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+          render={({
+            field: { onChange, value },
+            fieldState: { invalid, error },
+          }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="date-birthday-id">
                 Ngày/tháng/năm sinh dương lịch
@@ -152,16 +160,17 @@ export default function SearchNumerologyForm({
                   textField: {
                     id: 'date-birthday-id',
                     error: invalid,
-                    helperText: errors.birthDay
-                      ? (errors.birthDay?.message as unknown as string)
-                      : '',
+                    helperText: error?.message,
+                    // helperText: errors.birth_day
+                    //   ? (errors.birth_day?.message as unknown as string)
+                    //   : '',
                   },
                 }}
               />
             </Box>
           )}
         />
-        <Controller
+        {/* <Controller
           name="timeBirthDay"
           control={control}
           render={() => (
@@ -174,12 +183,15 @@ export default function SearchNumerologyForm({
               />
             </Box>
           )}
-        />
+        /> */}
 
         <Controller
-          name="phoneNumber"
+          name="phone"
           control={control}
-          render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+          render={({
+            field: { onChange, value },
+            fieldState: { invalid, error },
+          }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="phone-id">Nhập số điện thoại</InputLabel>
               <TextField
@@ -190,11 +202,7 @@ export default function SearchNumerologyForm({
                 onChange={onChange}
                 placeholder="Nhập số điện thoại"
                 error={invalid}
-                helperText={
-                  errors.phoneNumber
-                    ? (errors.phoneNumber?.message as unknown as string)
-                    : ''
-                }
+                helperText={error?.message}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -252,7 +260,10 @@ export default function SearchNumerologyForm({
         <Controller
           name="job"
           control={control}
-          render={({ field: { onChange, value }, fieldState: { invalid } }) => (
+          render={({
+            field: { onChange, value, ref },
+            fieldState: { invalid, error },
+          }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="job-id">
                 Công việc hiện tại bạn đang làm
@@ -263,9 +274,8 @@ export default function SearchNumerologyForm({
                 value={value}
                 id="job-id"
                 error={invalid}
-                helperText={
-                  errors.name ? (errors.job?.message as unknown as string) : ''
-                }
+                helperText={error?.message}
+                inputRef={ref}
               />
             </Box>
           )}
@@ -284,6 +294,7 @@ export default function SearchNumerologyForm({
             type="submit"
             size="large"
             color="primary"
+            onClick={onSubmitFree}
             // variant="outlined"
             // startIcon={<SearchIcon />}
           >
@@ -295,6 +306,7 @@ export default function SearchNumerologyForm({
             size="large"
             color="primary"
             variant="contained"
+            onClick={onSubmitDeep}
             // startIcon={<SearchIcon />}
           >
             Tra Cứu Chuyên sâu

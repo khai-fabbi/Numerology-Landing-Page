@@ -1,4 +1,8 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
+
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/utils/auth'
+import { HttpCode } from '@/utils/enums'
 
 export const BASE_URL = `${process.env.BASE_URL}`
 const axiosClient = axios.create({
@@ -11,12 +15,10 @@ const axiosClient = axios.create({
 // Interceptors
 axiosClient.interceptors.request.use(
   (config) => {
-    // const accessToken = Cookies.get('access_token')
-    // if (accessToken) {
-    //   // eslint-disable-next-line no-param-reassign
-    //   if (config.headers) config.headers.Authorization = `Bearer ${accessToken}`
-    //   return config
-    // }
+    const accessToken = Cookies.get(ACCESS_TOKEN_KEY)
+    if (config.headers && accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`
+    }
     return config
   },
   (error) => {
@@ -26,22 +28,15 @@ axiosClient.interceptors.request.use(
 
 axiosClient.interceptors.response.use(
   (response) => {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     return response
   },
   (error) => {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
-    const { config, data, status } = error.response
-    if (config.url === '/users' && status === 400) {
-      const listError = data.username || []
-      const mesError = listError[0]
-      throw new Error(mesError)
-    }
-    if (config.url === '/login/' && status === 401) {
-      const mesError = data.detail
-      throw new Error(mesError)
+    const { status } = error.response
+    if (status === HttpCode.UNAUTHORIZED) {
+      Cookies.remove(ACCESS_TOKEN_KEY)
+      Cookies.remove(REFRESH_TOKEN_KEY)
+
+      window.location.href = '/'
     }
 
     return Promise.reject(error)

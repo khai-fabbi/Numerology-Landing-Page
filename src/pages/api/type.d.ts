@@ -1,0 +1,42 @@
+export interface NumberParam {
+  birth_day: string
+  sex: 'M' | 'F'
+  full_name: string
+  phone: string
+  job?: string
+  r1_1?: string
+  r1_2?: string
+  r2_1?: string
+  r2_2?: string
+  r3_1?: string
+  r3_2?: string
+  r4_1?: string
+  r4_2?: string
+  r5_1?: string
+  r5_2?: string
+  l1_1?: string
+  l1_2?: string
+  l2_1?: string
+  l2_2?: string
+  l3_1?: string
+  l3_2?: string
+  l4_1?: string
+  l4_2?: string
+  l5_1?: string
+  l5_2?: string
+  eq?: string
+  iq?: string
+  aq?: string
+  cq?: string
+  type_iq_1?: string
+  type_iq_2?: string
+  type_iq_3?: string
+  type_iq_4?: string
+  type_iq_5?: string
+  type_iq_6?: string
+  type_iq_7?: string
+  type_iq_8?: string
+  v?: string
+  a?: string
+  k?: string
+}

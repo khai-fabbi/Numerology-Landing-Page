@@ -39,7 +39,7 @@ const PAGES = [
   },
   {
     name: 'Dịch vụ',
-    to: '#thong-tin-aladash',
+    to: '#',
   },
 ]
 const CALLBACK_URL_LOGIN = `${process.env.NEXTAUTH_URL}`
@@ -55,7 +55,7 @@ function ResponsiveAppBar() {
   const settings = [
     {
       name: 'Xem Trang Cá Nhân',
-      onSubmit: () => router.push('/profile'),
+      onSubmit: () => router.push('/account'),
     },
     {
       name: 'Đăng Kí Member VIP',

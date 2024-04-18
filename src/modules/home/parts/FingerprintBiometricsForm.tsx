@@ -1,3 +1,4 @@
+import type { TextFieldProps } from '@mui/material'
 import {
   Box,
   Divider,
@@ -7,39 +8,54 @@ import {
   Typography,
 } from '@mui/material'
 import * as React from 'react'
+import { type Control, Controller } from 'react-hook-form'
 
-export default function FingerprintBiometricsForm() {
+import type { FormSearch } from '../LookUpNumerology'
+
+const MIN_NUMBER = 0
+const MAX_NUMBER = 1000
+
+export const InputSearch = (props: TextFieldProps) => {
+  const inputProps = props.InputProps?.inputProps || {
+    style: {
+      textAlign: 'center',
+    },
+    maxLength: 6,
+    min: MIN_NUMBER,
+    max: MAX_NUMBER,
+  }
+  return (
+    <TextField
+      {...props}
+      type={props.type || 'number'}
+      sx={{ flex: 1, ...props.sx }}
+      InputProps={{
+        inputProps,
+      }}
+      onChange={(e) => {
+        let value = Number(parseFloat(e.target.value).toFixed(2))
+        if (value >= MAX_NUMBER) value = MAX_NUMBER
+        if (value < MIN_NUMBER) value = MIN_NUMBER
+        e.target.value = value ? value.toString() : ''
+        props.onChange?.(e)
+      }}
+    />
+  )
+}
+
+interface Props {
+  control: Control<FormSearch, any>
+}
+export default function FingerprintBiometricsForm({ control }: Props) {
   return (
     <Box>
-      <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
-        <InputLabel htmlFor="name-id">
-          Họ tên khai sinh (nên nhập không dấu)
-        </InputLabel>
-        <TextField
-          placeholder="Nhập họ tên"
-          // onChange={onChange}
-          // value={value}
-          id="name-id"
-          // error={invalid}
-          // helperText={
-          //   errors.name ? (errors.name?.message as unknown as string) : ''
-          // }
-        />
-      </Box>
       <Box sx={{ mt: 4, display: 'flex' }}>
         <Box sx={{ flex: 1 }}>
           <Box display={'flex'} columnGap={3} alignItems={'center'}>
             <InputLabel htmlFor="left-brain-id">Não trái/Tay phải</InputLabel>
-            <TextField
-              // placeholder="Nhập họ tên"
-              // onChange={onChange}
-              // value={value}
+            <InputSearch
               id="left-brain-id"
-              sx={{ maxWidth: '120px' }}
-              // error={invalid}
-              // helperText={
-              //   errors.name ? (errors.name?.message as unknown as string) : ''
-              // }
+              sx={{ maxWidth: '120px', width: '100%' }}
             />
           </Box>
           <Box
@@ -69,125 +85,107 @@ export default function FingerprintBiometricsForm() {
               <Typography component={'span'} sx={{ flex: 1 }}>
                 CÁI
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r1_1 */}
+              <Controller
+                control={control}
+                name="r1_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+
+              {/* r1_2 */}
+              <Controller
+                control={control}
+                name="r1_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 TRỎ
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r2_1 */}
+              <Controller
+                control={control}
+                name="r2_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+
+              {/* r1_2 */}
+              <Controller
+                control={control}
+                name="r2_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 GIỮA
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r3_1 */}
+              <Controller
+                control={control}
+                name="r3_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r3_2 */}
+              <Controller
+                control={control}
+                name="r3_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 NHẪN
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r4_1 */}
+              <Controller
+                control={control}
+                name="r4_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r4_2 */}
+              <Controller
+                control={control}
+                name="r4_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 ÚT
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r5_1 */}
+              <Controller
+                control={control}
+                name="r5_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* r5_2 */}
+              <Controller
+                control={control}
+                name="r5_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
           </Box>
@@ -204,16 +202,9 @@ export default function FingerprintBiometricsForm() {
         <Box sx={{ flex: 1 }}>
           <Box display={'flex'} columnGap={3} alignItems={'center'}>
             <InputLabel htmlFor="right-brain-id">Não phải/Tay trái</InputLabel>
-            <TextField
-              // placeholder="Nhập họ tên"
-              // onChange={onChange}
-              // value={value}
+            <InputSearch
               id="right-brain-id"
-              sx={{ maxWidth: '120px' }}
-              // error={invalid}
-              // helperText={
-              //   errors.name ? (errors.name?.message as unknown as string) : ''
-              // }
+              sx={{ maxWidth: '120px', width: '100%' }}
             />
           </Box>
           <Box
@@ -243,125 +234,105 @@ export default function FingerprintBiometricsForm() {
               <Typography component={'span'} sx={{ flex: 1 }}>
                 CÁI
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l1_1 */}
+              <Controller
+                control={control}
+                name="l1_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1, textAlign: 'center' }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l1_2 */}
+              <Controller
+                control={control}
+                name="l1_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 TRỎ
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l2_1 */}
+              <Controller
+                control={control}
+                name="l2_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l2_2 */}
+              <Controller
+                control={control}
+                name="l2_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 GIỮA
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l3_1 */}
+              <Controller
+                control={control}
+                name="l3_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l3_2 */}
+              <Controller
+                control={control}
+                name="l3_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 NHẪN
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l4_1 */}
+              <Controller
+                control={control}
+                name="l4_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l4_2 */}
+              <Controller
+                control={control}
+                name="l4_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', columnGap: 2 }}>
               <Typography component={'span'} sx={{ flex: 1 }}>
                 ÚT
               </Typography>
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l5_1 */}
+              <Controller
+                control={control}
+                name="l5_1"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
-              <TextField
-                sx={{ flex: 1 }}
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
+              {/* l5_2 */}
+              <Controller
+                control={control}
+                name="l5_2"
+                render={({ field: { ref, ...fieldProps } }) => (
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                )}
               />
             </Box>
           </Box>
@@ -375,60 +346,52 @@ export default function FingerprintBiometricsForm() {
         </Typography>
         <Grid container mt={0.5} spacing={2} columnSpacing={4}>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={2} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>EQ</InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="eq"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={2} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0 }}>EQ</InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={2} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>IQ</InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="iq"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={2} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0 }}>IQ</InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={2} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>AQ</InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="aq"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={2} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0 }}>AQ</InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={2} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0 }}>CQ</InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="cq"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={2} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0 }}>CQ</InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
         </Grid>
       </Box>
@@ -441,142 +404,118 @@ export default function FingerprintBiometricsForm() {
         </Typography>
         <Grid container mt={0.5} spacing={2} columnSpacing={2}>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Âm nhạc
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_1"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Âm nhạc
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Nội tâm
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_2"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Nội tâm
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Giao Tiếp
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_3"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Giao Tiếp
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Thiên nhiên
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_4"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Thiên nhiên
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
         </Grid>
         <Grid container mt={0.5} spacing={2} columnSpacing={2}>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Ngôn ngữ
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_5"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Ngôn ngữ
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Thị Giác
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_6"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Thị Giác
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Logic
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_7"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Logic
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
           <Grid item xs={6} md={3}>
-            <Box display={'flex'} columnGap={1} alignItems={'center'}>
-              <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
-                Vận động
-              </InputLabel>
-              <TextField
-                InputProps={{
-                  inputProps: {
-                    style: {
-                      textAlign: 'center',
-                      maxWidth: '50px',
-                    },
-                  },
-                }}
-              />
-            </Box>
+            <Controller
+              control={control}
+              name="type_iq_8"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <Box display={'flex'} columnGap={1} alignItems={'center'}>
+                  <InputLabel sx={{ flexShrink: 0, minWidth: '85px' }}>
+                    Vận động
+                  </InputLabel>
+                  <InputSearch inputRef={ref} {...fieldProps} />
+                </Box>
+              )}
+            />
           </Grid>
         </Grid>
       </Box>

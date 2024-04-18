@@ -2,14 +2,14 @@ import dayjs from 'dayjs'
 import * as yup from 'yup'
 
 export const searchSchema = yup.object().shape({
-  name: yup.string().required('Vui lòng nhập tên'),
+  full_name: yup.string().required('Vui lòng nhập tên'),
   sex: yup.string(),
-  phoneNumber: yup
+  phone: yup
     .string()
     .required('Vui lòng nhập số điện thoại')
     .min(8, 'Vui lòng nhập đúng số điện thoại')
     .max(13, 'Vui lòng nhập đúng số điện thoại'),
-  birthDay: yup
+  birth_day: yup
     .date()
     .required('Vui lòng chọn ngày sinh')
     .nullable()

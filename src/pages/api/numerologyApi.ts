@@ -12,6 +12,7 @@ import {
 } from '@/utils/constant'
 
 import axiosClient from './axiosClient'
+import type { NumberParam } from './type'
 
 export interface MainstreamNumberParams {
   full_name: string
@@ -70,6 +71,35 @@ const numerologyApi = {
   async getDetailNews(id: string) {
     const url = `/api/new/${id}`
     const response = await axiosClient.get<News>(url)
+    return response.data
+  },
+
+  async getNumberFreePDF(params: NumberParam) {
+    const url = '/api/so-hoc-free'
+    const config = {
+      headers: {
+        'Content-Type': 'application/pdf',
+      },
+    }
+    const response = await axiosClient.get(url, {
+      params,
+      responseType: 'arraybuffer',
+      ...config,
+    })
+    return response.data
+  },
+  async getNumberFeePDF(params: NumberParam) {
+    const url = '/api/so-hoc'
+    const config = {
+      headers: {
+        'Content-Type': 'application/pdf',
+      },
+    }
+    const response = await axiosClient.get(url, {
+      params,
+      responseType: 'arraybuffer',
+      ...config,
+    })
     return response.data
   },
 }

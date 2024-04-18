@@ -98,10 +98,13 @@ const mainNumber = [
 ]
 export default function NumerologyInfo() {
   // @ts-ignore
-  const [itemActive, setItemActive] = useState<{
-    title: any
-    description: any
-  }>(mainNumber[0])
+  const [itemActive, setItemActive] = useState<
+    | {
+        title: number
+        description: string
+      }
+    | undefined
+  >(mainNumber[0])
   return (
     <Box className="numerology-info-wrapper">
       <Container maxWidth={false}>
@@ -212,11 +215,13 @@ export default function NumerologyInfo() {
                             lineHeight: '50px',
                           }}
                         >
-                          {itemActive.title}
+                          {itemActive?.title}
                         </Typography>
                       </Typography>
                     </Box>
-                    <Typography mt={2.5}>{itemActive.description}</Typography>
+                    <Typography mt={2.5} sx={{ textAlign: 'justify' }}>
+                      {itemActive?.description}
+                    </Typography>
                     <Button
                       variant="contained"
                       color="primary"

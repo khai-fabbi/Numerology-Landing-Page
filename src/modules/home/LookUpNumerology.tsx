@@ -1,19 +1,122 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import dayjs from 'dayjs'
+import { Controller, useForm } from 'react-hook-form'
 
 import { SearchNumerologyForm } from '@/components/form'
+import { Loading } from '@/components/loading'
+import numerologyApi from '@/pages/api/numerologyApi'
+import type { NumberParam } from '@/pages/api/type'
+import { searchSchema } from '@/utils/schema'
 
 import { FingerprintBiometricsForm, TittlePage } from './parts'
+import { InputSearch } from './parts/FingerprintBiometricsForm'
+
+export type FormSearch = NumberParam
+const initialFormValue: FormSearch = {
+  birth_day: '',
+  sex: 'M',
+  phone: '',
+  full_name: '',
+  job: '',
+  r1_1: '',
+  r1_2: '',
+  r2_1: '',
+  r2_2: '',
+  r3_1: '',
+  r3_2: '',
+  r4_1: '',
+  r4_2: '',
+  r5_1: '',
+  r5_2: '',
+  l1_1: '',
+  l1_2: '',
+  l2_1: '',
+  l2_2: '',
+  l3_1: '',
+  l3_2: '',
+  l4_1: '',
+  l4_2: '',
+  l5_1: '',
+  l5_2: '',
+  eq: '',
+  iq: '',
+  aq: '',
+  cq: '',
+  type_iq_1: '',
+  type_iq_2: '',
+  type_iq_3: '',
+  type_iq_4: '',
+  type_iq_5: '',
+  type_iq_6: '',
+  type_iq_7: '',
+  type_iq_8: '',
+  v: '',
+  a: '',
+  k: '',
+}
 
 export default function LookUpNumerology() {
+  const {
+    handleSubmit,
+    control,
+    formState: { isSubmitting },
+  } = useForm<FormSearch>({
+    resolver: yupResolver(searchSchema),
+    defaultValues: initialFormValue,
+    mode: 'onChange',
+  })
+
+  const handleSubmitFree = handleSubmit(async (formData: FormSearch) => {
+    const formSend = {
+      ...formData,
+      birth_day: dayjs(formData.birth_day).format('DDMMYYYY'),
+    }
+    try {
+      const response = await numerologyApi.getNumberFreePDF(formSend)
+      const blob = new Blob([response], { type: 'application/pdf' })
+      const fileURL = URL.createObjectURL(blob)
+      // window.open(fileURL)
+      const link = document.createElement('a')
+      link.href = fileURL
+      link.setAttribute(
+        'download',
+        `${formData.full_name.split(' ').join('_')}.pdf`
+      )
+      document.body.appendChild(link)
+      link.click()
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+  })
+  const handleSubmitDeep = handleSubmit(async (formData: FormSearch) => {
+    const formSend = {
+      ...formData,
+      birth_day: dayjs(formData.birth_day).format('DDMMYYYY'),
+    }
+    try {
+      const response = await numerologyApi.getNumberFeePDF(formSend)
+      const blob = new Blob([response], { type: 'application/pdf' })
+      const fileURL = URL.createObjectURL(blob)
+      // window.open(fileURL)
+      const link = document.createElement('a')
+      link.href = fileURL
+      link.setAttribute(
+        'download',
+        `${formData.full_name.split(' ').join('_')}.pdf`
+      )
+      document.body.appendChild(link)
+      link.click()
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+  })
+
   return (
     <Box className="lookup-numerology" id="tra-cuu" py={4}>
+      <Loading isOpen={isSubmitting} />
       <Container maxWidth={false}>
         <TittlePage isCenter>
           Nhập Chỉ Số Sinh Trắc Vân Tay (Vmit) Của Bạn <br /> Để Liên Kết Với
@@ -58,45 +161,49 @@ export default function LookUpNumerology() {
                   Tiếp nhận thông tin VAK
                 </Typography>
                 <Box display={'flex'} mt={3} columnGap={3}>
-                  <TextField
-                    sx={{ flex: 1 }}
-                    placeholder="V"
-                    InputProps={{
-                      inputProps: {
-                        style: {
-                          textAlign: 'center',
-                        },
-                      },
-                    }}
+                  <Controller
+                    control={control}
+                    name="v"
+                    render={({ field: { ref, ...fieldProps } }) => (
+                      <InputSearch
+                        placeholder="V"
+                        inputRef={ref}
+                        {...fieldProps}
+                      />
+                    )}
                   />
-                  <TextField
-                    sx={{ flex: 1 }}
-                    placeholder="A"
-                    InputProps={{
-                      inputProps: {
-                        style: {
-                          textAlign: 'center',
-                        },
-                      },
-                    }}
+
+                  {/* a */}
+                  <Controller
+                    control={control}
+                    name="a"
+                    render={({ field: { ref, ...fieldProps } }) => (
+                      <InputSearch
+                        placeholder="A"
+                        inputRef={ref}
+                        {...fieldProps}
+                      />
+                    )}
                   />
-                  <TextField
-                    sx={{ flex: 1 }}
-                    placeholder="K"
-                    InputProps={{
-                      inputProps: {
-                        style: {
-                          textAlign: 'center',
-                        },
-                      },
-                    }}
+
+                  {/* k */}
+                  <Controller
+                    control={control}
+                    name="k"
+                    render={({ field: { ref, ...fieldProps } }) => (
+                      <InputSearch
+                        placeholder="K"
+                        inputRef={ref}
+                        {...fieldProps}
+                      />
+                    )}
                   />
                 </Box>
               </Box>
             </Box>
           </Grid>
           <Grid item xs={12} lg={7}>
-            <FingerprintBiometricsForm />
+            <FingerprintBiometricsForm control={control} />
           </Grid>
 
           <Grid item xs={12} md={7} lg={6}>
@@ -108,7 +215,12 @@ export default function LookUpNumerology() {
                 // },
               }}
             >
-              <SearchNumerologyForm title="Mr. Hoàng Đông" />
+              <SearchNumerologyForm
+                title="Mr. Hoàng Đông"
+                control={control}
+                onSubmitFree={handleSubmitFree}
+                onSubmitDeep={handleSubmitDeep}
+              />
             </Box>
           </Grid>
           <Grid item xs={12} md={5} lg={6} alignSelf={'center'}>
