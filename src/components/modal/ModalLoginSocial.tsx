@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Avatar, Box } from '@mui/material'
+import { Box } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import IconButton from '@mui/material/IconButton'
@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import type { SocialLoginType } from '@/models'
 
 import { ButtonSocialSignIn } from '../button'
-import { IconFacebookLogin, IconTwitterLogin } from '../icon'
+import { IconTwitterLogin } from '../icon'
 
 const MODAL_LOGIN_SOCIAL_WIDTH = '485px'
 const MODAL_LOGIN_SOCIAL_HEIGHT = '591px'
@@ -93,7 +93,7 @@ export default function ModalLoginSocial({
             flexDirection={'column'}
             gap={2.5}
           >
-            <ButtonSocialSignIn
+            {/* <ButtonSocialSignIn
               variant="contained"
               fullWidth
               color="info"
@@ -108,7 +108,7 @@ export default function ModalLoginSocial({
               onClick={() => onSubmit?.('facebook')}
             >
               Tiếp tục với Facebook
-            </ButtonSocialSignIn>
+            </ButtonSocialSignIn> */}
             <ButtonSocialSignIn
               variant="outlined"
               fullWidth

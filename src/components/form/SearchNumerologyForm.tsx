@@ -1,3 +1,4 @@
+import { ArrowDropDown } from '@mui/icons-material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import {
   Autocomplete,
@@ -11,7 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { DatePicker } from '@mui/x-date-pickers'
+import { DatePicker, TimePicker } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import type { Control } from 'react-hook-form'
@@ -170,20 +171,28 @@ export default function SearchNumerologyForm({
             </Box>
           )}
         />
-        {/* <Controller
-          name="timeBirthDay"
+        <Controller
+          name="birth_time"
           control={control}
-          render={() => (
+          render={({ field: { onChange, value } }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
-              <InputLabel htmlFor="date-birthday-id">Giờ sinh</InputLabel>
+              <InputLabel htmlFor="birth_time-id">Giờ sinh</InputLabel>
               <TimePicker
+                value={value || undefined}
                 slots={{
+                  openPickerIcon: ArrowDropDown,
+                }}
+                onChange={onChange}
+                componentsProps={{
                   openPickerIcon: IconCalendar,
+                  textField: {
+                    id: 'birth_time-id',
+                  },
                 }}
               />
             </Box>
           )}
-        /> */}
+        />
 
         <Controller
           name="phone"
