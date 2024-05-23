@@ -15,7 +15,12 @@ import type { FormSearch } from '../LookUpNumerology'
 const MIN_NUMBER = 0
 const MAX_NUMBER = 1000
 
-export const InputSearch = (props: TextFieldProps) => {
+export const InputSearch = ({
+  type = 'number',
+  sx,
+  onChange,
+  ...props
+}: TextFieldProps) => {
   const inputProps = props.InputProps?.inputProps || {
     style: {
       textAlign: 'center',
@@ -27,17 +32,37 @@ export const InputSearch = (props: TextFieldProps) => {
   return (
     <TextField
       {...props}
-      type={props.type || 'number'}
-      sx={{ flex: 1, ...props.sx }}
+      type={type}
+      sx={{ flex: 1, ...sx }}
       InputProps={{
         inputProps,
       }}
       onChange={(e) => {
-        let value = Number(parseFloat(e.target.value).toFixed(2))
-        if (value >= MAX_NUMBER) value = MAX_NUMBER
-        if (value < MIN_NUMBER) value = MIN_NUMBER
-        e.target.value = value ? value.toString() : ''
-        props.onChange?.(e)
+        if (type === 'number') {
+          // let value = Number(parseFloat(e.target.value).toFixed(2))
+          // if (value >= MAX_NUMBER) value = MAX_NUMBER
+          // if (value < MIN_NUMBER) value = MIN_NUMBER
+          // e.target.value = value ? value.toString() : ''
+
+          let { value } = e.target
+
+          // value = value.replace(/[^0-9.]/g, '')
+
+          if (value.includes('.')) {
+            const parts = value.split('.')
+            // @ts-ignore
+            if (parts[1].length > 2) {
+              // @ts-ignore
+              parts[1] = parts[1].substring(0, 2)
+            }
+            value = parts.join('.')
+          }
+
+          if (parseFloat(value) >= MAX_NUMBER) value = MAX_NUMBER.toString()
+          if (parseFloat(value) <= MIN_NUMBER) value = MIN_NUMBER.toString()
+          e.target.value = value
+        }
+        onChange?.(e)
       }}
     />
   )
@@ -90,7 +115,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="r1_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
 
@@ -112,7 +137,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="r2_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
 
@@ -134,7 +159,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="r3_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* r3_2 */}
@@ -155,7 +180,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="r4_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* r4_2 */}
@@ -176,7 +201,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="r5_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* r5_2 */}
@@ -239,7 +264,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="l1_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* l1_2 */}
@@ -260,7 +285,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="l2_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* l2_2 */}
@@ -281,7 +306,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="l3_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* l3_2 */}
@@ -302,7 +327,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="l4_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* l4_2 */}
@@ -323,7 +348,7 @@ export default function FingerprintBiometricsForm({ control }: Props) {
                 control={control}
                 name="l5_1"
                 render={({ field: { ref, ...fieldProps } }) => (
-                  <InputSearch inputRef={ref} {...fieldProps} />
+                  <InputSearch type="text" inputRef={ref} {...fieldProps} />
                 )}
               />
               {/* l5_2 */}
