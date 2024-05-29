@@ -5,33 +5,41 @@ import {
   PlaceRounded,
 } from '@mui/icons-material'
 import { Box, Grid, Typography } from '@mui/material'
-import * as React from 'react'
+import { useMemo } from 'react'
+
+import type { ProfileData } from '@/pages/api/type'
 
 import { AccountItemCard } from './components'
 
-export default function AccountInfo() {
-  const accountInfo = [
-    {
-      label: 'Họ và tên',
-      content: 'Hoàng Thành Trung',
-      icon: <Person fontSize="large" color="primary" />,
-    },
-    {
-      label: 'Ngày tháng sinh',
-      content: '12/10/1999',
-      icon: <CalendarMonthOutlined fontSize="large" color="primary" />,
-    },
-    {
-      label: 'Email',
-      content: 'hoangtrung@gmail.com',
-      icon: <MailOutline fontSize="large" color="primary" />,
-    },
-    {
-      label: 'Địa chỉ',
-      content: '123-Hai bà Trưng - Hà Nội',
-      icon: <PlaceRounded fontSize="large" color="primary" />,
-    },
-  ]
+interface Props {
+  profileInfo?: ProfileData
+}
+
+export default function AccountInfo({ profileInfo }: Props) {
+  const accountInfo = useMemo(() => {
+    return [
+      {
+        label: 'Họ và tên',
+        content: profileInfo?.profile.name || '',
+        icon: <Person fontSize="large" color="primary" />,
+      },
+      {
+        label: 'Ngày tháng sinh',
+        content: profileInfo?.profile.birth_day || '',
+        icon: <CalendarMonthOutlined fontSize="large" color="primary" />,
+      },
+      {
+        label: 'Email',
+        content: profileInfo?.email || '',
+        icon: <MailOutline fontSize="large" color="primary" />,
+      },
+      {
+        label: 'Địa chỉ',
+        content: profileInfo?.profile.address || '',
+        icon: <PlaceRounded fontSize="large" color="primary" />,
+      },
+    ]
+  }, [profileInfo])
   return (
     <Box component={'section'}>
       <Typography component={'h3'} fontSize={'1.75rem'} fontWeight={600}>

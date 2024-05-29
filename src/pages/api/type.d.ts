@@ -41,3 +41,21 @@ export interface NumberParam {
   a?: string
   k?: string
 }
+
+export interface IResponseProfile {
+  data: ProfileData
+}
+export interface ProfileData {
+  id: number
+  email: string
+  profile: Profile
+}
+
+export interface Profile {
+  id: number
+  name: string
+  birth_day: string | null
+  address: string | null
+  phone: string | null
+  number_download: number
+}

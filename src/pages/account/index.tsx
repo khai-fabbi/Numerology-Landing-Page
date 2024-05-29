@@ -1,6 +1,8 @@
 import { Box, Container, Divider, Grid } from '@mui/material'
 import { type ReactElement, useState } from 'react'
+import useSWR from 'swr'
 
+import { Loading } from '@/components/loading'
 import TabPanelAccount from '@/components/views/TabPanelAccount'
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
@@ -12,6 +14,8 @@ import {
 } from '@/modules/account'
 import { goToTop } from '@/utils/helpers'
 
+import profileApi from '../api/profile'
+
 const AccountPage: NextPageWithLayout = () => {
   const [tabActive, setTabActive] = useState(1)
   const handleChangeTab = (value: number) => {
@@ -19,8 +23,14 @@ const AccountPage: NextPageWithLayout = () => {
     goToTop()
   }
   // const theme = useTheme();
+  const { data: profileInfo, isLoading: isLoadingProfile } = useSWR(
+    '/api/profile',
+    () => profileApi.getProfile()
+  )
+
   return (
     <Box className="bg-account-page">
+      <Loading isOpen={isLoadingProfile} />
       <Container maxWidth={false}>
         <Box component={'h2'} py={3} fontWeight={500}>
           PPns Account
@@ -31,11 +41,12 @@ const AccountPage: NextPageWithLayout = () => {
             <SideBarAccount
               tabActive={tabActive}
               onChangeTab={handleChangeTab}
+              profileInfo={profileInfo?.data}
             />
           </Grid>
           <Grid item xs={12} md={9}>
             <TabPanelAccount index={1} value={tabActive}>
-              <AccountInfo />
+              <AccountInfo profileInfo={profileInfo?.data} />
             </TabPanelAccount>
             <TabPanelAccount index={2} value={tabActive}>
               <PackageByAccount />

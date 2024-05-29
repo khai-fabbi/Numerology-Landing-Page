@@ -9,6 +9,8 @@ import {
 } from '@mui/material'
 import * as React from 'react'
 
+import type { ProfileData } from '@/pages/api/type'
+
 const LOGOUT_VALUE = 3
 const SIDEBAR_MENU_LIST = [
   {
@@ -27,8 +29,13 @@ const SIDEBAR_MENU_LIST = [
 interface Props {
   tabActive: number
   onChangeTab: (value: number) => void
+  profileInfo?: ProfileData
 }
-export default function SideBarAccount({ tabActive, onChangeTab }: Props) {
+export default function SideBarAccount({
+  tabActive,
+  onChangeTab,
+  profileInfo,
+}: Props) {
   return (
     <Box>
       <Box>
@@ -38,9 +45,9 @@ export default function SideBarAccount({ tabActive, onChangeTab }: Props) {
           sx={{ width: 110, height: 110 }}
         />
         <Box component={'h2'} mt={1} fontWeight={600}>
-          Hoangtrung
+          {profileInfo?.profile.name}
         </Box>
-        <Typography color={'#F0F8FD'}>hoangtrung@gmail.com</Typography>
+        <Typography color={'#F0F8FD'}>{profileInfo?.email}</Typography>
       </Box>
       <List sx={{ mt: 5 }}>
         {SIDEBAR_MENU_LIST.map((item) => {
