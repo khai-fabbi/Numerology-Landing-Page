@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { signOut } from 'next-auth/react'
 
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/utils/auth'
 import { HttpCode } from '@/utils/enums'
@@ -35,8 +36,8 @@ axiosClient.interceptors.response.use(
     if (status === HttpCode.UNAUTHORIZED) {
       Cookies.remove(ACCESS_TOKEN_KEY)
       Cookies.remove(REFRESH_TOKEN_KEY)
-
-      window.location.href = '/'
+      signOut()
+      // window.location.href = '/'
     }
 
     return Promise.reject(error)

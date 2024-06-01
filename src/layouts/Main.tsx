@@ -1,11 +1,12 @@
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Box, Fab } from '@mui/material'
 import Cookies from 'js-cookie'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { type ReactNode, useEffect } from 'react'
 
 import ScrollTop from '@/components/common/ScrollTop'
 import numerologyApi from '@/pages/api/numerologyApi'
+import { ACCESS_TOKEN_KEY } from '@/utils/auth'
 
 import Footer from './Footer'
 import Header from './Header'
@@ -30,15 +31,25 @@ const Main = (props: IMainProps) => {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err)
+
+      signOut().then(() => {
+        Cookies.remove('access_token')
+        Cookies.remove('refresh_token')
+      })
     }
   }
   useEffect(() => {
-    if (session && session.account.access_token) {
+    if (
+      session &&
+      session.account.access_token &&
+      !Cookies.get(ACCESS_TOKEN_KEY)
+    ) {
       const { account } = session
 
       convertTokenFunc(account.access_token as string, account.provider)
     }
   }, [session])
+
   return (
     <Box sx={{ width: '100%' }} id="wrapper" component={'main'}>
       {props.meta}

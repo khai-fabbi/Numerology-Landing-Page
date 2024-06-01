@@ -10,7 +10,6 @@ import { useRouter } from 'next/router'
 import type { SocialLoginType } from '@/models'
 
 import { ButtonSocialSignIn } from '../button'
-import { IconTwitterLogin } from '../icon'
 
 const MODAL_LOGIN_SOCIAL_WIDTH = '485px'
 const MODAL_LOGIN_SOCIAL_HEIGHT = '591px'
@@ -130,7 +129,7 @@ export default function ModalLoginSocial({
             >
               Tiếp tục với Google
             </ButtonSocialSignIn>
-            <ButtonSocialSignIn
+            {/* <ButtonSocialSignIn
               variant="contained"
               fullWidth
               color="info"
@@ -139,7 +138,7 @@ export default function ModalLoginSocial({
               onClick={() => onSubmit?.('twitter')}
             >
               Tiếp tục với Twitter
-            </ButtonSocialSignIn>
+            </ButtonSocialSignIn> */}
           </Box>
           <Typography
             variant="body2"
