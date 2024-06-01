@@ -20,12 +20,12 @@ export default function AccountInfo({ profileInfo }: Props) {
     return [
       {
         label: 'Họ và tên',
-        content: profileInfo?.profile.name || '',
+        content: profileInfo?.profile?.name || '',
         icon: <Person fontSize="large" color="primary" />,
       },
       {
         label: 'Ngày tháng sinh',
-        content: profileInfo?.profile.birth_day || '',
+        content: profileInfo?.profile?.birth_day || '',
         icon: <CalendarMonthOutlined fontSize="large" color="primary" />,
       },
       {
@@ -35,7 +35,7 @@ export default function AccountInfo({ profileInfo }: Props) {
       },
       {
         label: 'Địa chỉ',
-        content: profileInfo?.profile.address || '',
+        content: profileInfo?.profile?.address || '',
         icon: <PlaceRounded fontSize="large" color="primary" />,
       },
     ]

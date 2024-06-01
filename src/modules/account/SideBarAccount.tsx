@@ -1,14 +1,23 @@
 import {
   Avatar,
   Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   Typography,
 } from '@mui/material'
+import Cookies from 'js-cookie'
+import { signOut } from 'next-auth/react'
 import * as React from 'react'
 
+import { useBoolean } from '@/hooks'
 import type { ProfileData } from '@/pages/api/type'
 
 const LOGOUT_VALUE = 3
@@ -36,8 +45,15 @@ export default function SideBarAccount({
   onChangeTab,
   profileInfo,
 }: Props) {
+  const [isVisible, openModal, closeModal] = useBoolean()
+  const handleLogout = () => {
+    signOut().then(() => {
+      Cookies.remove('access_token')
+      Cookies.remove('refresh_token')
+    })
+  }
   return (
-    <Box>
+    <>
       <Box>
         <Avatar
           alt="Remy Sharp"
@@ -57,7 +73,10 @@ export default function SideBarAccount({
               <ListItemButton
                 selected={isActive}
                 onClick={() => {
-                  if (item.value === LOGOUT_VALUE) return
+                  if (item.value === LOGOUT_VALUE) {
+                    openModal()
+                    return
+                  }
                   onChangeTab(item.value)
                 }}
               >
@@ -75,6 +94,35 @@ export default function SideBarAccount({
           )
         })}
       </List>
-    </Box>
+
+      <Dialog
+        open={isVisible}
+        onClose={closeModal}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Bạn có chắc chắn đăng xuất ???
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Sau khi đăng xuất bạn sẽ không thể sử dụng dịch vụ của Khoa học
+            những con số...
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={closeModal}
+            style={{ color: 'black' }}
+            variant="text"
+          >
+            Hủy
+          </Button>
+          <Button onClick={handleLogout} variant="contained">
+            Đăng xuất
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   )
 }

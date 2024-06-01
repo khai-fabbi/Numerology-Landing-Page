@@ -12,7 +12,7 @@ import {
 } from '@/utils/constant'
 
 import axiosClient from './axiosClient'
-import type { NumberParam } from './type'
+import type { IResponsePackageList, NumberParam } from './type'
 
 export interface MainstreamNumberParams {
   full_name: string
@@ -100,6 +100,11 @@ const numerologyApi = {
       responseType: 'arraybuffer',
       ...config,
     })
+    return response.data
+  },
+  async getPackages() {
+    const url = '/api/package'
+    const response = await axiosClient.get<IResponsePackageList>(url)
     return response.data
   },
 }

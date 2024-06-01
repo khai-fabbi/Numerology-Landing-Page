@@ -59,3 +59,16 @@ export interface Profile {
   phone: string | null
   number_download: number
 }
+
+export interface IResponsePackageList {
+  data: Package[]
+}
+
+export interface Package {
+  id: number
+  name: string
+  price: number
+  price_sale: number | null
+  number_download: number
+  content: string
+}
