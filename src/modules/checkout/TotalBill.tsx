@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 import * as React from 'react'
 
 import { convertToVND } from '@/utils/helpers'
@@ -8,6 +9,7 @@ import { TitleItem } from './parts'
 
 export default function TotalBill() {
   const router = useRouter()
+  const { data: session } = useSession()
   return (
     <Box
       sx={{
@@ -45,10 +47,10 @@ export default function TotalBill() {
                 lineHeight: 1.5,
               }}
             >
-              Khải
+              {session?.user.name}
             </Typography>
             <Typography sx={{ fontSize: 18, color: 'text.secondary' }}>
-              vukhaiabc@gmail.com
+              {session?.user.email}
             </Typography>
           </Box>
         </Grid>

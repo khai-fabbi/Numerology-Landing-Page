@@ -32,6 +32,7 @@ export default function Banner() {
   const AnimatedTypography = animated(Typography)
   return (
     <Box
+      id="intro"
       className="banner-wrapper"
       sx={{
         position: 'relative',

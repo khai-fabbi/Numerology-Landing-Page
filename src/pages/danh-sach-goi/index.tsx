@@ -1,11 +1,10 @@
 import { Box, Container, Grid, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 import { type ReactElement } from 'react'
 import useSWR from 'swr'
 
 import { PackageCard } from '@/components/card'
 import { Loading } from '@/components/loading'
-import { ModalPayment } from '@/components/modal'
-import { useToggle } from '@/hooks'
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
 import type { NextPageWithLayout } from '@/models'
@@ -13,11 +12,14 @@ import type { NextPageWithLayout } from '@/models'
 import numerologyApi from '../api/numerologyApi'
 
 const PackageList: NextPageWithLayout = () => {
-  const [isOpenModal, toggleModal] = useToggle()
+  const router = useRouter()
   const { data: packageList, isLoading } = useSWR('/api/package', () =>
     numerologyApi.getPackages()
   )
-  console.log(packageList)
+
+  const handleCheckout = () => {
+    router.push('/check-out')
+  }
   return (
     <Box className="bg-account-page" py={8}>
       <Loading isOpen={isLoading} />
@@ -41,14 +43,14 @@ const PackageList: NextPageWithLayout = () => {
                 <Grid key={packageItem.id} item xs={12} sm={6} md={4} lg={3}>
                   <PackageCard
                     packageInfo={packageItem}
-                    onSubmit={toggleModal}
+                    onSubmit={handleCheckout}
                   />
                 </Grid>
               )
             })}
         </Grid>
       </Container>
-      <ModalPayment open={isOpenModal} handleClose={toggleModal} />
+      {/* <ModalPayment open={isOpenModal} handleClose={toggleModal} /> */}
     </Box>
   )
 }

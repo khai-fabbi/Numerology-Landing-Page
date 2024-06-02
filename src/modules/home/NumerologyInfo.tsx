@@ -1,11 +1,15 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { useState } from 'react'
 
-import { AccordionCustom } from '@/components/accordion'
-
 import { TittlePage } from './parts'
+
+const AccordionCustom = dynamic(
+  () => import('@/components/accordion/AccordionCustom'),
+  { ssr: false }
+)
 
 const NUMEROLOGY_INTERESTING = [
   {

@@ -1,3 +1,4 @@
+import useBanks from './useBanks'
 import useBoolean from './useBoolean'
 import useCopyToClipboard from './useCopyToClipBoard'
 import { useHover } from './useHover'
@@ -6,6 +7,7 @@ import { useToggle } from './useToggle'
 import useWindowSize from './useWindowSize'
 
 export {
+  useBanks,
   useBoolean,
   useCopyToClipboard,
   useHover,

@@ -31,3 +31,15 @@ export const convertToVND = (value: number) =>
   )
 
 export const goToTop = () => window.scrollTo(0, 0)
+
+export const generateRandomText = (length: number) => {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  let result = ''
+  const charactersLength = characters.length
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
+}

@@ -27,19 +27,19 @@ import type { SocialLoginType } from '@/models'
 const PAGES = [
   {
     name: 'Trang chủ',
-    to: '#',
+    to: '/',
   },
   {
     name: 'Giới thiệu',
-    to: '#',
+    to: '/#intro',
   },
   {
     name: 'Tra cứu',
-    to: '#tra-cuu',
+    to: '/#tra-cuu',
   },
   {
     name: 'Dịch vụ',
-    to: '#',
+    to: '/danh-sach-goi',
   },
 ]
 const CALLBACK_URL_LOGIN = `${process.env.NEXTAUTH_URL}`
@@ -151,12 +151,14 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex', justifyContent: 'center' },
             }}
           >
-            {PAGES.map(({ name, to }) => (
+            {PAGES.map(({ name, to }, idx) => (
               <Button
                 key={name}
                 size="small"
                 sx={{ textTransform: 'uppercase' }}
-                onClick={() => router.push(to, undefined, { scroll: false })}
+                onClick={() =>
+                  router.push(to, undefined, { scroll: idx === 3 })
+                }
               >
                 {name}
               </Button>

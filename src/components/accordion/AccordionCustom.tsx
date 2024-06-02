@@ -33,7 +33,7 @@ export default function AccordionCustom({
   description,
 }: AccordionCustomProps) {
   return (
-    <Accordion>
+    <Accordion suppressHydrationWarning>
       <AccordionSummary
         expandIcon={<IconArrowRightAccordion />}
         aria-controls="panel-content"
