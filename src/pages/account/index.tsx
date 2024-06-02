@@ -25,11 +25,7 @@ const AccountPage: NextPageWithLayout = () => {
   // const theme = useTheme();
   const { data: profileInfo, isLoading: isLoadingProfile } = useSWR(
     '/api/profile',
-    () => profileApi.getProfile(),
-    {
-      keepPreviousData: true,
-      refreshInterval: 60 * 1000,
-    }
+    () => profileApi.getProfile()
   )
 
   return (

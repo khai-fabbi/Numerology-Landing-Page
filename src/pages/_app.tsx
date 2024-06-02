@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import type { ReactElement } from 'react'
+import { SWRConfig } from 'swr'
 
 import type { NextPageWithLayout } from '@/models'
 import { philosopher, raleway } from '@/styles/fonts'
@@ -36,21 +37,29 @@ const MyApp = ({
       refetchOnWindowFocus={false}
       refetchInterval={60 * 60}
     >
-      <LocalizationProvider
-        dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
-        // @ts-ignore
-        dateAdapter={CustomDateAdapter}
+      <SWRConfig
+        value={{
+          refreshInterval: 0,
+          keepPreviousData: true,
+          revalidateOnFocus: true,
+        }}
       >
-        <CacheProvider value={emotionCache}>
-          <div className={`${raleway.variable} ${philosopher.variable}`}>
-            <ThemeProvider theme={lightTheme}>
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-              <CssBaseline />
-              {getLayout(<Component {...pageProps} />)}
-            </ThemeProvider>
-          </div>
-        </CacheProvider>
-      </LocalizationProvider>
+        <LocalizationProvider
+          dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
+          // @ts-ignore
+          dateAdapter={CustomDateAdapter}
+        >
+          <CacheProvider value={emotionCache}>
+            <div className={`${raleway.variable} ${philosopher.variable}`}>
+              <ThemeProvider theme={lightTheme}>
+                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                <CssBaseline />
+                {getLayout(<Component {...pageProps} />)}
+              </ThemeProvider>
+            </div>
+          </CacheProvider>
+        </LocalizationProvider>
+      </SWRConfig>
     </SessionProvider>
   )
 }

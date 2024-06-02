@@ -61,7 +61,7 @@ export default function SideBarAccount({
           sx={{ width: 110, height: 110 }}
         />
         <Box component={'h2'} mt={1} fontWeight={600}>
-          {profileInfo?.profile.name}
+          {profileInfo?.profile?.name}
         </Box>
         <Typography color={'#F0F8FD'}>{profileInfo?.email}</Typography>
       </Box>

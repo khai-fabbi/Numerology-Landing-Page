@@ -6,6 +6,7 @@ const { i18n } = require('./i18n.config')
 
 module.exports = withBundleAnalyzer({
   output: 'standalone',
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },

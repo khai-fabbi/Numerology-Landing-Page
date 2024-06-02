@@ -14,7 +14,7 @@ import numerologyApi from '../api/numerologyApi'
 
 const PackageList: NextPageWithLayout = () => {
   const [isOpenModal, toggleModal] = useToggle()
-  const { data: packageList, isLoading } = useSWR('/api/profile', () =>
+  const { data: packageList, isLoading } = useSWR('/api/package', () =>
     numerologyApi.getPackages()
   )
   console.log(packageList)
@@ -35,13 +35,17 @@ const PackageList: NextPageWithLayout = () => {
           Chọn gói bên dưới nhé!
         </Typography>
         <Grid container spacing={2.5} mt={2}>
-          {packageList?.data.map((packageItem) => {
-            return (
-              <Grid key={packageItem.id} item xs={12} sm={6} md={4} lg={3}>
-                <PackageCard packageInfo={packageItem} onSubmit={toggleModal} />
-              </Grid>
-            )
-          })}
+          {packageList &&
+            packageList.data.map((packageItem) => {
+              return (
+                <Grid key={packageItem.id} item xs={12} sm={6} md={4} lg={3}>
+                  <PackageCard
+                    packageInfo={packageItem}
+                    onSubmit={toggleModal}
+                  />
+                </Grid>
+              )
+            })}
         </Grid>
       </Container>
       <ModalPayment open={isOpenModal} handleClose={toggleModal} />
