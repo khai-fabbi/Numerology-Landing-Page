@@ -5,11 +5,13 @@ import type { ReactNode } from 'react'
 interface ButtonBankProps {
   children: ReactNode
   isActive?: boolean
+  onClick?: () => void
 }
 
 export default function ButtonBank({
   children,
   isActive = false,
+  onClick,
 }: ButtonBankProps) {
   return (
     <Box
@@ -31,6 +33,7 @@ export default function ButtonBank({
           borderColor: '#2979FF',
         },
       }}
+      onClick={onClick}
     >
       {children}
     </Box>

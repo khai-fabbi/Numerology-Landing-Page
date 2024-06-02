@@ -2,25 +2,30 @@ import HistoryIcon from '@mui/icons-material/History'
 import { Box, Divider, Grid, Tooltip, Typography } from '@mui/material'
 import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { ButtonBank } from '@/components/button'
 import { Loading } from '@/components/loading'
 import { ModalInfo } from '@/components/modal'
 import { useBanks, useToggle } from '@/hooks'
 import type { Bank } from '@/hooks/useBanks'
+import type { Package } from '@/pages/api/type'
 import { convertToVND, generateRandomText } from '@/utils/helpers'
 
 import { TitleItem } from './parts'
 
 const TextCopy = dynamic(() => import('./parts/TextCopy'), { ssr: false })
 
-const NUM_OF_QRCODE = 8
+const NUM_OF_QRCODE = 6
 const getQRCodeUrl = (bankInfo: Bank, codeGen: string) => {
   return `https://img.vietqr.io/image/${bankInfo.code}-${bankInfo.account_number}-qr_only.jpg?addInfo=${codeGen}&accountName=${bankInfo.account_holder}`
 }
 
-export default function BankInfo() {
+interface BankInfoProps {
+  packageSelected: Package | null
+}
+
+export default function BankInfo({ packageSelected }: BankInfoProps) {
   const [isOpenQR, toggleModalQR] = useToggle(false)
   const { banks, isLoading } = useBanks()
 
@@ -57,6 +62,12 @@ export default function BankInfo() {
     fetchQRCode(bankSelected, genQACode)
   }, [bankSelected])
 
+  const pricePackage = useMemo(() => {
+    return convertToVND(
+      packageSelected?.price_sale || packageSelected?.price || 0
+    )
+  }, [packageSelected])
+
   return (
     <Box
       sx={{
@@ -89,38 +100,23 @@ export default function BankInfo() {
           Chọn ngân hàng để hiển thị số tài khoản tương ứng:
         </Typography>
         <Grid container spacing={1}>
-          <Grid item xs={4} sm={3}>
-            <ButtonBank isActive>
-              <Box
-                component="img"
-                src="https://api.vietqr.io/img/VCB.png"
-                alt="bank"
-                width={'100%'}
-              />
-            </ButtonBank>
-          </Grid>
-          <Grid item xs={4} sm={3}>
-            <ButtonBank>
-              <Box
-                component="img"
-                src="https://api.vietqr.io/img/BIDV.png"
-                alt="bank"
-                width={'100%'}
-                borderRadius={2}
-              />
-            </ButtonBank>
-          </Grid>
-          <Grid item xs={4} sm={3}>
-            <ButtonBank>
-              <Box
-                component="img"
-                src="https://api.vietqr.io/img/VBA.png"
-                alt="bank"
-                width={'100%'}
-                borderRadius={2}
-              />
-            </ButtonBank>
-          </Grid>
+          {banks?.data.map((bank) => {
+            return (
+              <Grid key={bank.id} item xs={4} sm={3}>
+                <ButtonBank
+                  isActive={bankSelected?.id === bank.id}
+                  onClick={() => setBankSelected(bank)}
+                >
+                  <Box
+                    component="img"
+                    src={`${process.env.BASE_URL}/${bank.image}`}
+                    alt="bank"
+                    width={'100%'}
+                  />
+                </ButtonBank>
+              </Grid>
+            )
+          })}
         </Grid>
       </Box>
       <Box mt={2} bgcolor="common.white" borderRadius={2} p={2.5}>
@@ -128,7 +124,7 @@ export default function BankInfo() {
           <Grid item xs={6}>
             <TitleItem>SỐ TIỀN CẦN THANH TOÁN</TitleItem>
             <TextCopy
-              title={convertToVND(999000)}
+              title={pricePackage}
               sx={{ fontWeight: 600, fontSize: 24, color: '#23C27F' }}
             />
           </Grid>
@@ -193,6 +189,14 @@ export default function BankInfo() {
         </Box>
         <Divider sx={{ my: 2.5, borderColor: 'grey.100' }} />
         <Box>
+          <TitleItem>NGÂN HÀNG</TitleItem>
+          <TextCopy
+            title={bankSelected?.bank || ''}
+            sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
+          />
+        </Box>
+        <Divider sx={{ my: 2.5, borderColor: 'grey.100' }} />
+        <Box>
           <TitleItem>SỐ TÀI KHOẢN</TitleItem>
           <TextCopy
             title={bankSelected?.account_number || ''}
@@ -219,7 +223,12 @@ export default function BankInfo() {
         </Box>
       </Box>
       <ModalInfo open={isOpenQR} handleClose={toggleModalQR}>
-        <Box component={'img'} src={imageQRCode} width={'100%'} />
+        <Box
+          component={'img'}
+          src={imageQRCode}
+          width={'100%'}
+          sx={{ mt: 3 }}
+        />
       </ModalInfo>
     </Box>
   )

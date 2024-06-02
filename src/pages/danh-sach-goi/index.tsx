@@ -8,16 +8,24 @@ import { Loading } from '@/components/loading'
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
 import type { NextPageWithLayout } from '@/models'
+import { useStore } from '@/store/useStore'
 
 import numerologyApi from '../api/numerologyApi'
+import type { Package } from '../api/type'
 
 const PackageList: NextPageWithLayout = () => {
   const router = useRouter()
+  const { setPackageSelected } = useStore((state) => ({
+    setPackageSelected: state.setPackageSelected,
+  }))
   const { data: packageList, isLoading } = useSWR('/api/package', () =>
     numerologyApi.getPackages()
   )
 
-  const handleCheckout = () => {
+  const handleCheckout = (packageItem: Package) => {
+    if (!packageItem) return
+    setPackageSelected(packageItem)
+
     router.push('/check-out')
   }
   return (
@@ -43,7 +51,7 @@ const PackageList: NextPageWithLayout = () => {
                 <Grid key={packageItem.id} item xs={12} sm={6} md={4} lg={3}>
                   <PackageCard
                     packageInfo={packageItem}
-                    onSubmit={handleCheckout}
+                    onSubmit={() => handleCheckout(packageItem)}
                   />
                 </Grid>
               )

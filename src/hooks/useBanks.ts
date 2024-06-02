@@ -9,7 +9,8 @@ export interface Bank {
   branch: string | null
   account_number: string
   account_holder: string
-  code: number
+  code: string
+  image: string
 }
 
 interface IResponseBanks {

@@ -3,13 +3,24 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import * as React from 'react'
 
+import type { Package } from '@/pages/api/type'
 import { convertToVND } from '@/utils/helpers'
 
 import { TitleItem } from './parts'
 
-export default function TotalBill() {
+interface TotalBillProps {
+  packageSelected: Package | null
+}
+
+export default function TotalBill({ packageSelected }: TotalBillProps) {
   const router = useRouter()
   const { data: session } = useSession()
+
+  const pricePackage = React.useMemo(() => {
+    return convertToVND(
+      packageSelected?.price_sale || packageSelected?.price || 0
+    )
+  }, [packageSelected])
   return (
     <Box
       sx={{
@@ -25,7 +36,9 @@ export default function TotalBill() {
           <Typography
             sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
           >
-            IRLWWR
+            <span
+              dangerouslySetInnerHTML={{ __html: packageSelected?.name || '' }}
+            ></span>
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -73,7 +86,11 @@ export default function TotalBill() {
                 sx={{ mb: 1, fontSize: 18, fontWeight: 700 }}
                 color="text.secondary"
               >
-                Đăng kí thành viên VIP
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: packageSelected?.name || '',
+                  }}
+                ></span>
               </Typography>
 
               <Typography
@@ -81,20 +98,22 @@ export default function TotalBill() {
                 color="primary"
                 sx={{ fontSize: 18, fontWeight: 500 }}
               >
-                {convertToVND(999000)}
+                {pricePackage}
               </Typography>
-              <Typography
-                component="span"
-                ml={1}
-                color="text.secondary"
-                sx={{
-                  fontSize: 14,
-                  fontStyle: 'italic',
-                  textDecoration: 'line-through',
-                }}
-              >
-                {convertToVND(1100000)}
-              </Typography>
+              {packageSelected?.price_sale && (
+                <Typography
+                  component="span"
+                  ml={1}
+                  color="text.secondary"
+                  sx={{
+                    fontSize: 14,
+                    fontStyle: 'italic',
+                    textDecoration: 'line-through',
+                  }}
+                >
+                  {convertToVND(packageSelected.price || 0)}
+                </Typography>
+              )}
             </Box>
           </Box>
         </Grid>
@@ -114,7 +133,7 @@ export default function TotalBill() {
               borderBottomLeftRadius: 20,
             }}
           >
-            Tổng cộng: {convertToVND(999000)}
+            Tổng cộng: {pricePackage}
           </Typography>
         </Grid>
       </Grid>
