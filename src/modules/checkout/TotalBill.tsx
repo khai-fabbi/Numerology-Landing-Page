@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import * as React from 'react'
@@ -10,9 +10,13 @@ import { TitleItem } from './parts'
 
 interface TotalBillProps {
   packageSelected: Package | null
+  onSubmitPayment: () => void
 }
 
-export default function TotalBill({ packageSelected }: TotalBillProps) {
+export default function TotalBill({
+  packageSelected,
+  onSubmitPayment,
+}: TotalBillProps) {
   const router = useRouter()
   const { data: session } = useSession()
 
@@ -21,122 +25,142 @@ export default function TotalBill({ packageSelected }: TotalBillProps) {
       packageSelected?.price_sale || packageSelected?.price || 0
     )
   }, [packageSelected])
+
   return (
-    <Box
-      sx={{
-        p: 3,
-        borderRadius: 5,
-        boxShadow: '0 15px 25px -5px rgba(211, 211, 211, 0.25)',
-        bgcolor: 'common.white',
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <TitleItem>Xem lại đơn hàng</TitleItem>
-          <Typography
-            sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
-          >
-            <span
-              dangerouslySetInnerHTML={{ __html: packageSelected?.name || '' }}
-            ></span>
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <TitleItem>Phương thức thanh toán</TitleItem>
-          <Typography
-            sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
-          >
-            Chuyển khoản
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Box borderRadius={2} p={2.5} bgcolor="#F6F7FB">
-            <TitleItem>Khách hàng</TitleItem>
+    <Box>
+      <Box
+        sx={{
+          p: 3,
+          borderRadius: 5,
+          boxShadow: '0 15px 25px -5px rgba(211, 211, 211, 0.25)',
+          bgcolor: 'common.white',
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TitleItem>Xem lại đơn hàng</TitleItem>
             <Typography
-              sx={{
-                fontWeight: 700,
-                fontSize: 24,
-                color: 'text.secondary',
-                lineHeight: 1.5,
-              }}
+              sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
             >
-              {session?.user.name}
-            </Typography>
-            <Typography sx={{ fontSize: 18, color: 'text.secondary' }}>
-              {session?.user.email}
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Box sx={{ display: 'flex', gap: 3 }}>
-            <Box width={100} height={100}>
-              <Box
-                component="img"
-                src={`${router.basePath}/assets/images/logo-vip.png`}
-                width={'100%'}
-                sx={{
-                  objectFit: 'cover',
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: packageSelected?.name || '',
                 }}
-                alt="Logo vip member"
-              />
+              ></span>
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <TitleItem>Phương thức thanh toán</TitleItem>
+            <Typography
+              sx={{ fontWeight: 600, fontSize: 18, color: 'text.secondary' }}
+            >
+              Chuyển khoản
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Box borderRadius={2} p={2.5} bgcolor="#F6F7FB">
+              <TitleItem>Khách hàng</TitleItem>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: 24,
+                  color: 'text.secondary',
+                  lineHeight: 1.5,
+                }}
+              >
+                {session?.user.name}
+              </Typography>
+              <Typography sx={{ fontSize: 18, color: 'text.secondary' }}>
+                {session?.user.email}
+              </Typography>
             </Box>
-
-            <Box mt={2}>
-              <Typography
-                sx={{ mb: 1, fontSize: 18, fontWeight: 700 }}
-                color="text.secondary"
-              >
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: packageSelected?.name || '',
+          </Grid>
+          <Grid item xs={12}>
+            <Box sx={{ display: 'flex', gap: 3 }}>
+              <Box width={100} height={100}>
+                <Box
+                  component="img"
+                  src={`${router.basePath}/assets/images/logo-vip.png`}
+                  width={'100%'}
+                  sx={{
+                    objectFit: 'cover',
                   }}
-                ></span>
-              </Typography>
+                  alt="Logo vip member"
+                />
+              </Box>
 
-              <Typography
-                component="span"
-                color="primary"
-                sx={{ fontSize: 18, fontWeight: 500 }}
-              >
-                {pricePackage}
-              </Typography>
-              {packageSelected?.price_sale && (
+              <Box mt={2}>
+                <Typography
+                  sx={{ mb: 1, fontSize: 18, fontWeight: 700 }}
+                  color="text.secondary"
+                >
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: packageSelected?.name || '',
+                    }}
+                  ></span>
+                </Typography>
+
                 <Typography
                   component="span"
-                  ml={1}
-                  color="text.secondary"
-                  sx={{
-                    fontSize: 14,
-                    fontStyle: 'italic',
-                    textDecoration: 'line-through',
-                  }}
+                  color="primary"
+                  sx={{ fontSize: 18, fontWeight: 500 }}
                 >
-                  {convertToVND(packageSelected.price || 0)}
+                  {pricePackage}
                 </Typography>
-              )}
+                {packageSelected?.price_sale && (
+                  <Typography
+                    component="span"
+                    ml={1}
+                    color="text.secondary"
+                    sx={{
+                      fontSize: 14,
+                      fontStyle: 'italic',
+                      textDecoration: 'line-through',
+                    }}
+                  >
+                    {convertToVND(packageSelected.price || 0)}
+                  </Typography>
+                )}
+              </Box>
             </Box>
-          </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography
+              sx={{
+                color: (theme) => theme.palette.primary.main,
+                mx: -3,
+                mb: -3,
+                fontSize: 20,
+                fontWeight: 700,
+                bgcolor: 'grey.200',
+                py: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                borderBottomRightRadius: 20,
+                borderBottomLeftRadius: 20,
+              }}
+            >
+              Tổng cộng: {pricePackage}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Typography
-            sx={{
-              color: (theme) => theme.palette.primary.main,
-              mx: -3,
-              mb: -3,
-              fontSize: 20,
-              fontWeight: 700,
-              bgcolor: 'grey.200',
-              py: 2,
-              display: 'flex',
-              justifyContent: 'center',
-              borderBottomRightRadius: 20,
-              borderBottomLeftRadius: 20,
-            }}
-          >
-            Tổng cộng: {pricePackage}
-          </Typography>
-        </Grid>
-      </Grid>
+      </Box>
+
+      <Box
+        sx={{
+          mt: 2,
+          display: 'flex',
+          gap: 2,
+        }}
+      >
+        <Button variant="outlined" sx={{ flex: 1 }} onClick={router.back}>
+          Huỷ
+        </Button>
+        <Button variant="contained" sx={{ flex: 1 }} onClick={onSubmitPayment}>
+          Xác nhận thanh toán
+        </Button>
+      </Box>
     </Box>
   )
 }

@@ -72,3 +72,12 @@ export interface Package {
   number_download: number
   content: string
 }
+
+export interface IPostPayment {
+  package_id: number
+  price: number
+  transaction_code: string
+  account_number: string
+  account_holder: string
+  bank: string
+}

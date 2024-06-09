@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import type { ReactElement } from 'react'
+import { Toaster } from 'react-hot-toast'
 import { SWRConfig } from 'swr'
 
 import type { NextPageWithLayout } from '@/models'
@@ -55,6 +56,7 @@ const MyApp = ({
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 {getLayout(<Component {...pageProps} />)}
+                <Toaster />
               </ThemeProvider>
             </div>
           </CacheProvider>
