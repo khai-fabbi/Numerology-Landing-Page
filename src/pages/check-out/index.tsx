@@ -37,11 +37,11 @@ const CheckoutPage: NextPageWithLayout = () => {
   const submitPayment = async () => {
     if (!packageSelected || !bankInfoRef.current) return
 
-    setLoading(true)
     const { codeQR, bankSelected } = bankInfoRef.current
 
     if (!bankSelected || !codeQR) return
 
+    setLoading(true)
     const formValueSend: IPostPayment = {
       package_id: packageSelected?.id,
       price: packageSelected.price_sale || packageSelected.price,

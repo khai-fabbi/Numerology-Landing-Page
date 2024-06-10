@@ -15,3 +15,9 @@ export enum Status {
   Private,
   Publish,
 }
+
+export enum StatusRecharge {
+  Pending = 1,
+  Complete = 2,
+  Fail = 0,
+}

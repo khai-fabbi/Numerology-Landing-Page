@@ -1,3 +1,5 @@
+import type { StatusRecharge } from '@/utils/enums'
+
 export interface NumberParam {
   birth_day: string
   sex: 'M' | 'F'
@@ -45,6 +47,9 @@ export interface NumberParam {
 export interface IResponseProfile {
   data: ProfileData
 }
+export interface IResponsePackageHistory {
+  data: PackageHistory
+}
 export interface ProfileData {
   id: number
   email: string
@@ -80,4 +85,37 @@ export interface IPostPayment {
   account_number: string
   account_holder: string
   bank: string
+}
+
+export interface PackageHistory {
+  user_payment: UserPayment[]
+  user_package: UserPackage
+  user_download: UserDownload[]
+}
+
+export interface UserDownload {
+  id: number
+  name: string
+  created_at: string
+}
+
+export interface UserPayment {
+  id: number
+  package: PackageItem
+  price: number
+  status: StatusRecharge
+  created_at: string
+}
+
+export interface UserPackage {
+  package: PackageItem
+}
+
+export interface PackageItem {
+  id: number
+  name: string
+  price: number
+  price_sale: any
+  number_download: number
+  content: string
 }

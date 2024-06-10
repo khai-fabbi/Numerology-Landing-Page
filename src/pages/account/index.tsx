@@ -23,14 +23,17 @@ const AccountPage: NextPageWithLayout = () => {
     goToTop()
   }
   // const theme = useTheme();
-  const { data: profileInfo, isLoading: isLoadingProfile } = useSWR(
-    '/api/profile',
-    () => profileApi.getProfile()
+  const { data: response, isLoading } = useSWR('profile-api', () =>
+    Promise.all([profileApi.getProfile(), profileApi.getPackageHistory()])
   )
+
+  const profileInfo = response?.[0]?.data
+
+  const packageHistory = response?.[1].data
 
   return (
     <Box className="bg-account-page">
-      <Loading isOpen={isLoadingProfile} />
+      <Loading isOpen={isLoading} />
       <Container maxWidth={false}>
         <Box component={'h2'} py={3} fontWeight={500}>
           PPns Account
@@ -41,15 +44,15 @@ const AccountPage: NextPageWithLayout = () => {
             <SideBarAccount
               tabActive={tabActive}
               onChangeTab={handleChangeTab}
-              profileInfo={profileInfo?.data}
+              profileInfo={profileInfo}
             />
           </Grid>
           <Grid item xs={12} md={9}>
             <TabPanelAccount index={1} value={tabActive}>
-              <AccountInfo profileInfo={profileInfo?.data} />
+              <AccountInfo profileInfo={profileInfo} />
             </TabPanelAccount>
             <TabPanelAccount index={2} value={tabActive}>
-              <PackageByAccount />
+              <PackageByAccount packageHistory={packageHistory} />
             </TabPanelAccount>
           </Grid>
         </Grid>

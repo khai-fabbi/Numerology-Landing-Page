@@ -11,6 +11,8 @@ import {
 } from '@mui/material'
 import * as React from 'react'
 
+import type { UserPayment } from '@/pages/api/type'
+import { StatusRecharge } from '@/utils/enums'
 import { convertToVND } from '@/utils/helpers'
 
 const StyledTableCell = styled(TableCell)(() => ({
@@ -40,15 +42,10 @@ const StyledTableRow = styled(TableRow)(() => ({
   },
 }))
 
-enum StatusRecharge {
-  Pending = 1,
-  Complete,
-  Fail,
-}
 const LABEL_STATUS = {
+  0: 'Thất bại',
   1: 'Chờ duyệt',
   2: 'Hoàn thành',
-  3: 'Thất bại',
 }
 
 const getColorStatus = (stt: number) => {
@@ -74,34 +71,47 @@ function createData(
 }
 type RowType = ReturnType<typeof createData>
 
-export default function HistoryTable() {
+interface Props {
+  userPaymentList?: UserPayment[]
+}
+export default function HistoryTable({ userPaymentList }: Props) {
   const rowsData: RowType[] = React.useMemo(() => {
-    return [
-      {
-        date: new Date().toDateString(),
-        packageName: 'Chiến Binh BK2',
-        amount: 500000,
-        status: 2,
-      },
-      {
-        date: new Date().toDateString(),
-        packageName: 'Chiến Binh BK2',
-        amount: 800000,
-        status: 1,
-      },
-      {
-        date: new Date().toDateString(),
-        packageName: 'Chiến Binh BK2',
-        amount: 800000,
-        status: 3,
-      },
-      {
-        date: new Date().toDateString(),
-        packageName: 'Chiến Binh BK2',
-        amount: 700000,
-        status: 2,
-      },
-    ]
+    return (
+      userPaymentList?.map((payment) => {
+        return {
+          date: payment.created_at,
+          packageName: payment.package.name,
+          amount: payment.price,
+          status: payment.status,
+        }
+      }) || []
+    )
+    // return [
+    //   {
+    //     date: new Date().toDateString(),
+    //     packageName: 'Chiến Binh BK2',
+    //     amount: 500000,
+    //     status: 2,
+    //   },
+    //   {
+    //     date: new Date().toDateString(),
+    //     packageName: 'Chiến Binh BK2',
+    //     amount: 800000,
+    //     status: 1,
+    //   },
+    //   {
+    //     date: new Date().toDateString(),
+    //     packageName: 'Chiến Binh BK2',
+    //     amount: 800000,
+    //     status: 3,
+    //   },
+    //   {
+    //     date: new Date().toDateString(),
+    //     packageName: 'Chiến Binh BK2',
+    //     amount: 700000,
+    //     status: 2,
+    //   },
+    // ]
   }, [])
   return (
     <TableContainer>
@@ -121,7 +131,11 @@ export default function HistoryTable() {
                 {new Date(row.date).toLocaleDateString('en-GB')}
               </StyledTableCell>
               <StyledTableCell align="center">
-                {row.packageName}
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: row.packageName || '',
+                  }}
+                ></span>
               </StyledTableCell>
               <StyledTableCell align="center">
                 {convertToVND(row.amount)}

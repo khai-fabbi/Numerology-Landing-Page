@@ -1,10 +1,15 @@
 import { Box, Typography } from '@mui/material'
 import * as React from 'react'
 
+import type { PackageHistory } from '@/pages/api/type'
+
 import { PackageAccountCard } from './components'
 import HistoryTable from './components/HistoryTable'
 
-export default function PackageByAccount() {
+interface Props {
+  packageHistory?: PackageHistory
+}
+export default function PackageByAccount({ packageHistory }: Props) {
   return (
     <Box component={'section'}>
       <Box>
@@ -15,7 +20,10 @@ export default function PackageByAccount() {
           Thông tin gói đang sử dụng và số lượt tải còn lại
         </Typography>
         <Box mt={4}>
-          <PackageAccountCard />
+          <PackageAccountCard
+            userPackage={packageHistory?.user_package}
+            userDownload={packageHistory?.user_download}
+          />
         </Box>
       </Box>
 
@@ -24,7 +32,7 @@ export default function PackageByAccount() {
           Lịch sử mua gói
         </Typography>
         <Box mt={2}>
-          <HistoryTable />
+          <HistoryTable userPaymentList={packageHistory?.user_payment} />
         </Box>
       </Box>
     </Box>

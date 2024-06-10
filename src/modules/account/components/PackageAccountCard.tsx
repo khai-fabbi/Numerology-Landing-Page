@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 
 import { IconPDF } from '@/components/icon'
+import type { UserDownload, UserPackage } from '@/pages/api/type'
+import { convertToVND } from '@/utils/helpers'
 
 const StackItem = styled(Paper)(({ theme }) => ({
   width: 'fit-content',
@@ -11,17 +13,23 @@ const StackItem = styled(Paper)(({ theme }) => ({
   color: 'white',
 }))
 export interface IAccountItemCardProps {
+  userPackage?: UserPackage
+  userDownload?: UserDownload[]
   style?: React.CSSProperties
 }
 
-export default function PackageAccountCard({ style }: IAccountItemCardProps) {
+export default function PackageAccountCard({
+  userPackage,
+  userDownload,
+  style,
+}: IAccountItemCardProps) {
   const router = useRouter()
   return (
     <Box
       style={style}
       sx={{
         display: 'flex',
-        gap: 1,
+        gap: 1.5,
         padding: 2.5,
         borderRadius: 1.25,
         border: '1px solid #215261',
@@ -39,7 +47,15 @@ export default function PackageAccountCard({ style }: IAccountItemCardProps) {
             color={'#00ADDD'}
             mt={0.5}
           >
-            Chiến Binh BK28
+            {userPackage?.package.name ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: userPackage?.package.name || '',
+                }}
+              ></span>
+            ) : (
+              'Bạn chưa mua gói. Vui lòng mua thêm gói.'
+            )}
           </Typography>
           <Typography color={'#F0F8FD'} mt={0.5}>
             <Typography
@@ -47,7 +63,11 @@ export default function PackageAccountCard({ style }: IAccountItemCardProps) {
               fontSize={'1.25rem'}
               fontWeight={'500'}
             >
-              800.000
+              {convertToVND(
+                userPackage?.package.price_sale ||
+                  userPackage?.package.price ||
+                  0
+              )}
             </Typography>
             / 1 gói
           </Typography>
@@ -67,18 +87,28 @@ export default function PackageAccountCard({ style }: IAccountItemCardProps) {
         </Typography>
 
         <Stack spacing={1} mt={1.25}>
-          <StackItem>
-            Được tặng khi gia nhập{' '}
-            <Typography component={'span'} color={'#00ADDD'}>
+          {userPackage?.package.content && (
+            <StackItem>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: userPackage.package.content || '',
+                }}
+              ></span>
+
+              {/* <Typography component={'span'} color={'#00ADDD'}>
               BK 28
-            </Typography>
-          </StackItem>
-          <StackItem>
-            Số lượt tải còn lại:{' '}
-            <Typography component={'span'} color={'#00ADDD'}>
-              3 lượt
-            </Typography>
-          </StackItem>
+            </Typography> */}
+            </StackItem>
+          )}
+
+          {userPackage?.package.number_download && (
+            <StackItem>
+              Số lượt tải còn lại:{' '}
+              <Typography component={'span'} color={'#00ADDD'}>
+                {`${userPackage.package.number_download} lượt`}
+              </Typography>
+            </StackItem>
+          )}
         </Stack>
       </Box>
       <Box flex={1}>
@@ -89,54 +119,32 @@ export default function PackageAccountCard({ style }: IAccountItemCardProps) {
           mt={1.25}
           sx={{ display: 'flex', flexDirection: 'column', rowGap: 1.25 }}
         >
-          <Box display={'flex'} gap={1.25}>
-            <IconPDF />
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', rowGap: '2px' }}
-            >
-              <Typography>File báo cáo thần số học</Typography>
-              <Typography
-                component={'span'}
-                fontSize={'0.75rem'}
-                color={'#8E9BAE'}
-              >
-                12/10/2023
-              </Typography>
-            </Box>
-          </Box>
-          <Box display={'flex'} gap={1.25}>
-            <IconPDF />
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', rowGap: '2px' }}
-            >
-              <Typography>File báo cáo thần số học</Typography>
-              <Typography
-                component={'span'}
-                fontSize={'0.75rem'}
-                color={'#8E9BAE'}
-              >
-                12/10/2023
-              </Typography>
-            </Box>
-          </Box>
-          <Box display={'flex'} gap={1.25}>
-            <IconPDF />
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', rowGap: '2px' }}
-            >
-              <Typography>File báo cáo thần số học</Typography>
-              <Typography
-                component={'span'}
-                fontSize={'0.75rem'}
-                color={'#8E9BAE'}
-              >
-                12/10/2023
-              </Typography>
-            </Box>
-          </Box>
+          {userDownload?.map((item, idx) => {
+            return (
+              <Box display={'flex'} gap={1.25} key={idx}>
+                <IconPDF />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    rowGap: '2px',
+                  }}
+                >
+                  <Typography>{item.name}</Typography>
+                  <Typography
+                    component={'span'}
+                    fontSize={'0.75rem'}
+                    color={'#8E9BAE'}
+                  >
+                    {new Date(item.created_at).toLocaleDateString('en-GB')}
+                  </Typography>
+                </Box>
+              </Box>
+            )
+          })}
         </Box>
 
-        <Typography
+        {/* <Typography
           component={'a'}
           sx={{
             display: 'block',
@@ -150,7 +158,7 @@ export default function PackageAccountCard({ style }: IAccountItemCardProps) {
           mt={2.5}
         >
           Xem tất cả lịch sử tải
-        </Typography>
+        </Typography> */}
       </Box>
     </Box>
   )
