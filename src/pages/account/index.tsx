@@ -1,5 +1,6 @@
 import { Box, Container, Divider, Grid } from '@mui/material'
-import { type ReactElement, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { type ReactElement, useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import { Loading } from '@/components/loading'
@@ -17,7 +18,15 @@ import { goToTop } from '@/utils/helpers'
 import profileApi from '../api/profile'
 
 const AccountPage: NextPageWithLayout = () => {
-  const [tabActive, setTabActive] = useState(1)
+  const searchParams = useSearchParams()
+
+  const [tabActive, setTabActive] = useState(
+    Number(searchParams.get('tab')) || 1
+  )
+  useEffect(() => {
+    setTabActive(Number(searchParams.get('tab')) || 1)
+  }, [searchParams])
+
   const handleChangeTab = (value: number) => {
     setTabActive(value)
     goToTop()

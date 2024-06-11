@@ -1,9 +1,13 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 import { type ReactElement, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
 import NotFound404 from '@/components/common/NotFound404'
 import { Loading } from '@/components/loading'
+import { ModalInfo } from '@/components/modal'
+import { useBoolean } from '@/hooks'
 import type { Bank } from '@/hooks/useBanks'
 import { Main } from '@/layouts/Main'
 import { Meta } from '@/layouts/Meta'
@@ -29,7 +33,9 @@ interface ReturnValue {
 
 const CheckoutPage: NextPageWithLayout = () => {
   const packageSelected = useStore((state) => state.packageSelected)
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [isOpen, openModalSuccess, closeModalSuccess] = useBoolean()
 
   const bankInfoRef = useRef<ReturnValue>(null)
 
@@ -53,9 +59,10 @@ const CheckoutPage: NextPageWithLayout = () => {
 
     try {
       await numerologyApi.createPayment(formValueSend)
-      toast.success('Bạn đã gửi thành công ! Vui lòng chờ xác nhận.', {
-        duration: 5000,
-      })
+      openModalSuccess()
+      // toast.success('Bạn đã gửi thành công ! Vui lòng chờ xác nhận.', {
+      //   duration: 5000,
+      // })
     } catch (error) {
       toast.error('Đã có lỗi nhỏ xảy ra ! Vui lòng thử lại.')
     } finally {
@@ -65,32 +72,64 @@ const CheckoutPage: NextPageWithLayout = () => {
 
   if (!packageSelected) return <NotFound404 />
   return (
-    <Container maxWidth={false}>
-      <Loading isOpen={loading} />
-      <Box component={'h1'} my={4}>
-        Hướng dẫn thanh toán cho đơn hàng{' '}
-        <span
-          dangerouslySetInnerHTML={{ __html: packageSelected?.name || '' }}
-        ></span>
-      </Box>
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={7}>
-          <BankInfo ref={bankInfoRef} packageSelected={packageSelected} />
+    <>
+      <Container maxWidth={false}>
+        <Loading isOpen={loading} />
+        <Box component={'h1'} my={4}>
+          Hướng dẫn thanh toán cho đơn hàng{' '}
+          <span
+            dangerouslySetInnerHTML={{ __html: packageSelected?.name || '' }}
+          ></span>
+        </Box>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={7}>
+            <BankInfo ref={bankInfoRef} packageSelected={packageSelected} />
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <TotalBill
+              packageSelected={packageSelected}
+              onSubmitPayment={submitPayment}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={5}>
-          <TotalBill
-            packageSelected={packageSelected}
-            onSubmitPayment={submitPayment}
-          />
-        </Grid>
-      </Grid>
-      <Typography mt={3} mb={8} fontWeight={500}>
-        Bạn có thắc mắc ? Liên hệ ngay:{' '}
-        <Typography component="span" color="primary" fontWeight={600}>
-          0339387373
+        <Typography mt={3} mb={8} fontWeight={500}>
+          Bạn có thắc mắc ? Liên hệ ngay:{' '}
+          <Typography component="span" color="primary" fontWeight={600}>
+            0339387373
+          </Typography>
         </Typography>
-      </Typography>
-    </Container>
+      </Container>
+      <ModalInfo open={isOpen} handleClose={closeModalSuccess}>
+        <Box sx={{ textAlign: 'center' }}>
+          <CheckCircleIcon sx={{ fontSize: 50, color: 'green' }} />
+        </Box>
+        <Typography
+          sx={{
+            mt: 2,
+            fontSize: '1.5rem',
+            fontWeight: 700,
+            textAlign: 'center',
+          }}
+        >
+          Success
+        </Typography>
+        <Typography sx={{ mt: 1, textAlign: 'center', fontWeight: 500 }}>
+          Bạn đã gửi thành công! Vui lòng chờ xác nhận.
+        </Typography>
+        <Box sx={{ textAlign: 'center' }}>
+          <Button
+            variant="contained"
+            sx={{ mt: 2 }}
+            onClick={() => {
+              closeModalSuccess()
+              router.push('/account?tab=2')
+            }}
+          >
+            Quay Lại
+          </Button>
+        </Box>
+      </ModalInfo>
+    </>
   )
 }
 CheckoutPage.getLayout = function getLayout(page: ReactElement) {
