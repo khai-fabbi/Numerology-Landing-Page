@@ -30,8 +30,8 @@ const PAGES = [
     to: '/',
   },
   {
-    name: 'Giới thiệu',
-    to: '/#intro',
+    name: 'Tử vi lá số',
+    to: '/',
   },
   {
     name: 'Tra cứu',
@@ -58,8 +58,8 @@ function ResponsiveAppBar() {
       onSubmit: () => router.push('/account'),
     },
     {
-      name: 'Đăng Kí Member VIP',
-      onSubmit: () => router.push('/check-out'),
+      name: 'Dịch Vụ',
+      onSubmit: () => router.push('/danh-sach-goi'),
     },
     {
       name: 'Đăng Nhập Lại',

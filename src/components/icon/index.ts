@@ -3,6 +3,7 @@ import IconArrowRightAccordion from './IconArrowRightAccordion'
 import IconCalendar from './IconCalendar'
 import IconCheck from './IconCheck'
 import IconChevronBottom from './IconChevronBottom'
+import IconClock from './IconClock'
 import IconComment from './IconComment'
 import IconDown from './IconDown'
 import IconEmail from './IconEmail'
@@ -29,6 +30,7 @@ export {
   IconCalendar,
   IconCheck,
   IconChevronBottom,
+  IconClock,
   IconComment,
   IconDown,
   IconEmail,

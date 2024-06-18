@@ -1,4 +1,3 @@
-import { ArrowDropDown } from '@mui/icons-material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import {
   Autocomplete,
@@ -22,7 +21,7 @@ import type { CountryType } from '@/models'
 import type { FormSearch } from '@/modules/home/LookUpNumerology'
 import { countries, SEX_LABEL } from '@/utils/constant'
 
-import { IconCalendar, IconDown, IconTwoRhombus } from '../icon'
+import { IconCalendar, IconClock, IconDown, IconTwoRhombus } from '../icon'
 
 export interface SearchNumerologyFormProps {
   title: string
@@ -180,13 +179,13 @@ export default function SearchNumerologyForm({
               <TimePicker
                 value={value || undefined}
                 slots={{
-                  openPickerIcon: ArrowDropDown,
+                  openPickerIcon: IconClock,
                 }}
                 onChange={onChange}
                 componentsProps={{
-                  openPickerIcon: IconCalendar,
                   textField: {
                     id: 'birth_time-id',
+                    placeholder: 'hh:mm',
                   },
                 }}
               />
