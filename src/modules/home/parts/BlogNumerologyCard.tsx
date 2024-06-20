@@ -92,7 +92,10 @@ export default function BlogNumerologyCard({
           </Box>
 
           <Typography variant="body2" mt={1}>
-            <span dangerouslySetInnerHTML={{ __html: newsInfo.content }}></span>
+            <span
+              className="line-clamp-4"
+              dangerouslySetInnerHTML={{ __html: newsInfo.content }}
+            ></span>
             {/* {newsInfo.content} */}
           </Typography>
         </CardContent>

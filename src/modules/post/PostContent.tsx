@@ -1,10 +1,10 @@
-import { Box, Container, Divider, Grid, Typography } from '@mui/material'
+import { Box, Container, Divider, Typography } from '@mui/material'
 import { useCallback, useEffect, useRef } from 'react'
 
-import { RullingNumberForm, SearchNumerologyForm } from '@/components/form'
 import { IconTwoRhombus } from '@/components/icon'
+import type { News } from '@/models'
 
-import { ContentDescriptionItem, PostCard } from './parts'
+import { PostCard } from './parts'
 
 const relatedPosts = [
   {
@@ -36,7 +36,11 @@ const relatedPosts = [
     to: '#',
   },
 ]
-export default function PostContent() {
+
+interface PostContentProps {
+  postDetail?: News
+}
+export default function PostContent({ postDetail }: PostContentProps) {
   const postRelatedRef = useRef<HTMLDivElement | null>(null)
   const onScroll = useCallback(() => {
     const { pageYOffset } = window
@@ -64,12 +68,12 @@ export default function PostContent() {
               <Box>
                 <Box
                   component={'img'}
-                  src="/assets/images/posts/cach-tinh-than-so-hoc.jpg"
-                  alt="Cách tính thần số học"
+                  src={postDetail?.image}
+                  alt={postDetail?.title}
                   sx={{ width: '100%' }}
                 />
               </Box>
-              <Typography variant="body1" mt={3.75}>
+              {/* <Typography variant="body1" mt={3.75}>
                 Trong bộ môn Thần Số Học được phát triển bởi nhà toán học
                 Pythagoras, mỗi người trong thế giới này đều được liên kết với
                 những con số. Và những con số đó được tính toán dựa trên ngày
@@ -99,7 +103,7 @@ export default function PostContent() {
                     Thần số học là một môn khoa học đã có tuổi đời hơn 2500 năm
                   </Typography>
                 </Box>
-              </Box>
+              </Box> */}
             </Box>
             <Box
               className="content"
@@ -110,7 +114,10 @@ export default function PostContent() {
                 rowGap: 4.5,
               }}
             >
-              <ContentDescriptionItem title="Cách tính Thần số học chuẩn Pythagoras theo tên và ngày sinh chuẩn nhất">
+              <div
+                dangerouslySetInnerHTML={{ __html: postDetail?.content || '' }}
+              ></div>
+              {/* <ContentDescriptionItem title="Cách tính Thần số học chuẩn Pythagoras theo tên và ngày sinh chuẩn nhất">
                 <Typography>
                   Mỗi người trên thế giới này, đều được đại diện bởi một con số
                   bất kỳ. Và với bộ môn Thần số học, khi ta hiểu được ý nghĩa và
@@ -431,7 +438,7 @@ export default function PostContent() {
                     </Typography>
                   </Box>
                 </Box>
-              </ContentDescriptionItem>
+              </ContentDescriptionItem> */}
             </Box>
             <Divider
               sx={{
@@ -452,7 +459,7 @@ export default function PostContent() {
               },
             }}
           >
-            <SearchNumerologyForm title="Tra cứu chỉ số của bản thân ngay" />
+            {/* <SearchNumerologyForm title="Tra cứu chỉ số của bản thân ngay" /> */}
             <Divider
               sx={{
                 mt: 3.75,
