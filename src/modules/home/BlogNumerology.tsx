@@ -92,7 +92,7 @@ export default function BlogNumerology() {
               top: -100,
             }}
           >
-            <TittlePage>Blog tra cứu thần số học </TittlePage>
+            <TittlePage>Blog Tra Cứu Hệ Thống Định Vị Cá Nhân PPS</TittlePage>
           </Box>
           <Button
             variant="outlined"

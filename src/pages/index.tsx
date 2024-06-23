@@ -11,7 +11,6 @@ import {
   LogoMeaning,
   LookUpNumerology,
   NumerologyInfo,
-  TrainAndApplication,
   Tranning,
 } from '@/modules/home'
 import { TittlePage } from '@/modules/home/parts'
@@ -101,8 +100,6 @@ const Home: NextPageWithLayout = () => {
       </Box>
       <NumerologyInfo />
       <BlogNumerology />
-      {/* <TeacherInfo /> */}
-      <TrainAndApplication />
     </>
   )
 }

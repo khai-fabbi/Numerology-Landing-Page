@@ -70,7 +70,7 @@ export default function ModalLoginSocial({
             bgcolor={(theme) => theme.palette.primary.main}
             display={'inline-block'}
             borderRadius={5}
-            src={`${router.basePath}/assets/images/logo_modal_login.svg`}
+            src={`${router.basePath}/logo.png`}
           />
           <Typography
             mt={3.75}
