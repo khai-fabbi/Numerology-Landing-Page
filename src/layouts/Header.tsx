@@ -30,11 +30,11 @@ const PAGES = [
     to: '/',
   },
   {
-    name: 'Tử vi lá số',
+    name: 'TRA CỨU TỬ V',
     to: '/',
   },
   {
-    name: 'Tra cứu',
+    name: 'TRA CỨU PPS',
     to: '/#tra-cuu',
   },
   {
