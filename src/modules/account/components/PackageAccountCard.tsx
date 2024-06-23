@@ -105,7 +105,7 @@ export default function PackageAccountCard({
             <StackItem>
               Số lượt tải còn lại:{' '}
               <Typography component={'span'} color={'#00ADDD'}>
-                {`${userPackage.package.number_download} lượt`}
+                {`${userPackage.number_download} lượt`}
               </Typography>
             </StackItem>
           )}

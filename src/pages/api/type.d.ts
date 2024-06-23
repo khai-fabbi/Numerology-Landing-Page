@@ -109,6 +109,7 @@ export interface UserPayment {
 
 export interface UserPackage {
   package: PackageItem
+  number_download: number
 }
 
 export interface PackageItem {
