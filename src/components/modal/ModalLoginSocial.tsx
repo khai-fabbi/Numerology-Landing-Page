@@ -67,9 +67,9 @@ export default function ModalLoginSocial({
             component={'img'}
             px={1.25}
             py={1.5}
-            bgcolor={(theme) => theme.palette.primary.main}
             display={'inline-block'}
             borderRadius={5}
+            width={100}
             src={`${router.basePath}/logo.png`}
           />
           <Typography
