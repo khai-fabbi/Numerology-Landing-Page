@@ -82,7 +82,7 @@ export default function ModalLoginSocial({
             component={'h3'}
             variant="h3"
           >
-            Chào Mừng bạn đến thần số học online
+            Chào Mừng Bạn Đến Với Hệ Thống Định Vị Cá Nhân P.P.S
           </Typography>
           <Box
             maxWidth={300}

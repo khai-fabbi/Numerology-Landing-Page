@@ -14,27 +14,27 @@ const AccordionCustom = dynamic(
 const NUMEROLOGY_INTERESTING = [
   {
     id: 1,
-    title: 'Con số chủ đạo (Chỉ đường đời)',
+    title: 'Số Chủ Đạo',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Trường năng lượng con số chủ đạo là trường năng lượng mạnh nhất tiết lộ rất nhiều thông tin và tác động mạnh mẽ lên cuộc sống hàng ngày của bạn hơn bất kỳ trường năng lượng nào khác. Bạn cần hiểu rõ trường năng lượng của con số này một cách sâu sắc nếu bạn muốn hạnh phúc và thành công hơn nữa. Nó cho bạn biết những năng lực đặc biệt, ưu và nhược điểm bên trong tính cách của bạn, những giá trị mà bạn có thể đóng góp cho xã hội và cuối cùng là những trải nghiệm và thách thực bạn cần phải vượt qua trong cuộc đời.',
   },
   {
     id: 2,
     title: 'Biểu đồ ngày sinh',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Biểu đồ ngày sinh là biểu đồ được tạo nên bởi những con số có trong ngày, tháng, năm sinh của con người và được sắp xếp theo đúng vị trí số trong biểu đồ năng lượng những con số. Biểu đồ ngày sinh thể hiện năng lượng và nguồn sức mạnh nguyên thủy giúp cho bạn có cái nhìn sơ lược về những đặc điểm mạnh – yếu hay tính cách của bản thân, từ đó biết cách khắc phục và cải thiện để hoàn thiện bản thân hơn.',
   },
   {
     id: 3,
-    title: 'Con số linh hồn',
+    title: 'Chỉ số linh hồn',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Biểu đồ ngày sinh là biểu đồ được tạo nên bởi những con số có trong ngày, tháng, năm sinh của con người và được sắp xếp theo đúng vị trí số trong biểu đồ năng lượng những con số. Biểu đồ ngày sinh thể hiện năng lượng và nguồn sức mạnh nguyên thủy giúp cho bạn có cái nhìn sơ lược về những đặc điểm mạnh – yếu hay tính cách của bản thân, từ đó biết cách khắc phục và cải thiện để hoàn thiện bản thân hơn.',
   },
   {
     id: 4,
-    title: '4 đỉnh cao đời người',
+    title: 'Bốn Đỉnh cao cuộc đời',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      "Bốn đỉnh cao và Bốn thách thức của đời người trong biểu đồ kim tự tháp bắt đầu từ đảo Atlantis ở thời kỳ cổ đại – Theo Tiến Sỹ David Philip <Chuyên gia hàng đầu về thần số học>.  Bốn đỉnh cao của đời người tương ứng với 4 giai đoạn kéo dài 9 năm của cuộc sống. Cụ thể, nó đại diện cho giai đoạn 36 năm được chia làm 4 chặng <giai đoạn>, và mỗi chặng là 9 năm. Cuối mỗi chặng 9 năm, mỗi cá nhân sẽ gặt hái được những thành công bên cạnh những thách thức nhất định tương ứng với các con số trong mỗi đỉnh của kim tự tháp.",
   },
 ]
 

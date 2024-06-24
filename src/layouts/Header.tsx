@@ -30,7 +30,7 @@ const PAGES = [
     to: '/',
   },
   {
-    name: 'TRA CỨU TỬ V',
+    name: 'TRA CỨU TỬ VI',
     to: '/',
   },
   {
