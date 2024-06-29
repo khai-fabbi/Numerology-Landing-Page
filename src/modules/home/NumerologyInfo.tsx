@@ -1,5 +1,12 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Tooltip,
+  Typography,
+} from '@mui/material'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
@@ -154,38 +161,46 @@ export default function NumerologyInfo() {
                         borderBottom={'2px solid #0E263B'}
                         borderRight={'2px solid #0E263B'}
                       >
-                        <Box
-                          py={'14px'}
-                          // px={5}
-                          height={'120px'}
-                          textAlign={'center'}
-                          style={{ cursor: 'pointer' }}
-                          onClick={() => {
-                            setItemActive(item)
-                          }}
-                        >
-                          <Typography
+                        <Tooltip title="Click để xem chi tiết" arrow>
+                          <Box
+                            py={'14px'}
+                            // px={5}
+                            height={'120px'}
+                            textAlign={'center'}
                             sx={{
-                              fontFamily: 'var(--font-philosopher)',
-                              fontSize: 26,
-                              lineHeight: '29px',
+                              cursor: 'pointer',
+                              '&:hover': {
+                                filter:
+                                  'saturate(3) drop-shadow(0px 8px 10px gray)',
+                              },
+                            }}
+                            onClick={() => {
+                              setItemActive(item)
                             }}
                           >
-                            Số
-                          </Typography>
-                          <Typography
-                            component={'span'}
-                            color="primary"
-                            sx={{
-                              fontFamily: 'var(--font-philosopher)',
-                              fontSize: 70,
-                              lineHeight: '78px',
-                              fontWeight: 700,
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
-                        </Box>
+                            <Typography
+                              sx={{
+                                fontFamily: 'var(--font-philosopher)',
+                                fontSize: 26,
+                                lineHeight: '29px',
+                              }}
+                            >
+                              Số
+                            </Typography>
+                            <Typography
+                              component={'span'}
+                              color="primary"
+                              sx={{
+                                fontFamily: 'var(--font-philosopher)',
+                                fontSize: 70,
+                                lineHeight: '78px',
+                                fontWeight: 700,
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                          </Box>
+                        </Tooltip>
                       </Grid>
                     ))}
                   </Grid>
