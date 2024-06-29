@@ -65,6 +65,17 @@ export interface Profile {
   number_download: number
 }
 
+export interface NumTop {
+  id: number
+  title: string
+  short_content: string
+  image: string
+  content: string
+}
+export interface IResponseNumTop {
+  data: NumTop[]
+}
+
 export interface IResponsePackageList {
   data: Package[]
 }

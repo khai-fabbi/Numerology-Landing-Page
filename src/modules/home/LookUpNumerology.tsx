@@ -1,12 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import dayjs from 'dayjs'
+import { useSession } from 'next-auth/react'
 import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 import { SearchNumerologyForm } from '@/components/form'
 import { Loading } from '@/components/loading'
 import numerologyApi from '@/pages/api/numerologyApi'
 import type { NumberParam } from '@/pages/api/type'
+import { useStore } from '@/store/useStore'
 import { searchSchema } from '@/utils/schema'
 
 import { FingerprintBiometricsForm, TittlePage } from './parts'
@@ -58,6 +61,9 @@ const initialFormValue: FormSearch = {
 }
 
 export default function LookUpNumerology() {
+  const { data: session } = useSession()
+  // modal login
+  const openModalLogin = useStore((state) => state.openLoginModal)
   const {
     handleSubmit,
     control,
@@ -65,7 +71,6 @@ export default function LookUpNumerology() {
   } = useForm<FormSearch>({
     resolver: yupResolver(searchSchema),
     defaultValues: initialFormValue,
-    mode: 'onChange',
   })
 
   const handleSubmitFree = handleSubmit(async (formData: FormSearch) => {
@@ -92,6 +97,11 @@ export default function LookUpNumerology() {
     }
   })
   const handleSubmitDeep = handleSubmit(async (formData: FormSearch) => {
+    if (!session?.user) {
+      openModalLogin()
+      return
+    }
+
     const formSend = {
       ...formData,
       birth_day: dayjs(formData.birth_day).format('DDMMYYYY'),
@@ -109,9 +119,21 @@ export default function LookUpNumerology() {
       )
       document.body.appendChild(link)
       link.click()
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error)
+    } catch (error: any) {
+      let parsedJson: any
+      try {
+        parsedJson = JSON.parse(
+          new TextDecoder().decode(error.response.data as ArrayBuffer)
+        )
+      } catch (e) {
+        parsedJson = {}
+      }
+      if (parsedJson.detail) {
+        toast.error(parsedJson.detail)
+        return
+      }
+
+      toast.error('Đã có lỗi nhỏ xảy ra ! Vui lòng thử lại.')
     }
   })
 

@@ -23,6 +23,7 @@ import * as React from 'react'
 import { IconDown } from '@/components/icon'
 import { ModalLoginSocial, ModalSearch } from '@/components/modal'
 import type { SocialLoginType } from '@/models'
+import { useStore } from '@/store/useStore'
 
 const PAGES = [
   {
@@ -46,12 +47,20 @@ const CALLBACK_URL_LOGIN = `${process.env.NEXTAUTH_URL}`
 
 function ResponsiveAppBar() {
   const router = useRouter()
+  const { data: session } = useSession()
   const [anchorElNav, setAnchorElNav] = React.useState(false)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
   const [openSearch, setOpenSearch] = React.useState(false)
-  const [openLogin, setOpenLogin] = React.useState(false)
+
+  // modal login
+  const { openLogin, openModalLogin, closeModalLogin } = useStore((state) => ({
+    openLogin: state.isOpenLoginModal,
+    openModalLogin: state.openLoginModal,
+    closeModalLogin: state.closeLoginModal,
+  }))
+
   const settings = [
     {
       name: 'Xem Trang Cá Nhân',
@@ -59,11 +68,17 @@ function ResponsiveAppBar() {
     },
     {
       name: 'Dịch Vụ',
-      onSubmit: () => router.push('/danh-sach-goi'),
+      onSubmit: () => {
+        if (!session?.user) {
+          openModalLogin()
+          return
+        }
+        router.push('/danh-sach-goi')
+      },
     },
     {
       name: 'Đăng Nhập Lại',
-      onSubmit: () => setOpenLogin(true),
+      onSubmit: openModalLogin,
     },
     {
       name: 'Đăng Xuất',
@@ -95,11 +110,9 @@ function ResponsiveAppBar() {
     }
 
   const handleCloseModalSearch = () => setOpenSearch(false)
-  const handleCloseModalLogin = () => setOpenLogin(false)
   const handleLoginWithSocial = (type: SocialLoginType) => {
     signIn(type, { callbackUrl: CALLBACK_URL_LOGIN })
   }
-  const { data: session } = useSession()
 
   return (
     <AppBar
@@ -156,9 +169,13 @@ function ResponsiveAppBar() {
                 key={name}
                 size="small"
                 sx={{ textTransform: 'uppercase' }}
-                onClick={() =>
+                onClick={() => {
+                  if (idx === 3 && !session?.user) {
+                    openModalLogin()
+                    return
+                  }
                   router.push(to, undefined, { scroll: idx === 3 })
-                }
+                }}
               >
                 {name}
               </Button>
@@ -198,17 +215,12 @@ function ResponsiveAppBar() {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => setOpenLogin(true)}
+                    onClick={openModalLogin}
                   >
                     Đăng Nhập
                   </Button>
                 </>
               )}
-              <ModalLoginSocial
-                open={openLogin}
-                handleClose={handleCloseModalLogin}
-                onSubmit={handleLoginWithSocial}
-              />
 
               {session?.user && (
                 <Box sx={{ flexGrow: 0 }}>
@@ -308,7 +320,7 @@ function ResponsiveAppBar() {
                   }}
                 >
                   <img
-                    src={`${router.basePath}/numerology_favicon.svg`}
+                    src={`${router.basePath}/favicon.svg`}
                     alt="Logo Numerology"
                   />
 
@@ -340,6 +352,11 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <ModalLoginSocial
+        open={openLogin}
+        handleClose={closeModalLogin}
+        onSubmit={handleLoginWithSocial}
+      />
     </AppBar>
   )
 }

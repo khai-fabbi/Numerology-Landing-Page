@@ -100,6 +100,7 @@ export default function SideBarAccount({
         onClose={closeModal}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        disableScrollLock={true}
       >
         <DialogTitle id="alert-dialog-title">
           Bạn có chắc chắn đăng xuất ???

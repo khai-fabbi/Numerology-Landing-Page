@@ -12,7 +12,12 @@ import {
 } from '@/utils/constant'
 
 import axiosClient from './axiosClient'
-import type { IPostPayment, IResponsePackageList, NumberParam } from './type'
+import type {
+  IPostPayment,
+  IResponseNumTop,
+  IResponsePackageList,
+  NumberParam,
+} from './type'
 
 export interface MainstreamNumberParams {
   full_name: string
@@ -111,6 +116,11 @@ const numerologyApi = {
     const url = '/api/payments'
     const res = await axiosClient.post(url, data)
     return res.data
+  },
+  async getNumTop() {
+    const url = '/api/num-top'
+    const response = await axiosClient.get<IResponseNumTop>(url)
+    return response.data
   },
 }
 

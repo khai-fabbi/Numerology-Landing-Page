@@ -177,10 +177,14 @@ export default function SearchNumerologyForm({
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="birth_time-id">Giờ sinh</InputLabel>
               <TimePicker
-                value={value || undefined}
+                value={value}
                 slots={{
                   openPickerIcon: IconClock,
                 }}
+                defaultValue={undefined}
+                // views={['hours', 'minutes']}
+                // format="hh:mm"
+                ampm={false}
                 onChange={onChange}
                 componentsProps={{
                   textField: {

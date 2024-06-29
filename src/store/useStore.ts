@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
-import type { ICounterSlice } from './creatCounterSlice'
-import { createCounterSlice } from './creatCounterSlice'
 import type { ICommonSlice } from './createCommonSlice'
 import { createCommonSlice } from './createCommonSlice'
+import type { IUserSlice } from './createUserSlice'
+import { createUserSlice } from './createUserSlice'
 
-export type MyState = ICommonSlice & ICounterSlice
+export type MyState = ICommonSlice & IUserSlice
 
 export const useStore = create<MyState>()((...a) => ({
   ...createCommonSlice(...a),
-  ...createCounterSlice(...a),
+  ...createUserSlice(...a),
 }))

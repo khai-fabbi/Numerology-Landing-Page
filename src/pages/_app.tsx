@@ -49,6 +49,7 @@ const MyApp = ({
           dateFormats={{ monthShort: 'T.M', monthAndYear: 'MM/YYYY' }}
           // @ts-ignore
           dateAdapter={CustomDateAdapter}
+          adapterLocale={'en-gb'}
         >
           <CacheProvider value={emotionCache}>
             <div className={`${raleway.variable} ${philosopher.variable}`}>
