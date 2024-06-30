@@ -2,11 +2,11 @@ import type { CountryType } from '@/models'
 
 export const SEX_LABEL = [
   {
-    value: 'M',
+    value: '1',
     label: 'Nam',
   },
   {
-    value: 'F',
+    value: '2',
     label: 'Nữ',
   },
 ]
