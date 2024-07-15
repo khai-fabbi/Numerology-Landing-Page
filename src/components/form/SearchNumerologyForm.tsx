@@ -38,29 +38,9 @@ export default function SearchNumerologyForm({
   onSubmitFree,
   onSubmitDeep,
 }: SearchNumerologyFormProps) {
-  // const {
-  //   handleSubmit,
-  //   control,
-  //   formState: { errors },
-  // } = useForm<FormValue>({
-  //   resolver: yupResolver(searchSchema),
-  //   defaultValues: {
-  //     name: '',
-  //     sex: 'M',
-  //     birthDay: '',
-  //     timeBirthDay: '',
-  //     phoneNumber: '',
-  //     job: '',
-  //   },
-  //   mode: 'onChange',
-  // })
   const [countryCode, setCountryCode] = useState<CountryType>(
     countries[238] as CountryType
   )
-  // const submitForm = (data: FormValue) => {
-  //   setCustomerInfo(data)
-  //   router.push('/ket-qua')
-  // }
   return (
     <Box>
       <IconTwoRhombus />
@@ -177,12 +157,20 @@ export default function SearchNumerologyForm({
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="birth_time-id">Giờ sinh</InputLabel>
               <TimePicker
-                value={value || dayjs(new Date().setHours(0, 0, 0, 0))}
+                value={value || null}
                 slots={{
                   openPickerIcon: IconClock,
                 }}
-                defaultValue={dayjs(new Date())}
-                // views={['hours', 'minutes']}
+                // slotProps={{
+                //   actionBar: {
+                //     actions: ['clear'],
+                //   },
+                //   field: {
+                //     clearable: true,
+                //   },
+                // }}
+                // defaultValue={dayjs(new Date())}
+                views={['hours', 'minutes']}
                 format="HH:mm"
                 ampm={false}
                 onChange={onChange}

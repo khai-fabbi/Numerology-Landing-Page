@@ -21,7 +21,7 @@ const initialFormValue: FormSearch = {
   sex: 'M',
   phone: '',
   full_name: '',
-  birth_time: '',
+  // birth_time: '',
   job: '',
   r1_1: '',
   r1_2: '',

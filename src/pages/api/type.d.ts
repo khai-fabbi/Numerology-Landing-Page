@@ -4,7 +4,7 @@ export interface NumberParam {
   birth_day: string
   sex: 'M' | 'F'
   full_name: string
-  birth_time: string
+  birth_time?: string
   phone: string
   job?: string
   r1_1?: string
