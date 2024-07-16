@@ -154,6 +154,13 @@ const lightThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: themeColors.color.textLight,
+        },
+      },
+    },
     MuiDivider: {
       styleOverrides: {
         root: {

@@ -3,7 +3,7 @@ import * as yup from 'yup'
 
 export const searchSchema = yup.object().shape({
   full_name: yup.string().required('Vui lòng nhập tên'),
-  sex: yup.string(),
+  sex: yup.string().required('Vui lòng chọn giới tính'),
   phone: yup
     .string()
     .required('Vui lòng nhập số điện thoại')

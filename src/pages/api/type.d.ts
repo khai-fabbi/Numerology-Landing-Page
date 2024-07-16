@@ -2,11 +2,13 @@ import type { StatusRecharge } from '@/utils/enums'
 
 export interface NumberParam {
   birth_day: string
-  sex: 'M' | 'F'
+  sex: '1' | '2'
   full_name: string
   birth_time?: string
   phone: string
   job?: string
+  l?: string
+  r?: string
   r1_1?: string
   r1_2?: string
   r2_1?: string

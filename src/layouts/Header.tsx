@@ -32,7 +32,7 @@ const PAGES = [
   },
   {
     name: 'TRA CỨU TỬ VI',
-    to: '/',
+    to: '/tra-cuu-tu-vi',
   },
   {
     name: 'TRA CỨU PPS',

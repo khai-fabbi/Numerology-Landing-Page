@@ -78,10 +78,22 @@ export default function FingerprintBiometricsForm({ control }: Props) {
         <Box sx={{ flex: 1 }}>
           <Box display={'flex'} columnGap={3} alignItems={'center'}>
             <InputLabel htmlFor="left-brain-id">Não trái/Tay phải</InputLabel>
-            <InputSearch
+            <Controller
+              control={control}
+              name="l"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <InputSearch
+                  id="left-brain-id"
+                  inputRef={ref}
+                  {...fieldProps}
+                  sx={{ maxWidth: '120px', width: '100%' }}
+                />
+              )}
+            />
+            {/* <InputSearch
               id="left-brain-id"
               sx={{ maxWidth: '120px', width: '100%' }}
-            />
+            /> */}
           </Box>
           <Box
             mt={3}
@@ -227,10 +239,22 @@ export default function FingerprintBiometricsForm({ control }: Props) {
         <Box sx={{ flex: 1 }}>
           <Box display={'flex'} columnGap={3} alignItems={'center'}>
             <InputLabel htmlFor="right-brain-id">Não phải/Tay trái</InputLabel>
-            <InputSearch
+            <Controller
+              control={control}
+              name="r"
+              render={({ field: { ref, ...fieldProps } }) => (
+                <InputSearch
+                  id="right-brain-id"
+                  inputRef={ref}
+                  {...fieldProps}
+                  sx={{ maxWidth: '120px', width: '100%' }}
+                />
+              )}
+            />
+            {/* <InputSearch
               id="right-brain-id"
               sx={{ maxWidth: '120px', width: '100%' }}
-            />
+            /> */}
           </Box>
           <Box
             mt={3}

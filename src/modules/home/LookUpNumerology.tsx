@@ -18,11 +18,13 @@ import { InputSearch } from './parts/FingerprintBiometricsForm'
 export type FormSearch = NumberParam
 const initialFormValue: FormSearch = {
   birth_day: '',
-  sex: 'M',
+  sex: '1',
   phone: '',
   full_name: '',
   // birth_time: '',
   job: '',
+  l: '',
+  r: '',
   r1_1: '',
   r1_2: '',
   r2_1: '',

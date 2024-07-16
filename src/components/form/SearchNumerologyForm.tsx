@@ -178,6 +178,8 @@ export default function SearchNumerologyForm({
                   textField: {
                     id: 'birth_time-id',
                     placeholder: 'hh:mm',
+                    helperText:
+                      'Nếu không nhớ giờ sinh thì bỏ trống trường này.',
                   },
                 }}
               />
