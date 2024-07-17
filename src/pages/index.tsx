@@ -60,14 +60,12 @@ const Home: NextPageWithLayout = () => {
         </Container>
       </Box>
       <Box>
-        <Container maxWidth={false}>
           <Box
             component={'img'}
             src={'/assets/images/tuvi.jpg'}
             alt="top-ppns-2"
             sx={{ width: '100%' }}
           ></Box>
-        </Container>
       </Box>
       <Box sx={{ pt: 6, pb: 10 }} className="development-journey-wrapper">
         <Container maxWidth={false}>
