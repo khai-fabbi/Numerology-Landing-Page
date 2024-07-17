@@ -77,6 +77,11 @@ export interface NumTop {
 export interface IResponseNumTop {
   data: NumTop[]
 }
+export interface IResponseLaSo {
+  data: {
+    horoscopes: string
+  }
+}
 
 export interface IResponsePackageList {
   data: Package[]
@@ -132,4 +137,11 @@ export interface PackageItem {
   price_sale: any
   number_download: number
   content: string
+}
+
+export interface IParamsLaSo {
+  birth_day: string
+  sex?: '1' | '2'
+  full_name: string
+  birth_time?: string
 }

@@ -13,7 +13,9 @@ import {
 
 import axiosClient from './axiosClient'
 import type {
+  IParamsLaSo,
   IPostPayment,
+  IResponseLaSo,
   IResponseNumTop,
   IResponsePackageList,
   NumberParam,
@@ -120,6 +122,13 @@ const numerologyApi = {
   async getNumTop() {
     const url = '/api/num-top'
     const response = await axiosClient.get<IResponseNumTop>(url)
+    return response.data
+  },
+  async getLaso(params: IParamsLaSo) {
+    const url = '/api/la-so'
+    const response = await axiosClient.get<IResponseLaSo>(url, {
+      params,
+    })
     return response.data
   },
 }
