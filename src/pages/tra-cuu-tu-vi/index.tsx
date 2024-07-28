@@ -119,7 +119,7 @@ const Page: NextPageWithLayout = () => {
                         rowGap={0.5}
                       >
                         <InputLabel htmlFor="name-id">
-                          Họ tên khai sinh (nên nhập không dấu)
+                          Họ tên khai sinh
                         </InputLabel>
                         <TextField
                           placeholder="Nhập họ tên"

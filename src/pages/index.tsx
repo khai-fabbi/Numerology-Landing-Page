@@ -46,7 +46,30 @@ const Home: NextPageWithLayout = () => {
           sx={{ width: '100%' }}
         ></Box>
       </Box>
-
+      <Box>
+        <Box
+          component={'img'}
+          src={'/assets/images/step_1.jpg'}
+          alt="top-ppns-2"
+          sx={{ width: '100%' }}
+        ></Box>
+      </Box>
+      <Box>
+        <Box
+          component={'img'}
+          src={'/assets/images/step_2.jpg'}
+          alt="top-ppns-2"
+          sx={{ width: '100%' }}
+        ></Box>
+      </Box>
+      <Box>
+        <Box
+          component={'img'}
+          src={'/assets/images/step_3.jpg'}
+          alt="top-ppns-2"
+          sx={{ width: '100%' }}
+        ></Box>
+      </Box>
       <Box
         sx={{ backgroundColor: '#F1F1F1', paddingTop: 8, paddingBottom: 16 }}
       >
