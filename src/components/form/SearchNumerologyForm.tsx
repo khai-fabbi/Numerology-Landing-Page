@@ -66,7 +66,7 @@ export default function SearchNumerologyForm({
           }) => (
             <Box display={'flex'} flexDirection={'column'} rowGap={0.5}>
               <InputLabel htmlFor="name-id">
-                Họ tên khai sinh (nên nhập không dấu)
+                Họ tên khai sinh (nên nhập có dấu)
               </InputLabel>
               <TextField
                 placeholder="Nhập họ tên"
