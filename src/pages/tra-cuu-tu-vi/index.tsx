@@ -100,7 +100,7 @@ const Page: NextPageWithLayout = () => {
             textAlign={'center'}
             fontFamily={'var(--font-philosopher)'}
           >
-            Tra cứu tử vi
+            Tra cứu Lá Số Định Vị Cá Nhân P.P.S
           </Typography>
           <Grid container spacing={4} mt={2}>
             <Grid item xs={12} md={5}>
