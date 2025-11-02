@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import type { ReactElement } from 'react'
 
 import { Main } from '@/layouts/Main'
@@ -46,30 +46,30 @@ const Home: NextPageWithLayout = () => {
           sx={{ width: '100%' }}
         ></Box>
       </Box>
-      <Box>
+      {/* <Box>
         <Box
           component={'img'}
           src={'/assets/images/step_1.jpg'}
           alt="top-ppns-2"
           sx={{ width: '100%' }}
         ></Box>
-      </Box>
-      <Box>
+      </Box> */}
+      {/* <Box>
         <Box
           component={'img'}
           src={'/assets/images/step_2.jpg'}
           alt="top-ppns-2"
           sx={{ width: '100%' }}
         ></Box>
-      </Box>
-      <Box>
+      </Box> */}
+      {/* <Box>
         <Box
           component={'img'}
           src={'/assets/images/step_3.jpg'}
           alt="top-ppns-2"
           sx={{ width: '100%' }}
         ></Box>
-      </Box>
+      </Box> */}
       <Box
         sx={{ backgroundColor: '#F1F1F1', paddingTop: 8, paddingBottom: 16 }}
       >
@@ -83,14 +83,14 @@ const Home: NextPageWithLayout = () => {
         </Container>
       </Box>
       <Box>
-          <Box
-            component={'img'}
-            src={'/assets/images/tuvi.jpg'}
-            alt="top-ppns-2"
-            sx={{ width: '100%' }}
-          ></Box>
+        <Box
+          component={'img'}
+          src={'/assets/images/tuvi.jpg'}
+          alt="top-ppns-2"
+          sx={{ width: '100%' }}
+        ></Box>
       </Box>
-      <Box sx={{ pt: 6, pb: 10 }} className="development-journey-wrapper">
+      {/* <Box sx={{ pt: 6, pb: 10 }} className="development-journey-wrapper">
         <Container maxWidth={false}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <TittlePage isCenter>
@@ -113,7 +113,7 @@ const Home: NextPageWithLayout = () => {
             ></Box>
           </Box>
         </Container>
-      </Box>
+      </Box> */}
       <LookUpNumerology />
 
       <Box>
