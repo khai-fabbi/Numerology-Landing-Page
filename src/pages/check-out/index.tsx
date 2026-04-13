@@ -95,7 +95,7 @@ const CheckoutPage: NextPageWithLayout = () => {
         <Typography mt={3} mb={8} fontWeight={500}>
           Bạn có thắc mắc ? Liên hệ ngay:{' '}
           <Typography component="span" color="primary" fontWeight={600}>
-            0339387373
+            0938451893
           </Typography>
         </Typography>
       </Container>

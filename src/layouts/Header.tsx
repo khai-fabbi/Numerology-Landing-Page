@@ -347,6 +347,40 @@ function ResponsiveAppBar() {
                     </MenuItem>
                   ))}
                 </MenuList>
+                <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)', my: 1 }} />
+                <Box sx={{ px: 2, py: 1 }}>
+                  {!session?.user ? (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                      onClick={openModalLogin}
+                    >
+                      Đăng Nhập
+                    </Button>
+                  ) : (
+                    <MenuList>
+                      {settings.map(({ name, onSubmit }) => (
+                        <MenuItem
+                          key={name}
+                          sx={{ borderRadius: '5px', py: 1 }}
+                          onClick={onSubmit}
+                        >
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              color: '#fff',
+                              fontWeight: 600,
+                              '&:active': { color: '#F96A2D' },
+                            }}
+                          >
+                            {name}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                    </MenuList>
+                  )}
+                </Box>
               </Box>
             </Drawer>
           </Box>
